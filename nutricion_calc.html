@@ -1,0 +1,535 @@
+<!-- <%@ language="javascript"%> -->
+<!DOCTYPE html>
+<html lang="en-150">
+	
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" media="all"> <!--bootswatch-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!--google icons-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--font awesome 20px-sm-->	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<script>
+		$(document).ready(function(){ 
+			$('#myTab li:eq(1) a').tab('show');
+			});
+		
+		function totalNutricion() {
+			// CALORIES
+			var w = parseFloat(document.getElementById("weight").value); 
+			var h = parseFloat(document.getElementById("height").value); 
+			var age = parseFloat(document.getElementById("age").value); 
+			var gen = document.getElementById("gender").value; 
+			var stress = parseFloat(document.getElementById("stress").value);
+		    if (gen == "Mujer" ) {
+		       totCal = ((65.5 + (9.6 * w) + (1.8 * h) - (4.7 * age)) * stress).toFixed(); //rounded value
+		    } else {
+		       totCal = ((66.5 + (13.7 * w) + (5 * h) - (6.8 * age)) * stress).toFixed(); //rounded value	
+		    }
+			var totCalKg = (totCal / w).toFixed(); //rounded value
+			/* 
+			var caloriasKg = 30;
+			var totCal = w * caloriasKg;
+			*/
+			document.getElementById("totCal").innerHTML = totCal;
+			document.getElementById("totCalKg").innerHTML = totCalKg;
+			
+			// PROTEINS
+			var gramprot = parseFloat(document.getElementById("gramprot").value); 
+		    if (gramprot < 0.5 || gramprot > 2.5 ) {
+		        totProt = "- -";
+				errorProt = "Error: el rango debe estar entre 0.5 y 2.5";
+				totNitro = "- -";
+		    } else {
+		        totProt = w * gramprot; 
+				errorProt = "";
+				totNitro = totProt * 0.16;
+		    }
+			var caloriasProt = 4;
+		    if (totProt == "- -" ) {
+		        totCalProt = "- -";
+				propCalProt = "- -";
+		    } else {
+		        totCalProt = totProt * caloriasProt;
+				propCalProt = (totCalProt / totCal * 100).toFixed(); //rounded value
+		    }
+			var mlProt = parseFloat(document.getElementById("mlprot").value); 
+			var mlProtTotal = (totProt / (mlProt / 100)).toFixed(); //rounded value
+			var mlProtTotalF = totProt / (mlProt / 100);
+			document.getElementById("totProt").innerHTML = totProt;
+			document.getElementById("errorProt").innerHTML = errorProt;
+			document.getElementById("totNitro").innerHTML = totNitro;
+			document.getElementById("mlProtTotal").innerHTML = mlProtTotal;
+			document.getElementById("totCalProt").innerHTML = totCalProt;
+			document.getElementById("propCalProt").innerHTML = propCalProt;
+			
+			// GLUCOSE
+			var propglucose = parseFloat(document.getElementById("propglucose").value); 
+			var totCalGlu = (totCal-totCalProt) * propglucose / 100;
+			var propCalGlu = (totCalGlu / totCal * 100).toFixed(); //rounded value
+			var caloriasGlu = 3.4;
+			var totGlu = (totCalGlu / caloriasGlu).toFixed(); //rounded value  
+			var mlGlu = parseFloat(document.getElementById("mlglu").value); 
+			var mlGluTotal = (totGlu / (mlGlu / 100)).toFixed(); //rounded value
+			var mlGluTotalF = totGlu / (mlGlu / 100);
+			document.getElementById("totCalGlu").innerHTML = totCalGlu;
+			document.getElementById("propCalGlu").innerHTML = propCalGlu;
+			document.getElementById("totGlu").innerHTML = totGlu;
+			document.getElementById("mlGluTotal").innerHTML = mlGluTotal;
+			
+			// LIPIDS
+			var proplipids = 100 - propglucose; 
+			var totCalLip = (totCal-totCalProt) * proplipids / 100;
+			var propCalLip = (totCalLip / totCal * 100).toFixed(); //rounded value
+			var caloriasLip = 9;
+			var totLip = (totCalLip / caloriasLip).toFixed(); //rounded value 
+			var mlLip = parseFloat(document.getElementById("mllip").value); 
+			var mlLipTotal = (totLip / (mlLip / 100)).toFixed(); //rounded value
+			var mlLipTotalF = totLip / (mlLip / 100);
+			var mlLipKg = (mlLipTotalF / w).toFixed(); //rounded value
+			document.getElementById("totCalLip").innerHTML = totCalLip;
+			document.getElementById("propCalLip").innerHTML = propCalLip;
+			document.getElementById("totLip").innerHTML = totLip;
+			document.getElementById("mlLipTotal").innerHTML = mlLipTotal;
+			document.getElementById("mlLipKg").innerHTML = mlLipKg;
+			
+			// SUPPEMENTS
+			var mlVitlipid = 10.0;
+			var mlVitsolub = 0.0;
+			var mlOligoel = 10.0;
+			var mlSuplem =  mlVitlipid + mlVitsolub + mlOligoel;
+			document.getElementById("mlSuplem").innerHTML = mlSuplem;
+			
+			// IONS
+			var mlclk = parseFloat(document.getElementById("mlclk").value); 
+			var mlpmk = parseFloat(document.getElementById("mlpmk").value); 
+			var mlmgso4 = parseFloat(document.getElementById("mlmgso4").value); 
+			var mlIones = mlclk + mlpmk + mlmgso4;
+			document.getElementById("mlIones").innerHTML = mlIones;
+			
+			// ML TOTAL
+			var mlTotal = (mlProtTotalF + mlGluTotalF + mlLipTotalF + mlSuplem + mlIones).toFixed(); //rounded value
+			document.getElementById("mlTotal").innerHTML = mlTotal;
+		}	
+		
+		
+			
+			
+	</script>	
+			
+	<style>
+		.input-lg {
+		  font-size: 30px;
+		}
+		.input {
+		  font-size: 20px;
+		}
+		
+		.alert-gray{
+			background-color: #1d4249;
+			color: #ffffff;
+			border-color: #1d4249;
+			}
+		.alert-blue1{
+			background-color: #6995b0;
+			color: #ffffff;
+			border-color: #6995b0;
+			}
+		.alert-protein{
+			background-color: #cc7a00;
+			color: #ffffff;
+			border-color: #cc7a00;
+			}
+		.alert-protein > .form-group > .form-control {
+			background-color: #fff5e6;
+			color:  #995c00;
+			border-color:  #cc7a00;
+			}
+		.alert-glucose{
+			background-color: #79b530;
+			color: #ffffff;
+			border-color: #79b530;
+			}
+		.alert-glucose > .form-group > .form-control {
+			background-color: #e7f4d7;
+			color:  #43651b;
+			border-color:  #79b530;
+			}
+		.alert-lipids{
+			background-color: #e6bb00;
+			color: #ffffff;
+			border-color: #e6bb00;
+			}
+		.alert-lipids > .form-group > .form-control {
+			background-color: #fff6cc;
+			color: #997d00;
+			border-color: #e6bb00;
+			}
+		.alert-vitamin{
+			background-color: #388293; /*#2e6976*/
+			color: #ffffff;
+			border-color: #388293;
+			}
+		.alert-vitamin > .form-group > .form-control {
+			background-color: #daedf1; 
+			color: #1c424a;
+			border-color: #388293;
+			}
+		.alert-ions{
+			background-color: #70adbc;
+			color: #ffffff;
+			border-color: #70adbc;
+			}
+		.alert-ions > .form-group > .form-control {
+			background-color: #dcebef;
+			color: #315d68;
+			border-color: #70adbc;
+			}
+		.alert-danger{
+			background-color: #b62f2f; /*#c73859; #e03e55*/
+			color: #ffffff;
+			border-color: #b62f2f;
+			}
+			
+	</style>		
+			
+			
+			
+	<title>Calculadora nutrici&oacute;n</title>
+</head>
+
+
+<body>
+
+<div id="intro" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 noScreen text-center">
+			<h1> Nutrici&oacute;n Parenteral &nbsp;<span class="fa fa-calculator"></a></span></h1>
+			<h4>Para adultos en Cuidados Intensivos </h4>
+			<hr>
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+<div id="peso" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 noScreen text-center">
+			<div class="button well" onclick="totalNutricion()">
+				<div class="form-group form-inline">
+					<label class="control-label" for="edad"><h3> Edad &nbsp; </h3></label>
+						<input class="form-control input" type="number" id="age" name="edad" value="50" min="15" max="100" step="1" placeholder="Edad">
+					<label class="control-label" for="peso"><h3>&nbsp; Peso (kg) &nbsp; </h3></label>
+						<input class="form-control input" type="number" id="weight" name="peso" value="60" min="0" max="600" step="0.5" placeholder="Peso">
+					<label class="control-label" for="altura"><h3>&nbsp; Altura (cm) &nbsp;</h3></label>
+						<input class="form-control input" type="number" id="height" name="peso" value="165" min="50" max="280" step="5" placeholder="Altura">
+				</div> <!--EOF form-group-->
+				<div class="form-group form-inline">
+					<label class="control-label" for="sexo"><h3>&nbsp; Sexo &nbsp;</h3></label>
+						<select class="form-control input" id="gender" name="sexo">
+							<option value="Mujer">Mujer</option>
+							<option value="Hombre" selected="selected">Hombre</option>
+						</select>
+					<label class="control-label" for="estresor"><h3>&nbsp; Stress &nbsp;</h3></label>
+						<select class="form-control input" id="stress" name="estresor">
+							<option value="1.0" selected="selected">Basal</option>
+							<option value="1.2">Cx. electiva</option>
+							<option value="1.2">Fx hueso largo</option>
+							<option value="1.3">EPOC</option>
+							<option value="1.3">Malnutrido</option>
+							<option value="1.3">Cancer</option>
+							<option value="1.4">Trauma craneal</option>
+							<option value="1.6">VMI</option>
+							<option value="1.6">Cx. mayor</option>
+							<option value="1.6">Politrauma</option>
+							<option value="1.6">Sepsis</option>
+							<option value="1.5">Quemado 0-20%</option>
+							<option value="1.8">Quemado 20-40%</option>
+							<option value="2.0">Quemado 40-100%</option>
+						</select>
+				</div> <!--EOF form-group-->
+			</div> <!--EOF well sm-->
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+<div id="cabecera" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-4 col-md-4 noScreen text-center">
+			<div class="button well well-sm alert-gray" onclick="totalNutricion()">
+				<h2> Nutrientes &nbsp;<span class="fa fa-pie-chart"></a></span></h2>
+			</div> <!--EOF well sm-->
+		</div> <!--EOF column-->
+		<div class="col-sm-4 col-md-4 noScreen text-center">
+			<div class="button well well-sm alert-gray" onclick="totalNutricion()">
+				<h2> Cantidad total (ml) = <span id="mlTotal"> </span></h2>
+			</div> <!--EOF well sm-->
+		</div> <!--EOF column-->
+		<div class="col-sm-4 col-md-4 noScreen text-center">
+			<div class="well well-sm alert-danger" onclick="totalNutricion()">
+				<h2> Calor&iacute;as = <span id="totCal"> </span> (<span id="totCalKg"> </span> /kg)</h2>
+			</div> <!--EOF well sm-->
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+	<hr>
+</div> <!--EOF container-->
+
+
+<div id="proteinas" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-4 col-md-4 noScreen text-center">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 noScreen text-center">
+					<div class="button well well-sm alert-protein" onclick="totalNutricion()">
+						<h2> Prote&iacute;nas = <span id="totProt"> </span> g (<span id="totNitro"> </span> g N) </h2>
+						<div class="form-group form-inline">
+							<label class="control-label" for="proteinas"><h3> Gramos/kg &nbsp; &nbsp;</h3></label>
+							<input class="form-control input" type="number" id="gramprot" name="proteinas" value="1.2" min="0.5" max="2.5" step="0.1">
+							<div id="errorProt" style="color:#000000; font-size:20px"></div>
+						</div> <!--EOF form-group-->
+						<ul>1 g/kg: paciente normal.</ul>
+						<ul>1.5 g/kg: paciente s&eacute;ptico.</ul>
+						<ul>1.5-2 g/kg: paciente politraumatizado.</ul>
+					</div> <!--EOF well sm-->
+				</div> <!--EOF column-->	
+			</div> <!--EOF row-->
+		</div> <!--EOF column-->
+		
+		<div class="col-sm-4 col-md-4 noScreen text-center">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 noScreen text-center">
+					<div class="button well well-sm alert-protein" onclick="totalNutricion()">
+						<h3> Volumen prote&iacute;nas (ml) = <span id="mlProtTotal"> </span></h3>
+							<div class="form-group form-inline">
+								<label class="control-label" for="proteinasml"><h3> Concentraci&oacute;n (%) &nbsp; &nbsp;</h3></label>
+								<input class="form-control input" type="number" id="mlprot" name="proteinasml" value="15" min="1" max="90" step="1">
+								<div id="errorProt" style="color:#000000; font-size:20px"></div>
+							</div> <!--EOF form-group-->
+							<ul>15%: paciente normal.</ul>
+							<ul>10%: protecci&oacute;n hep&aacute;tica o renal.</ul>
+					</div> <!--EOF well sm-->
+				</div> <!--EOF column-->	
+			</div> <!--EOF row-->
+		</div> <!--EOF column-->
+		
+		<div class="col-sm-4 col-md-4 noScreen text-center">
+			<div class="button well well-sm alert-danger" onclick="totalNutricion()">
+				<h3> Calor&iacute;as (prote&iacute;nas) = <span id="totCalProt"> </span></h3>
+				<h3><span id="propCalProt"> </span>% del total</h3>
+			</div> <!--EOF well sm-->
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+<div id="glucosa" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-4 col-md-4 noScreen text-center">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 noScreen text-center">
+					<div class="button well well-sm alert-glucose" onclick="totalNutricion()">
+						<h2> Glucosa = <span id="totGlu"> </span> g</h2>
+						<div class="form-group form-inline">
+							<label class="control-label" for="glucosaprop"><h3> % kcal (Glucosa/L&iacute;pidos): &nbsp; &nbsp;</h3></label>						
+								<select class="form-control input" id="propglucose" name="glucosaprop">
+									<option value="50">50/50</option>
+									<option value="55">55/45</option>
+									<option value="60" selected="selected">60/40</option>
+									<option value="65">65/35</option>
+									<option value="70">70/30</option>
+									<option value="75">75/25</option>
+								</select>
+								<div id="errorProt" style="color:#000000; font-size:20px"></div>
+							</div> <!--EOF form-group-->
+					</div> <!--EOF well sm-->
+				</div> <!--EOF column-->	
+			</div> <!--EOF row-->
+		</div> <!--EOF column-->
+		
+		<div class="col-sm-4 col-md-4 noScreen text-center">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 noScreen text-center">
+					<div class="button well well-sm alert-glucose" onclick="totalNutricion()">
+						<h3> Volumen glucosa (ml) = <span id="mlGluTotal"> </span></h3>
+						<div class="form-group form-inline">
+							<label class="control-label" for="glucosaml"><h3> Concentraci&oacute;n (%) &nbsp; &nbsp;</h3></label>
+								<input class="form-control input" type="number" id="mlglu" name="glucosaml" value="50" min="5" max="100" step="1">
+								<div id="errorGlu" style="color:#000000; font-size:20px"></div>
+						</div> <!--EOF form-group-->
+					</div> <!--EOF well sm-->
+				</div> <!--EOF column-->	
+			</div> <!--EOF row-->
+		</div> <!--EOF column-->
+		
+		<div class="col-sm-4 col-md-4 noScreen text-center">
+			<div class="button well well-sm alert-danger" onclick="totalNutricion()">
+				<h3> Calor&iacute;as (glucosa) = <span id="totCalGlu"> </span></h3>
+				<h3><span id="propCalGlu"> </span>% del total</h3>
+			</div> <!--EOF well sm-->
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+
+<div id="lipidos" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-4 col-md-4 noScreen text-center">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 noScreen text-center">
+					<div class="button well well-sm alert-lipids" onclick="totalNutricion()">
+						<h2> L&iacute;pidos = <span id="totLip"> </span> g</h2>
+						<ul></ul>
+					</div> <!--EOF well sm-->
+				</div> <!--EOF column-->
+			</div> <!--EOF row-->
+		</div> <!--EOF column-->
+		
+		<div class="col-sm-4 col-md-4 noScreen text-center">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 noScreen text-center">
+					<div class="button well well-sm alert-lipids" onclick="totalNutricion()">
+						<h3> Volumen l&iacute;pidos (ml) = <span id="mlLipTotal"> </span></h3>
+						<h3> ml/kg = <span id="mlLipKg"> </span></h3>
+						<div class="form-group form-inline">
+							<label class="control-label" for="lipidosml"><h3> Concentraci&oacute;n (%) &nbsp; &nbsp;</h3></label>
+								<input class="form-control input" type="number" id="mllip" name="lipidosml" value="20" min="5" max="100" step="1">
+								<div id="errorLip" style="color:#000000; font-size:20px"></div>
+						</div> <!--EOF form-group-->
+					</div> <!--EOF well sm-->
+				</div> <!--EOF column-->
+			</div> <!--EOF row-->	
+		</div> <!--EOF column-->
+		
+		<div class="col-sm-4 col-md-4 noScreen text-center">
+			<div class="button well well-sm alert-danger" onclick="totalNutricion()">
+				<h3> Calor&iacute;as (l&iacute;pidos) = <span id="totCalLip"> </span></h3>
+				<h3><span id="propCalLip"> </span>% del total</h3>
+			</div> <!--EOF well sm-->
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+
+<div id="vitaminas" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-4 col-md-4 noScreen text-center">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 noScreen text-center">
+					<div class="button well well-sm alert-vitamin" onclick="totalNutricion()">
+						<h2> Vitaminas, Oligoelementos</h2>
+					</div> <!--EOF well sm-->
+				</div> <!--EOF column-->
+			</div> <!--EOF row-->
+		</div> <!--EOF column-->
+		
+		<div class="col-sm-8 col-md-8 noScreen text-center">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 noScreen text-center">
+					<div class="button well well-sm alert-vitamin" onclick="totalNutricion()">
+						<h3> Volumen suplementos (ml) = <span id="mlSuplem"> </span></h3>
+						<p><span style="font-size:20px"> V. Liposolubles (Vitalipid&reg;...) </span> 10 ml/vial</p>
+						<p><span style="font-size:20px"> V. Hidrosolubles (Soluvit&reg;...) </span> Liofilizado, disuelto en ml totales (&#126;0 ml a&ntilde;adidos)</p>
+						<p><span style="font-size:20px"> Oligoelementos </span> 10 ml/vial</p>
+					</div> <!--EOF well sm-->
+				</div> <!--EOF column-->
+			</div> <!--EOF row-->
+		</div> <!--EOF column-->
+		
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+
+<div id="iones" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-4 col-md-4 noScreen text-center">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 noScreen text-center">
+					<div class="button well well-sm alert-ions" onclick="totalNutricion()">
+						<h2> Iones</h2>
+						<h4> Ajustar seg&uacute;n necesidades y patolog&iacute;a</h4>
+					</div> <!--EOF well sm-->
+				</div> <!--EOF column-->
+			</div> <!--EOF row-->
+		</div> <!--EOF column-->
+		
+		<div class="col-sm-8 col-md-8 noScreen text-center">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 noScreen text-center">
+					<div class="button well well-sm alert-ions" onclick="totalNutricion()">
+						<h3> Volumen iones (ml) = <span id="mlIones"> </span></h3>
+						<div class="form-group form-inline">
+							<label class="control-label" for="clorpotasico"><h4> Cloruro K+ (ml) &nbsp; &nbsp;</h4></label>
+							<input class="form-control input-sm" type="number" id="mlclk" name="clorpotasico" value="30" min="5" max="100" step="5">
+						</div> <!--EOF form-group-->
+						<div class="form-group form-inline">
+							<label class="control-label" for="fosfatopotasico"><h4> Fosfato monoK+ (ml) &nbsp; &nbsp;</h4></label>
+							<input class="form-control input-sm" type="number" id="mlpmk" name="fosfatopotasico" value="30" min="5" max="100" step="5">
+						</div> <!--EOF form-group-->
+						<div class="form-group form-inline">
+							<label class="control-label" for="sulfmagnesico"><h4> Sulfato Mg++ (ml) &nbsp; &nbsp;</h4></label>
+							<input class="form-control input-sm" type="number" id="mlmgso4" name="sulfmagnesico" value="10" min="5" max="30" step="5">
+						</div> <!--EOF form-group-->
+					</div> <!--EOF well sm-->
+				</div> <!--EOF column-->
+			</div> <!--EOF row-->
+		</div> <!--EOF column-->
+		
+	</div> <!--EOF row-->
+	<hr>
+</div> <!--EOF container-->
+
+
+<div id="refs" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 noScreen text-center">
+			<h2> Referencias</h2>
+			<div class="well well-sm well-sm">
+				<ul>Grodner, M, Roth SL, Walkingshaw B.</ul>  
+				<ul>Nutritional Foundations and Clinical Applications.</ul> 
+				<ul>Elsevier, 2011, p.341-356.</ul>
+			</div> <!--EOF well-sm-->
+			<div class="well well-sm">
+				<ul>McClave S, Taylor BE, Martindale RG et al.</ul> 
+				<ul>Guidelines for the Provision and Assessment of Nutrition Support Therapy in the Adult Critically Ill Patient - SCCM, ASPEN.</ul> 
+				<ul>JPEN J Parenter Enteral Nutr. 2016 Feb; 40(2):159-211.</ul>
+			</div> <!--EOF well-sm-->
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+<div id="contact" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 noScreen text-center">
+			<h2> Autor</h2>
+			<div class="well well-sm well-sm">
+				<p><a href="mailto:mariauror@gmail.com" style="color:#404040"><span class="fa fa-user-md"></span> Aurora Baluja Gonz&aacute;lez</a></p>
+	        	<p><span class="fa fa-hospital-o"></span> Servicio de Anestesiolog&iacute;a y Reanimaci&oacute;n. Hospital Cl&iacute;nico Universitario</p>
+	        	<p><span class="glyphicon glyphicon-map-marker"></span> Santiago de Compostela, Espa&ntilde;a</p>
+			</div> <!--EOF well-sm-->
+			<p><h3><a href="https://github.com/aurora-mareviv" target="blank" style="color:#404040"><span class="fa fa-github"></a>&nbsp;</span>
+			   <a href="https://talesofr.wordpress.com" target="blank" style="color:#404040"><span class="fa fa-rss"></a></span>
+			   <a href="https://twitter.com/maureviv" target="blank" style="color:#404040"><span class="fa fa-twitter"></a></span>
+			   </h3>
+		   	</p>
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+<div id="license" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 noScreen">
+			<h3> </h3>
+			<hr>
+			<p style="color:#bfbfbf"><span class="fa fa-linux" style="color:#bfbfbf"></span> 
+				Licencia - <a href="https://github.com/aurora-mareviv" target="blank" style="color:#bfbfbf">C&oacute;digo</a>: GNU-GPL v3. 
+				<a href="http://getbootstrap.com/" target="blank" style="color:#bfbfbf">Bootstrap CSS</a>, 
+				<a href="https://bootswatch.com/" target="blank" style="color:#bfbfbf">Bootswatch</a>: MIT.
+			</p>
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+
+</body>	
+</html>
