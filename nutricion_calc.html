@@ -46,7 +46,7 @@
 		    } else {
 		        totProt = w * gramprot; 
 				errorProt = "";
-				totNitro = totProt * 0.16;
+				totNitro = (totProt * 0.16).toFixed(); //rounded value
 		    }
 			var caloriasProt = 4;
 		    if (totProt == "- -" ) {
