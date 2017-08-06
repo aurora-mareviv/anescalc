@@ -44,21 +44,22 @@
 				errorProt = "Error: el rango debe estar entre 0.5 y 2.5";
 				totNitro = "- -";
 		    } else {
-		        totProt = w * gramprot; 
-				errorProt = "";
-				totNitro = (totProt * 0.16).toFixed(); //rounded value
+		        totProt = (w * gramprot).toFixed(); //rounded value
+				totProtF = w * gramprot; 
+				errorProt = ""; 
+				totNitro = (totProtF * 0.16).toFixed(); //rounded value
 		    }
 			var caloriasProt = 4;
 		    if (totProt == "- -" ) {
 		        totCalProt = "- -";
 				propCalProt = "- -";
 		    } else {
-		        totCalProt = totProt * caloriasProt;
+		        totCalProt = totProtF * caloriasProt;
 				propCalProt = (totCalProt / totCal * 100).toFixed(); //rounded value
 		    }
 			var mlProt = parseFloat(document.getElementById("mlprot").value); 
-			var mlProtTotal = (totProt / (mlProt / 100)).toFixed(); //rounded value
-			var mlProtTotalF = totProt / (mlProt / 100);
+			var mlProtTotal = (totProtF / (mlProt / 100)).toFixed(); //rounded value
+			var mlProtTotalF = totProtF / (mlProt / 100);
 			document.getElementById("totProt").innerHTML = totProt;
 			document.getElementById("errorProt").innerHTML = errorProt;
 			document.getElementById("totNitro").innerHTML = totNitro;
