@@ -70,7 +70,7 @@
 			
 			// GLUCOSE
 			var propglucose = parseFloat(document.getElementById("propglucose").value); 
-			var totCalGlu = (totCal-totCalProtF) * propglucose / 100;
+			var totCalGlu = (totCal-totCalProt) * propglucose / 100;
 			var propCalGlu = (totCalGlu / totCal * 100).toFixed(); //rounded value
 			var caloriasGlu = 3.4;
 			var totGlu = (totCalGlu / caloriasGlu).toFixed(); //rounded value  
@@ -84,7 +84,7 @@
 			
 			// LIPIDS
 			var proplipids = 100 - propglucose; 
-			var totCalLip = (totCal-totCalProtF) * proplipids / 100;
+			var totCalLip = (totCal-totCalProt) * proplipids / 100;
 			var propCalLip = (totCalLip / totCal * 100).toFixed(); //rounded value
 			var caloriasLip = 9;
 			var totLip = (totCalLip / caloriasLip).toFixed(); //rounded value 
