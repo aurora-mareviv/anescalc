@@ -1,0 +1,686 @@
+<!-- <%@ language="javascript"%> -->
+<!DOCTYPE html>
+<html lang="en-150">
+	
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" media="all"> <!--bootswatch-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!--google icons-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--font awesome 20px-sm-->	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<script>
+		$(document).ready(function(){ 
+			$('#myTab li:eq(1) a').tab('show');
+			});
+		
+		function totalPedCalc() {
+			var ageYe = parseFloat(document.getElementById("ageYe").value); 
+			var ageMo = parseFloat(document.getElementById("ageMo").value); 
+			var ageDay = parseFloat(document.getElementById("ageDay").value); 
+			var fastHours = parseFloat(document.getElementById("fasting").value); 
+			var w = parseFloat(document.getElementById("weight").value); 
+			var cxloss = document.getElementById("cxloss").value; 
+			
+			// Transform age to decimal
+			var ageYeDays = ageYe * 365.25;
+			var ageMoDays = (ageMo / 12) * 365.25;
+			var ageDecimal = ageDay + ageMoDays + ageYeDays;
+			// document.getElementById("ageDecimal").innerHTML = ageDecimal;
+			
+			//FASTING
+			var fastloss = 4 * w * fastHours;
+			var fastloss1hF = fastloss / 2;
+			var fastloss1h = (fastloss / 2).toFixed(1); //rounded value
+			var fastloss2hF = fastloss / 4;
+			var fastloss2h = (fastloss / 4).toFixed(1); //rounded value
+			var fastloss3hF = fastloss2hF; 
+			var fastloss3h = (fastloss2hF).toFixed(1); //rounded value 
+			var fastloss4h = 0; 
+			var fastloss5h = 0; 
+			document.getElementById("fastloss1h").innerHTML = fastloss1h;
+			document.getElementById("fastloss2h").innerHTML = fastloss2h;
+			document.getElementById("fastloss3h").innerHTML = fastloss3h;
+			document.getElementById("fastloss4h").innerHTML = fastloss4h;
+			document.getElementById("fastloss5h").innerHTML = fastloss5h;
+			
+			//4-2-1 RULE MAINTENANCE
+			if (w < 10) {
+				var rule421F = w * 4;
+			} else if (w > 10 && w <=20) {
+				var rule421F = 10 * 4 + (w - 10) * 2;			
+			} else if (w > 20) {
+				var rule421F = 10 * 4 + 10 * 2 + (w - 20) * 1;	
+			}
+			var rule421 = (rule421F).toFixed(1); //rounded value 
+			document.getElementsByClassName("rule421")[0].innerHTML = rule421;
+			document.getElementsByClassName("rule421")[1].innerHTML = rule421;
+			document.getElementsByClassName("rule421")[2].innerHTML = rule421;
+			document.getElementsByClassName("rule421")[3].innerHTML = rule421;
+			document.getElementsByClassName("rule421")[4].innerHTML = rule421;
+			
+			//SURFACE LOSSES
+			var surflossF = 12 * w / 24;
+			var surfloss = (12 * w / 24).toFixed(1); //rounded value
+			document.getElementsByClassName("surfloss")[0].innerHTML = surfloss;
+			document.getElementsByClassName("surfloss")[1].innerHTML = surfloss;
+			document.getElementsByClassName("surfloss")[2].innerHTML = surfloss;
+			document.getElementsByClassName("surfloss")[3].innerHTML = surfloss;
+			document.getElementsByClassName("surfloss")[4].innerHTML = surfloss;
+			
+			//SURGERY LOSSES
+			var surglossF = cxloss * w;
+			var surgloss = (cxloss * w).toFixed(1); //rounded value
+			document.getElementsByClassName("surgloss")[0].innerHTML = surgloss;
+			document.getElementsByClassName("surgloss")[1].innerHTML = surgloss;
+			document.getElementsByClassName("surgloss")[2].innerHTML = surgloss;
+			document.getElementsByClassName("surgloss")[3].innerHTML = surgloss;
+			document.getElementsByClassName("surgloss")[4].innerHTML = surgloss;
+			
+			//TOTAL
+			var partialloss = rule421F + surflossF + surglossF;
+			var total1h = (fastloss1hF + partialloss).toFixed(1); //rounded value
+			var total2h = (fastloss2hF + partialloss).toFixed(1); //rounded value
+			var total3h = (fastloss3hF + partialloss).toFixed(1); //rounded value
+			var total4h = (fastloss4h + partialloss).toFixed(1); //rounded value
+			var total5h = (fastloss5h + partialloss).toFixed(1); //rounded value
+			document.getElementById("total1h").innerHTML = total1h;
+			document.getElementById("total2h").innerHTML = total2h;
+			document.getElementById("total3h").innerHTML = total3h;
+			document.getElementById("total4h").innerHTML = total4h;
+			document.getElementById("total5h").innerHTML = total5h;
+			
+			//HTC ACEPTABLE
+			if (ageDecimal < 30) {
+				var minHtc = 40.0;
+			} else if (ageDecimal > 30) {
+				var minHtc = 28.0;			
+			}
+			document.getElementById("minHtc").innerHTML = minHtc;
+			
+			//VOL INTRAVASC
+			if (ageDecimal < 0) {
+				var mlTotal = 100 * w;
+			} else if (ageDecimal > 0 && ageDecimal < 365) {
+				var mlTotal = 80 * w;			
+			} else if (ageDecimal > 365) {
+				var mlTotal = 75 * w;		
+			}
+			document.getElementById("mlTotal").innerHTML = mlTotal;
+			
+			//MAX BLOOD LOSS
+			var realHtc = parseFloat(document.getElementById("realHtc").value); 
+			var maxbloodloss = (mlTotal * (realHtc - minHtc) / realHtc).toFixed(1);
+			if (maxbloodloss > 0){
+				maxbloodalert = maxbloodloss;
+			} else {
+				maxbloodalert = "<strong>" + maxbloodloss + "</strong>";
+			}
+			document.getElementById("maxbloodloss").innerHTML = maxbloodalert;
+			
+			//CONC HEMATIES PARA 1g/dl
+			var transfus = 5 * w; 
+			document.getElementById("transfusion").innerHTML = transfus;
+			
+			//GLUCOSE 5mg/kg/min 
+			var glucoseConc = parseFloat(document.getElementById("glucoseconc").value); // mg/ml
+			var glucoseconc = glucoseConc * 10; // mg/ml
+			var gluDose = 5 * w * 60; // mg/h
+			var gluHourF = gluDose / glucoseconc; // ml/h
+			var gluHour = (gluDose / glucoseconc).toFixed(1); // ml/h
+			document.getElementById("glucoseConc").innerHTML = glucoseConc;
+			document.getElementsByClassName("gluHour")[0].innerHTML = gluHour;
+			document.getElementsByClassName("gluHour")[1].innerHTML = gluHour;
+			document.getElementsByClassName("gluHour")[2].innerHTML = gluHour;
+			document.getElementsByClassName("gluHour")[3].innerHTML = gluHour;
+			document.getElementsByClassName("gluHour")[4].innerHTML = gluHour;
+			
+			//TOTAL + GLU
+			var partiallossGlu = rule421F + surflossF + surglossF + gluHourF;
+			var total1hGlu = (fastloss1hF + partiallossGlu).toFixed(1); //rounded value
+			var total2hGlu = (fastloss2hF + partiallossGlu).toFixed(1); //rounded value
+			var total3hGlu = (fastloss3hF + partiallossGlu).toFixed(1); //rounded value
+			var total4hGlu = (fastloss4h + partiallossGlu).toFixed(1); //rounded value
+			var total5hGlu = (fastloss5h + partiallossGlu).toFixed(1); //rounded value
+			document.getElementById("total1hGlu").innerHTML = total1hGlu;
+			document.getElementById("total2hGlu").innerHTML = total2hGlu;
+			document.getElementById("total3hGlu").innerHTML = total3hGlu;
+			document.getElementById("total4hGlu").innerHTML = total4hGlu;
+			document.getElementById("total5hGlu").innerHTML = total5hGlu;
+			
+			//DRUGS
+			var fenta = 5 * w;
+			var propofol = 3 * w;
+			var nimbex = 2 * w;
+			var nolotil = 20 * w;
+			var paracetamol = 15 * w;
+			var ondansetron = 0.15 * w;
+			
+			document.getElementById("fenta").innerHTML = fenta;
+			document.getElementById("propofol").innerHTML = propofol;
+			document.getElementById("nimbex").innerHTML = nimbex;
+			document.getElementById("nolotil").innerHTML = nolotil;
+			document.getElementById("paracetamol").innerHTML = paracetamol;
+			document.getElementById("ondansetron").innerHTML = ondansetron;
+		}	
+		
+		
+			
+			
+	</script>	
+			
+	<style>
+		.input-lg {
+		  font-size: 30px;
+		}
+		.input {
+		  font-size: 20px;
+		}
+		
+		.alert-gray{
+			background-color: #1d4249;
+			color: #ffffff;
+			border-color: #1d4249;
+			}
+		.alert-pink{
+			background-color: #b15a87;
+			color: #ffffff;
+			border-color: #b15a87;
+			}
+		.alert-pink2{
+			background-color: #f7eef2;
+			color: #8b4167;
+			border-color: #b15a87;
+			}
+		.alert-pink > .form-group > .form-control {
+			background-color: #f7eef2;
+			color:  #8b4167;
+			border-color:  #b15a87;
+			}
+		.alert-blue1{
+			background-color: #6995b0;
+			color: #ffffff;
+			border-color: #6995b0;
+			}
+		.alert-blue2{
+			background-color: #eef3f6;
+			color: #355264;
+			border-color: #6995b0;
+			}
+		.alert-blue1 > .form-group > .form-control {
+			background-color: #eef3f6;
+			color:  #355264;
+			border-color:  #6995b0;
+			}
+		.table tbody > tr.blue1 {
+			background-color: #6995b0 !important;
+			color: #ffffff;
+			border-color: #6995b0;
+		}
+		.table tbody > tr.blue2 {
+			background-color: #eef3f6 !important;
+			color: #355264;
+			border-color: #6995b0;
+		}
+		.alert-protein{
+			background-color: #cc7a00;
+			color: #ffffff;
+			border-color: #cc7a00;
+			}
+		.alert-protein > .form-group > .form-control {
+			background-color: #fff5e6;
+			color:  #995c00;
+			border-color:  #cc7a00;
+			}
+		.alert-glucose{
+			background-color: #79b530;
+			color: #ffffff;
+			border-color: #79b530;
+			}
+		.alert-glucose > .form-group > .form-control {
+			background-color: #e7f4d7;
+			color:  #43651b;
+			border-color:  #79b530;
+			}
+		.alert-lipids{
+			background-color: #e6bb00;
+			color: #ffffff;
+			border-color: #e6bb00;
+			}
+		.alert-lipids > .form-group > .form-control {
+			background-color: #fff6cc;
+			color: #997d00;
+			border-color: #e6bb00;
+			}
+		.alert-vitamin{
+			background-color: #388293; /*#2e6976*/
+			color: #ffffff;
+			border-color: #388293;
+			}
+		.alert-vitamin > .form-group > .form-control {
+			background-color: #daedf1; 
+			color: #1c424a;
+			border-color: #388293;
+			}
+		.alert-ions{
+			background-color: #70adbc;
+			color: #ffffff;
+			border-color: #70adbc;
+			}
+		.alert-ions > .form-group > .form-control {
+			background-color: #dcebef;
+			color: #315d68;
+			border-color: #70adbc;
+			}
+		.alert-danger{
+			background-color: #b62f2f; /*#c73859; #e03e55*/
+			color: #ffffff;
+			border-color: #b62f2f;
+			}
+		@media print {
+			.noPrint {
+			       display:none;
+			}
+		}
+		
+		.nav-tabs > li > a{
+			color: #6995b0;
+		}
+	</style>		
+			
+			
+			
+	<title>Calculadora Pediatr&iacute;a Intraop</title>
+</head>
+
+
+<body>
+
+<div id="intro" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 text-center">
+			<h1> Calculadora Flu&iacute;dos y F&aacute;rmacos Intraoperatorios &nbsp;<span class="fa fa-calculator"></a></span></h1>
+			<h4>Para Ni&ntilde;os Durante la Cirug&iacute;a </h4>
+			<hr>
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+
+<div id="demograf" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 text-center">
+			<div class="button well" onclick="totalPedCalc()">
+				<div class="form-group form-inline">
+					<label class="control-label" for="edad"><h3> Edad (a&ntilde;os) &nbsp; </h3></label>
+						<input class="form-control input" type="number" id="ageYe" name="edad" value="4" min="0" max="30" step="1">
+						<label class="control-label" for="edadMes"><h3> &nbsp; Edad (meses) &nbsp; </h3></label>
+							<input class="form-control input" type="number" id="ageMo" name="edadMes" value="0" min="-5" max="12" step="0.5">
+						<label class="control-label" for="edadDia"><h3> &nbsp; Edad (d&iacute;as) &nbsp; </h3></label>
+							<input class="form-control input" type="number" id="ageDay" name="edadDia" value="0" min="-30" max="365" step="0.5">
+						<label class="control-label" for="peso"><h3>&nbsp; Peso (kg) &nbsp; </h3></label>
+							<input class="form-control input" type="number" id="weight" name="peso" value="17" min="0" max="100" step="0.1">
+				</div> <!--EOF form-group-->				
+			</div> <!--EOF well sm-->
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#calcflu" data-toggle="tab" data-value="CALCFLU">Calculadora de Flu&iacute;dos</a>
+				</li>
+				<li>
+					<a href="#calcfarma" data-toggle="tab" data-value="CALCFARMA">Calculadora de F&aacute;rmacos</a>
+				</li>
+			</ul>
+					
+					
+			<!---- TABBABLE TABS ---->
+
+			<div class="tab-content"> <!---- Tabbable tabpane - tab-content---->
+
+				<div class="tab-pane active" data-value="CALCFLU" id="calcflu"> <!-- tabbable tabpane-->
+					<div class="row">
+						<div class="col-sm-12 col-md-12 form-group">
+							<div class="row"> <!--fields -->
+								<div class="col-sm-12 col-md-12">
+									<h2 class="text-center"> Calculadora de Flu&iacute;dos </h2>
+								    <h2></h2>
+									<div id="cabecera" class="container-fluid">
+										<div class="row">
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-pink" onclick="totalPedCalc()">
+													<div class="form-group form-inline">
+														<label class="control-label" for="ayuno"><h2>&nbsp; Horas de ayuno &nbsp;</h2></label>
+															<input class="form-control input" type="number" id="fasting" name="ayuno" value="6" min="0" max="24" step="0.1">
+													</div> <!--EOF form-group-->
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-blue1" onclick="totalPedCalc()">
+													<div class="form-group form-inline">
+														<label class="control-label" for="cxperdida"><h2>&nbsp; P&eacute;rdidas por cirug&iacute;a &nbsp;</h2></label>
+															<select class="form-control input" id="cxloss" name="cxperdida">
+																<option value="4.0">Bajas (4 ml/kg/h)</option>
+																<option value="6.0" selected="selected">Medias (6 ml/kg/h)</option>
+																<option value="10.0">Elevadas (10 ml/kg/h)</option>
+															</select>
+													</div> <!--EOF form-group-->
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-blue1" onclick="totalPedCalc()">
+													<div class="form-group form-inline">
+														<label class="control-label" for="conglu"><h2>&nbsp; Concentraci&oacute;n glucosa (%) &nbsp;</h2></label>
+															<input class="form-control input" type="number" id="glucoseconc" name="conglu" value="33" min="1" max="100" step="1">
+													</div> <!--EOF form-group-->
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+										</div> <!--EOF row-->
+									</div> <!--EOF container-->
+
+
+									<div id="blood" class="container-fluid">
+										<div class="row">
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-pink" onclick="totalPedCalc()">
+													<div class="form-group form-inline">
+														<label class="control-label" for="htcreal"><h2>Hematocrito real (%) &nbsp;</h2></label>
+															<input class="form-control input" type="number" id="realHtc" name="htcreal" value="35" min="0" max="60" step="1">
+													</div> <!--EOF form-group-->
+													<h2> M&iacute;n Hematocrito aceptable = <span id="minHtc"> </span>%</h2>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-pink2" onclick="totalPedCalc()">
+													<h2> Vol intravascular = <span id="mlTotal"> </span> ml</h2>
+													<ul>Prematuro: 100 ml/kg</ul>
+													<ul>0-1 a&ntilde;os: 80 ml/kg</ul>
+													<ul>1.5-2 g/kg: 75 ml/kg</ul>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-pink2" onclick="totalPedCalc()">
+													<h2> M&aacute;x p&eacute;rdida sangu&iacute;nea permitida = <span id="maxbloodloss"></span> ml</h2>
+													<h3> Hemat&iacute;es para &Delta; 1mg/dl Hb = <span id="transfusion"></span> ml</h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+										</div> <!--EOF row-->
+										<hr>
+									</div> <!--EOF container-->
+
+
+									<div class="container">
+									 <span class="text-center"><h2> P&eacute;rdidas insensibles</h2></span>
+									  <p></p>
+									  <table class="table table-striped">
+									    <thead>
+									      <tr>
+											<th>P&eacute;rdidas</th>
+									        <th>1a Hora</th>
+									        <th>2a Hora</th>
+									        <th>3a Hora</th>
+											<th>4a Hora</th>
+											<th>4a Hora</th>
+									      </tr>
+									    </thead>
+									    <tbody>
+									      <tr>
+									        <td>Ayunas</td>
+									        <td><span id="fastloss1h"></span></td>
+									        <td><span id="fastloss2h"></span></td>
+									        <td><span id="fastloss3h"></span></td>
+									        <td><span id="fastloss4h"></span></td>
+											<td><span id="fastloss5h"></span></td>
+									      </tr>
+									      <tr>
+									        <td>Mantenimiento</td>
+									        <td><span class="rule421"></span></td>
+									        <td><span class="rule421"></span></td>
+											<td><span class="rule421"></span></td>
+											<td><span class="rule421"></span></td>
+											<td><span class="rule421"></span></td>
+									      </tr>      
+									      <tr>
+									        <td>P&eacute;rd. Superficie</td>
+									        <td><span class="surfloss"></span></td>
+									        <td><span class="surfloss"></span></td>
+											<td><span class="surfloss"></span></td>
+											<td><span class="surfloss"></span></td>
+											<td><span class="surfloss"></span></td>
+									      </tr>
+									      <tr>
+									        <td>P&eacute;rd. por Cirug&iacute;a</td>
+									        <td><span class="surgloss"></span></td>
+									        <td><span class="surgloss"></span></td>
+											<td><span class="surgloss"></span></td>
+											<td><span class="surgloss"></span></td>
+											<td><span class="surgloss"></span></td>
+									      </tr>
+									      <tr>
+									        <td>Glucosa <span id="glucoseConc"> </span>% (ml)</td>
+									        <td><span class="gluHour"></span></td>
+									        <td><span class="gluHour"></span></td>
+											<td><span class="gluHour"></span></td>
+											<td><span class="gluHour"></span></td>
+											<td><span class="gluHour"></span></td>
+									      </tr>
+									      <tr class="blue1">
+									        <td>TOTAL a reponer (ml)</td>
+									        <td><span id="total1h"></span></td>
+									        <td><span id="total2h"></span></td>
+									        <td><span id="total3h"></span></td>
+									        <td><span id="total4h"></span></td>
+											<td><span id="total5h"></span></td>
+									      </tr>
+									      <tr class="blue2">
+									        <td>TOTAL con glucosa (ml)</td>
+									        <td><span id="total1hGlu"></span></td>
+									        <td><span id="total2hGlu"></span></td>
+									        <td><span id="total3hGlu"></span></td>
+									        <td><span id="total4hGlu"></span></td>
+											<td><span id="total5hGlu"></span></td>
+									      </tr>
+									    </tbody>
+									  </table>
+									  <hr>
+									</div> <!--EOF container-->
+								
+								</div> <!--EOF column-->
+							</div> <!--EOF row-->
+						
+						</div> <!--EOF column-->
+					</div> <!--EOF row-->
+				</div> <!-- EOF tabbable tabpane-->
+			
+				<div class="tab-pane" data-value="CALCFARMA" id="calcfarma"> <!-- tabbable tabpane-->
+					<div class="row">
+						<div class="col-sm-12 col-md-12 form-group">
+							<div class="row"> <!--fields -->
+								<div class="col-sm-12 col-md-12">
+									<h2 class="text-center"> Calculadora de F&aacute;rmacos </h2>
+								    <h2></h2>
+									<h3 class="text-center"> Inducci&oacute;n Anest&eacute;sica </h2>
+								    <h3></h3>
+									<div id="cabecera" class="container-fluid">
+										<div class="row">
+											<div class="col-sm-3 col-md-3 text-center">
+												<div class="button well well-sm alert-blue1" onclick="totalPedCalc()">
+													<h3> Fentanest = <span id="fenta"> </span> mcg</h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-3 col-md-3 text-center">
+												<div class="button well well-sm alert-pink" onclick="totalPedCalc()">
+													<h3> Propofol = <span id="propofol"> </span> mg</h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-3 col-md-3 text-center">
+												<div class="well well-sm alert-pink2" onclick="totalPedCalc()">
+													<h3> Cisatracurio = <span id="nimbex"> </span> mg</h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-3 col-md-3 text-center">
+												<div class="well well-sm alert-blue2" onclick="totalPedCalc()">
+													<h3> Sevoflurano 1 CAM = <span id="sevoflur"> </span>%</h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+										</div> <!--EOF row-->
+										<hr>
+									</div> <!--EOF container-->
+									
+									<h3 class="text-center"> Mantenimiento</h2>
+								    <h3></h3>
+									<div id="cabecera" class="container-fluid">
+										<div class="row">
+											<div class="col-sm-3 col-md-3 text-center">
+												<div class="button well well-sm alert-blue2" onclick="totalPedCalc()">
+													<h3> ... </h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-3 col-md-3 text-center">
+												<div class="button well well-sm alert-pink2" onclick="totalPedCalc()">
+													<h3> ... </h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-3 col-md-3 text-center">
+												<div class="well well-sm alert-pink" onclick="totalPedCalc()">
+													<h3> ... </h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-3 col-md-3 text-center">
+												<div class="well well-sm alert-blue1" onclick="totalPedCalc()">
+													<h3> ... </h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+										</div> <!--EOF row-->
+										<hr>
+									</div> <!--EOF container-->
+									
+									<h3 class="text-center"> Analg&eacute;sicos & Antiem&eacute;ticos</h2>
+								    <h3></h3>
+									<div id="cabecera" class="container-fluid">
+										<div class="row">
+											<div class="col-sm-3 col-md-3 text-center">
+												<div class="button well well-sm alert-blue2" onclick="totalPedCalc()">
+													<h3> Metamizol = <span id="nolotil"> </span> mg</h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-3 col-md-3 text-center">
+												<div class="button well well-sm alert-pink2" onclick="totalPedCalc()">
+													<h3> Paracetamol = <span id="paracetamol"> </span> mg</h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-3 col-md-3 text-center">
+												<div class="well well-sm alert-pink" onclick="totalPedCalc()">
+													<h3> Ondansetr&oacute;n = <span id="ondansetron"> </span> mg</h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-3 col-md-3 text-center">
+												<div class="well well-sm alert-blue1" onclick="totalPedCalc()">
+													<h3> ... </h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+										</div> <!--EOF row-->
+										<hr>
+									</div> <!--EOF container-->
+								
+
+								</div> <!--EOF column-->
+							</div> <!--EOF row-->
+			
+						</div> <!--EOF column-->
+					</div> <!--EOF row-->
+				</div> <!-- EOF tabbable tabpane-->
+			
+			</div> <!--EOF Tabbable tabpane - tab-content-->
+		</div> <!-- EOF tabs 12wide column-->
+	</div> <!-- EOF main tabpane row-->
+</div> <!--EOF container-->
+
+
+
+
+
+
+
+
+
+
+
+<div id="refs" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<span class="text-center"><h2> Referencias</h2></span>
+			<div class="row">
+				<div class="col-sm-4 col-md-4 text-center">
+					<div class="well well-sm well-sm">
+						<ul>Murat I, Dubois MC</ul> 
+						<ul>Perioperative fluid therapy in pediatrics</ul> 
+						<ul>Pediatric Anaesthesia. 2008; 18(5):363–370</ul>
+					</div> <!--EOF well-sm-->
+				</div> <!--EOF column-->
+				<div class="col-sm-4 col-md-4 text-center">
+					<div class="well well-sm well-sm">
+						<ul>Bailey AG, McNaull PP et al</ul> 
+						<ul>Perioperative Crystalloid and Colloid Fluid Management in Children: Where Are We and How Did We Get Here?</ul> 
+						<ul>Anesth Analg. 2010 Feb 1; 110(2):375-9</ul>
+					</div> <!--EOF well-sm-->
+				</div> <!--EOF column-->
+				<div class="col-sm-4 col-md-4 text-center">
+					<div class="well well-sm">
+						<ul>Liumbruno G, Bennardello F et al</ul> 
+						<ul>Recommendations for the transfusion of red blood cells</ul> 
+						<ul>Blood Transfus. 2009; 7(1):49–64</ul>
+					</div> <!--EOF well-sm-->
+				</div> <!--EOF column-->
+			</div> <!--EOF row-->
+
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+
+<div id="contact" class="container-fluid noPrint">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 text-center">
+			<h2> Autor</h2>
+			<div class="well well-sm well-sm">
+				<p><a href="mailto:mariauror@gmail.com" style="color:#404040"><span class="fa fa-user-md"></span> Aurora Baluja Gonz&aacute;lez</a></p>
+	        	<p><span class="fa fa-hospital-o"></span> Servicio de Anestesiolog&iacute;a y Reanimaci&oacute;n. Hospital Cl&iacute;nico Universitario</p>
+	        	<p><span class="glyphicon glyphicon-map-marker"></span> Santiago de Compostela, Espa&ntilde;a</p>
+			</div> <!--EOF well-sm-->
+			<p><h3>
+			   <a href="https://github.com/aurora-mareviv/anescalc" target="blank" style="color:#404040"><span class="fa fa-github"></a>&nbsp;</span>
+			   <a href="https://talesofr.wordpress.com" target="blank" style="color:#404040"><span class="fa fa-rss"></a></span>
+			   <a href="https://twitter.com/maureviv" target="blank" style="color:#404040"><span class="fa fa-twitter"></a></span>
+			   </h3></p>
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+<div id="license" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h3> </h3>
+			<hr>
+			<p style="color:#bfbfbf"><span class="fa fa-linux" style="color:#bfbfbf"></span> 
+				Licencia - <a href="https://github.com/aurora-mareviv" target="blank" style="color:#bfbfbf">C&oacute;digo</a>: GNU-GPL v3. 
+				<a href="http://getbootstrap.com/" target="blank" style="color:#bfbfbf">Bootstrap CSS</a>, 
+				<a href="https://bootswatch.com/" target="blank" style="color:#bfbfbf">Bootswatch</a>: MIT.
+			</p>
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+
+</body>	
+</html>

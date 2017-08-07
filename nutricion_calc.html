@@ -195,7 +195,11 @@
 			color: #ffffff;
 			border-color: #b62f2f;
 			}
-			
+		@media print {
+			.noPrint {
+			       display:none;
+				   }
+			}	
 	</style>		
 			
 			
@@ -226,7 +230,7 @@
 					<label class="control-label" for="peso"><h3>&nbsp; Peso (kg) &nbsp; </h3></label>
 						<input class="form-control input" type="number" id="weight" name="peso" value="60" min="0" max="600" step="0.5" placeholder="Peso">
 					<label class="control-label" for="altura"><h3>&nbsp; Altura (cm) &nbsp;</h3></label>
-						<input class="form-control input" type="number" id="height" name="peso" value="165" min="50" max="280" step="5" placeholder="Altura">
+						<input class="form-control input" type="number" id="height" name="altura" value="165" min="50" max="280" step="5" placeholder="Altura">
 				</div> <!--EOF form-group-->
 				<div class="form-group form-inline">
 					<label class="control-label" for="sexo"><h3>&nbsp; Sexo &nbsp;</h3></label>
@@ -261,7 +265,7 @@
 	<div class="row">
 		<div class="col-sm-4 col-md-4 text-center">
 			<div class="button well well-sm alert-gray" onclick="totalNutricion()">
-				<h2> Nutrientes &nbsp;<span class="fa fa-pie-chart"></a></span></h2>
+				<h2> Nutrientes &nbsp;<span class="fa fa-pie-chart"</span></h2>
 			</div> <!--EOF well sm-->
 		</div> <!--EOF column-->
 		<div class="col-sm-4 col-md-4 text-center">
@@ -524,7 +528,7 @@
 	</div> <!--EOF row-->
 </div> <!--EOF container-->
 
-<div id="contact" class="container-fluid">
+<div id="contact" class="container-fluid noPrint">
 	<div class="row">
 		<div class="col-sm-12 col-md-12 text-center">
 			<h2> Autor</h2>
