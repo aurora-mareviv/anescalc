@@ -166,9 +166,7 @@
 			document.getElementById("paracetamol").innerHTML = paracetamol;
 			document.getElementById("ondansetron").innerHTML = ondansetron;
 		}	
-		
-		
-			
+					
 			
 	</script>	
 			
@@ -281,10 +279,40 @@
 			border-color: #b62f2f;
 			}
 		@media print {
+			.noScreen {}
+				
+			.tab-content > .tab-pane {
+			    display: block !important;
+			    opacity: 1 !important;
+			    visibility: visible !important;
+				page-break-before: always;
+				page-break-inside: avoid;
+			}
+			.nav-tabs {display:none;}
+			#print-footer {
+			    display: block;
+			    position: fixed;
+			    bottom: 0;
+			    left:0;
+			}
+			
+			body {padding-bottom:50px}/* attempt to preserve space at bottom so content doesn't over-ride the footer */
+			
+			a[href^="http://"]:after, a[href^="ftp://"]:after {
+			  content: " (" attr(href) ")";
+			  color: blue;
+			  font-size: small;
+			}
 			.noPrint {
 			       display:none;
 			}
+			
 		}
+		@media screen {
+		    .noPrint {}
+		    .noScreen{display:none;}
+		}
+
 		
 		.nav-tabs > li > a{
 			color: #6995b0;
@@ -353,7 +381,7 @@
 						<div class="col-sm-12 col-md-12 form-group">
 							<div class="row"> <!--fields -->
 								<div class="col-sm-12 col-md-12">
-									<h2 class="text-center"> Calculadora de Flu&iacute;dos </h2>
+									<h2 class="text-center noScreen"> Calculadora de Flu&iacute;dos </h2>
 								    <h2></h2>
 									<div id="cabecera" class="container-fluid">
 										<div class="row">
@@ -507,7 +535,7 @@
 						<div class="col-sm-12 col-md-12 form-group">
 							<div class="row"> <!--fields -->
 								<div class="col-sm-12 col-md-12">
-									<h2 class="text-center"> Calculadora de F&aacute;rmacos </h2>
+									<h2 class="text-center noScreen"> Calculadora de F&aacute;rmacos </h2>
 								    <h2></h2>
 									<h3 class="text-center"> Inducci&oacute;n Anest&eacute;sica </h2>
 								    <h3></h3>
