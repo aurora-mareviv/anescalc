@@ -223,6 +223,11 @@
 			document.getElementById("remiPc").innerHTML = remiPc;
 			document.getElementById("remiPc2").innerHTML = remiPc2;
 			
+			var neostigmina = (0.05 * w).toFixed(2);
+			var naloxona = 0 * w;
+			var flumacenilo = 0 * w;
+			document.getElementById("neostigmina").innerHTML = neostigmina;
+			
 			var nolotil = 20 * w;
 			var paracetamol = 15 * w;
 			var ondansetron = 0.15 * w;
@@ -685,17 +690,17 @@
 										<div class="row">
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-blue1" onclick="totalPedCalc()">
-													<h3> Neostigmina</h3>
+													<h3> Neostigmina = <span id="neostigmina"></span> mg <span class="font-sm">(0.05 mg/k)</span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-pink" onclick="totalPedCalc()">
-													<h3> Naloxona</h3>
+													<h3> Naloxona = </h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="well well-sm alert-pink2" onclick="totalPedCalc()">
-													<h3> Flumacenilo</h3>
+													<h3> Flumacenilo = </h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 										</div> <!--EOF row-->
