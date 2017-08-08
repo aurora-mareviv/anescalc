@@ -218,6 +218,7 @@
 			document.getElementById("ondansetron").innerHTML = ondansetron;
 			
 			var ampi = 50 * w;
+			var amoxi = 50 * w;
 			var kefol = 25 * w;
 			var cefoxi = 40 * w;
 			var cefuro = 50 * w;
@@ -228,6 +229,7 @@
 			var vanco = 10 * w;
 			var amika = 5 * w;
 			document.getElementById("ampi").innerHTML = ampi;
+			document.getElementById("amoxi").innerHTML = amoxi;
 			document.getElementById("kefol").innerHTML = kefol;
 			document.getElementById("cefoxi").innerHTML = cefoxi;
 			document.getElementById("cefuro").innerHTML = cefuro;
@@ -249,6 +251,9 @@
 		}
 		.input {
 		  font-size: 20px;
+		}
+		.font-sm {
+			font-size: 0.7em;
 		}
 		
 		.alert-gray{
@@ -616,16 +621,16 @@
 										<div class="row">
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-blue1" onclick="totalPedCalc()">
-													<h3> Fentanest = <span id="fenta"></span>-<span id="fenta2"></span> mcg (2-3 &mu;g/k)</h3>
-													<h3> Propofol = <span id="propofol"></span>-<span id="propofol2"></span> mg (2-3 mg/k)</h3>
-													<h3> Atropina = <span id="atropina"></span> mg (20 &mu;g/k)</h3>
+													<h3> Fentanest = <span id="fenta"></span>-<span id="fenta2"></span> mcg <span class="font-sm">(2-3 &mu;g/k)</span></h3>
+													<h3> Propofol = <span id="propofol"></span>-<span id="propofol2"></span> mg <span class="font-sm">(2-3 mg/k)</span></h3>
+													<h3> Atropina = <span id="atropina"></span> mg <span class="font-sm">(20 &mu;g/k)</span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-pink" onclick="totalPedCalc()">
-													<h3> Cisatracurio = <span id="nimbex"></span> mg (0.2 mg/k)</h3>
-													<h3> Succinilcolina = <span id="anectine"></span> mg (1 mg/k)</h3>
-													<h3> Rocuronio = <span id="rocuronio"></span>-<span id="rocuronio2"></span> mg (0.6-1 mg/k)</h3>
+													<h3> Cisatracurio = <span id="nimbex"></span> mg <span class="font-sm">(0.2 mg/k)</span></h3>
+													<h3> Succinilcolina = <span id="anectine"></span> mg <span class="font-sm">(1 mg/k)</span></h3>
+													<h3> Rocuronio = <span id="rocuronio"></span>-<span id="rocuronio2"></span> mg <span class="font-sm">(0.6-1 mg/k)</span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
@@ -667,17 +672,17 @@
 										<div class="row">
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-blue2" onclick="totalPedCalc()">
-													<h3> Metamizol = <span id="nolotil"> </span> mg</h3>
+													<h3> Metamizol = <span id="nolotil"> </span> mg <span class="font-sm">(20 mg/k)</span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-pink2" onclick="totalPedCalc()">
-													<h3> Paracetamol = <span id="paracetamol"> </span> mg</h3>
+													<h3> Paracetamol = <span id="paracetamol"> </span> mg <span class="font-sm">(15 mg/k)</span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="well well-sm alert-pink" onclick="totalPedCalc()">
-													<h3> Ondansetr&oacute;n = <span id="ondansetron"> </span> mg</h3>
+													<h3> Ondansetr&oacute;n = <span id="ondansetron"> </span> mg <span class="font-sm">(0.15 mg/k)</span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 										</div> <!--EOF row-->
@@ -691,24 +696,25 @@
 										<div class="row">
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-blue1" onclick="totalPedCalc()">
-													<h4> Ampicilina = <span id="ampi"> </span> mg (50 mg/k)</h4>
-													<h4> Cefazolina = <span id="kefol"> </span> mg (25 mg/k)</h4>
-													<h4> Cefoxitina = <span id="cefoxi"> </span> mg (40 mg/k)</h4>
+													<h4> Ampicilina = <span id="ampi"> </span> mg <span class="font-sm">(50 mg/k)</span></h4>
+													<h4> Amoxicilina = <span id="amoxi"> </span> mg <span class="font-sm">(50 mg/k/8h)</span></h4>
+													<h4> Cefazolina = <span id="kefol"> </span> mg <span class="font-sm">(25 mg/k)</span></h4>
+													<h4> Cefoxitina = <span id="cefoxi"> </span> mg <span class="font-sm">(40 mg/k)</span></h4>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-pink" onclick="totalPedCalc()">
-													<h4> Cefuroxima = <span id="cefuro"> </span> mg (50 mg/k)</h4>
-													<h4> Ceftriaxona = <span id="ceftriax"> </span> mg (50 mg/k)</h4>
-													<h4> Meropenem = <span id="meropenem"> </span> mg (10 mg/k)</h4>
-													<h4> Clindamicina = <span id="clinda"> </span> mg (10 mg/k)</h4>
+													<h4> Cefuroxima = <span id="cefuro"> </span> mg <span class="font-sm">(50 mg/k)</span></h4>
+													<h4> Ceftriaxona = <span id="ceftriax"> </span> mg <span class="font-sm">(50 mg/k)</span></h4>
+													<h4> Meropenem = <span id="meropenem"> </span> mg <span class="font-sm">(10 mg/k)</span></h4>
+													<h4> Clindamicina = <span id="clinda"> </span> mg <span class="font-sm">(10 mg/k)</span></h4>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="well well-sm alert-pink2" onclick="totalPedCalc()">
-													<h4> Gentamicina = <span id="genta"> </span> mg (2 mg/k)</h4>
-													<h4> Vancomicina = <span id="vanco"> </span> mg (10 mg/k)</h4>
-													<h4> Amikacina = <span id="amika"> </span> mg (5 mg/k)</h4>
+													<h4> Gentamicina = <span id="genta"> </span> mg <span class="font-sm">(2 mg/k)</span></h4>
+													<h4> Vancomicina = <span id="vanco"> </span> mg <span class="font-sm">(10 mg/k)</span></h4>
+													<h4> Amikacina = <span id="amika"> </span> mg <span class="font-sm">(5 mg/k)</span></h4>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 										</div> <!--EOF row-->
