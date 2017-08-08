@@ -165,6 +165,24 @@
 			document.getElementById("nolotil").innerHTML = nolotil;
 			document.getElementById("paracetamol").innerHTML = paracetamol;
 			document.getElementById("ondansetron").innerHTML = ondansetron;
+			
+			var ampi = 50 * w;
+			var kefol = 25 * w;
+			var cefoxi = 40 * w;
+			var cefuro = 50 * w;
+			var ceftriax = 50 * w;
+			var meropenem = 10 * w;
+			var clinda = 10 * w;
+			var genta = 2 * w;
+			document.getElementById("ampi").innerHTML = ampi;
+			document.getElementById("kefol").innerHTML = kefol;
+			document.getElementById("cefoxi").innerHTML = cefoxi;
+			document.getElementById("cefuro").innerHTML = cefuro;
+			document.getElementById("ceftriax").innerHTML = ceftriax;
+			document.getElementById("meropenem").innerHTML = meropenem;
+			document.getElementById("clinda").innerHTML = clinda;
+			document.getElementById("genta").innerHTML = genta;
+			
 		}	
 					
 			
@@ -376,7 +394,7 @@
 
 			<div class="tab-content"> <!---- Tabbable tabpane - tab-content---->
 
-				<div class="tab-pane active" data-value="CALCFLU" id="calcflu"> <!-- tabbable tabpane-->
+				<div class="tab-pane " data-value="CALCFLU" id="calcflu"> <!-- tabbable tabpane-->
 					<div class="row">
 						<div class="col-sm-12 col-md-12 form-group">
 							<div class="row"> <!--fields -->
@@ -530,7 +548,7 @@
 					</div> <!--EOF row-->
 				</div> <!-- EOF tabbable tabpane-->
 			
-				<div class="tab-pane" data-value="CALCFARMA" id="calcfarma"> <!-- tabbable tabpane-->
+				<div class="tab-pane active" data-value="CALCFARMA" id="calcfarma"> <!-- tabbable tabpane-->
 					<div class="row">
 						<div class="col-sm-12 col-md-12 form-group">
 							<div class="row"> <!--fields -->
@@ -539,7 +557,7 @@
 								    <h2></h2>
 									<h3 class="text-center"> Inducci&oacute;n Anest&eacute;sica </h2>
 								    <h3></h3>
-									<div id="cabecera" class="container-fluid">
+									<div id="induccion" class="container-fluid">
 										<div class="row">
 											<div class="col-sm-3 col-md-3 text-center">
 												<div class="button well well-sm alert-blue1" onclick="totalPedCalc()">
@@ -567,7 +585,7 @@
 									
 									<h3 class="text-center"> Mantenimiento</h2>
 								    <h3></h3>
-									<div id="cabecera" class="container-fluid">
+									<div id="mantenimiento" class="container-fluid">
 										<div class="row">
 											<div class="col-sm-3 col-md-3 text-center">
 												<div class="button well well-sm alert-blue2" onclick="totalPedCalc()">
@@ -595,31 +613,67 @@
 									
 									<h3 class="text-center"> Analg&eacute;sicos & Antiem&eacute;ticos</h2>
 								    <h3></h3>
-									<div id="cabecera" class="container-fluid">
+									<div id="analgesia" class="container-fluid">
 										<div class="row">
-											<div class="col-sm-3 col-md-3 text-center">
+											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-blue2" onclick="totalPedCalc()">
 													<h3> Metamizol = <span id="nolotil"> </span> mg</h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
-											<div class="col-sm-3 col-md-3 text-center">
+											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-pink2" onclick="totalPedCalc()">
 													<h3> Paracetamol = <span id="paracetamol"> </span> mg</h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
-											<div class="col-sm-3 col-md-3 text-center">
+											<div class="col-sm-4 col-md-4 text-center">
 												<div class="well well-sm alert-pink" onclick="totalPedCalc()">
 													<h3> Ondansetr&oacute;n = <span id="ondansetron"> </span> mg</h3>
-												</div> <!--EOF well sm-->
-											</div> <!--EOF column-->
-											<div class="col-sm-3 col-md-3 text-center">
-												<div class="well well-sm alert-blue1" onclick="totalPedCalc()">
-													<h3> ... </h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 										</div> <!--EOF row-->
 										<hr>
 									</div> <!--EOF container-->
+								
+									
+									<h3 class="text-center"> Antibi&oacute;ticos</h2>
+								    <h3></h3>
+									<div id="antibioticos" class="container-fluid">
+										<div class="row">
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-blue1" onclick="totalPedCalc()">
+													<h4> Ampicilina (50 mg/kg) = <span id="ampi"> </span></h4>
+													<h4> Cefazolina (25 mg/kg) = <span id="kefol"> </span> </h4>
+													<h4> Cefoxitina (40 mg/kg) = <span id="cefoxi"> </span> </h4>
+													<h4> Cefuroxima (50 mg/kg)= <span id="cefuro"> </span> </h4>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-pink" onclick="totalPedCalc()">
+													<h4> Ceftriaxona (50 mg/kg) = <span id="ceftriax"> </span></h4>
+													<h4> Meropenem (10 mg/kg) = <span id="meropenem"> </span> </h4>
+													<h4> Clindamicina (10 mg/kg) = <span id="clinda"> </span> </h4>
+													<h4> Gentamicina (2 mg/kg)= <span id="genta"> </span> </h4>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="well well-sm alert-pink2" onclick="totalPedCalc()">
+													<h3> Cisatracurio = <span id="nimbex"> </span> mg</h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+										</div> <!--EOF row-->
+										<hr>
+									</div> <!--EOF container-->
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
 								
 
 								</div> <!--EOF column-->
