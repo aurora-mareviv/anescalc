@@ -172,6 +172,30 @@
 			document.getElementById("rocuronio").innerHTML = rocuronio;
 			document.getElementById("rocuronio2").innerHTML = rocuronio2;
 			
+			if (ageDecimal < 0) {
+				var sevoflurano = "- -";
+			} else if (ageDecimal >= 0 && ageDecimal < 30) {
+				var sevoflurano = 3.3;			
+			} else if (ageDecimal >= 30 && ageDecimal < 180) {
+				var sevoflurano = 3.0;		
+			} else if (ageDecimal >= 180 && ageDecimal < (3 * 365.25)) {
+				var sevoflurano = 2.8;		
+			} else if (ageDecimal >= (3 * 365.25) && ageDecimal < (35 * 365.25)) {
+				var sevoflurano = 2.5;		
+			} else if (ageDecimal >= (35 * 365.25) && ageDecimal < (40 * 365.25)) {
+				var sevoflurano = 2.2;		
+			} else if (ageDecimal >= (40 * 365.25) && ageDecimal < (50 * 365.25)) {
+				var sevoflurano = 2.05;		
+			} else if (ageDecimal >= (50 * 365.25) && ageDecimal < (60 * 365.25)) {
+				var sevoflurano = 1.8;		
+			} else if (ageDecimal >= (60 * 365.25) && ageDecimal < (80 * 365.25)) {
+				var sevoflurano = 2.6;		
+			} else if (ageDecimal >= (80*365.25)) {
+				var sevoflurano = 1.4;		
+			}
+			document.getElementById("sevoflurano").innerHTML = sevoflurano;
+			
+			
 			var nolotil = 20 * w;
 			var paracetamol = 15 * w;
 			var ondansetron = 0.15 * w;
@@ -592,8 +616,8 @@
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="well well-sm alert-pink2" onclick="totalPedCalc()">
-													<h3> Sevoflurano 1 CAM = <span id="sevoflur"></span>%</h3>
-													<h3> Desflurano 1 CAM = <span id="desflur"></span>%</h3>
+													<h3> Sevoflurano+O<sub>2</sub> 1CAM = <span id="sevoflurano"></span> %</h3>
+													<h3> Desflurano+O<sub>2</sub> 1CAM = <span id="desflurano"></span> %</h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 										</div> <!--EOF row-->
