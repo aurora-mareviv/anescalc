@@ -210,6 +210,19 @@
 			} 
 			document.getElementById("desflurano").innerHTML = desflurano;
 			
+			var propofolPc = ((4 / 10) * w).toFixed(1);
+			var propofolPc2 = ((8 / 10) * w).toFixed(1);
+			var nimbexPc = ((1 / 200) * w * 60).toFixed(1);
+			var nimbexPc2 = ((2 / 200) * w * 60).toFixed(1);
+			var remiPc = ((0.1 / 50) * w * 60).toFixed(1);
+			var remiPc2 = ((0.3 / 50) * w * 60).toFixed(1);
+			document.getElementById("propofolPc").innerHTML = propofolPc;
+			document.getElementById("propofolPc2").innerHTML = propofolPc2;
+			document.getElementById("nimbexPc").innerHTML = nimbexPc;
+			document.getElementById("nimbexPc2").innerHTML = nimbexPc2;
+			document.getElementById("remiPc").innerHTML = remiPc;
+			document.getElementById("remiPc2").innerHTML = remiPc2;
+			
 			var nolotil = 20 * w;
 			var paracetamol = 15 * w;
 			var ondansetron = 0.15 * w;
@@ -649,22 +662,46 @@
 										<div class="row">
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-blue2" onclick="totalPedCalc()">
-													<h3> ... </h3>
+													<h3> Propofol 10% <span id="propofolPc"></span>-<span id="propofolPc2"></span> ml/h <span class="font-sm">(4-8 mg/k/h)</span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-pink2" onclick="totalPedCalc()">
-													<h3> ... </h3>
+													<h3> Cisatracurio <span id="nimbexPc"></span>-<span id="nimbexPc2"></span> ml/h <span class="font-sm">[20mg/100ml] (1-2 &mu;g/k/min)</span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="well well-sm alert-pink" onclick="totalPedCalc()">
-													<h3> ... </h3>
+													<h3> Remifentanilo <span id="remiPc"></span>-<span id="remiPc2"></span> ml/h <span class="font-sm">[5mg/100ml] (0.1-0.3 &mu;g/k/min)</span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 										</div> <!--EOF row-->
 										<hr>
 									</div> <!--EOF container-->
+									
+									<h3 class="text-center"> Reversi&oacute;n </h2>
+								    <h3></h3>
+									<div id="reversion" class="container-fluid">
+										<div class="row">
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-blue1" onclick="totalPedCalc()">
+													<h3> Neostigmina</h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-pink" onclick="totalPedCalc()">
+													<h3> Naloxona</h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="well well-sm alert-pink2" onclick="totalPedCalc()">
+													<h3> Flumacenilo</h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+										</div> <!--EOF row-->
+										<hr>
+									</div> <!--EOF container-->
+									
 									
 									<h3 class="text-center"> Analg&eacute;sicos & Antiem&eacute;ticos</h2>
 								    <h3></h3>
