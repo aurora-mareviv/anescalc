@@ -49,9 +49,9 @@
 			
 			// PROTEINS
 			var gramprot = parseFloat(document.getElementById("gramprot").value); 
-		    if (gramprot < 0.5 || gramprot > 2.5 ) {
+		    if (gramprot < 0.5 || gramprot > 3.5 ) {
 		        totProt = "- -";
-				errorProt = "Error: el rango debe estar entre 0.5 y 2.5";
+				errorProt = "Error: el rango debe estar entre 0.5 y 3.5";
 				totNitro = "- -";
 		    } else {
 		        totProt = (w * gramprot).toFixed(); //rounded value
