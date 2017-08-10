@@ -118,8 +118,9 @@
 			// IONS
 			var mlclk = parseFloat(document.getElementById("mlclk").value); 
 			var mlpmk = parseFloat(document.getElementById("mlpmk").value); 
-			var mlmgso4 = parseFloat(document.getElementById("mlmgso4").value); 
-			var mlIones = mlclk + mlpmk + mlmgso4;
+			var mlmgso4 = parseFloat(document.getElementById("mlmgso4").value);
+			var mlmgso4 = parseFloat(document.getElementById("nacl").value);
+			var mlIones = mlclk + mlpmk + mlmgso4 + nacl; 
 			document.getElementById("mlIones").innerHTML = mlIones;
 			
 			// ML TOTAL
@@ -484,6 +485,10 @@
 						<div class="form-group form-inline">
 							<label class="control-label" for="sulfmagnesico"><h4> Sulfato Mg++ (ml) &nbsp; &nbsp;</h4></label>
 							<input class="form-control input-sm" type="number" id="mlmgso4" name="sulfmagnesico" value="10" min="5" max="30" step="5">
+						</div> <!--EOF form-group-->
+						<div class="form-group form-inline">
+							<label class="control-label" for="clorsodico"><h4> Clor. s&oacute;dico  &#126;70mEq/d&iacute;a (ml) &nbsp; &nbsp;</h4></label>
+							<input class="form-control input-sm" type="number" id="nacl" name="clorsodico" value="20" min="5" max="20" step="5">
 						</div> <!--EOF form-group-->
 					</div> <!--EOF well sm-->
 				</div> <!--EOF column-->
