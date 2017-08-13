@@ -28,14 +28,14 @@
 			});
 		
 		function totalPedCalc() {
-			var ageYe = parseFloat(document.getElementById("ageYe").value); 
-			var ageMo = parseFloat(document.getElementById("ageMo").value); 
-			var ageDay = parseFloat(document.getElementById("ageDay").value); 
-			var fastHours = parseFloat(document.getElementById("fasting").value); 
-			var w = parseFloat(document.getElementById("weight").value); 
-			var cxloss = document.getElementById("cxloss").value; 
+			var ageYe = parseFloat(document.getElementById("ageYe").value); // years of age 
+			var ageMo = parseFloat(document.getElementById("ageMo").value); // months of age
+			var ageDay = parseFloat(document.getElementById("ageDay").value); // days of age
+			var fastHours = parseFloat(document.getElementById("fasting").value); // fasting hours
+			var w = parseFloat(document.getElementById("weight").value); // weight
+			var cxloss = document.getElementById("cxloss").value; // surgery evaporative losses 
 			
-			// Transform age to decimal
+			// Transform total age to days
 			var ageYeDays = ageYe * 365.25;
 			var ageMoDays = (ageMo / 12) * 365.25;
 			var ageDecimal = ageDay + ageMoDays + ageYeDays;
