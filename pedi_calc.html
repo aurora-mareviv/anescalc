@@ -455,13 +455,13 @@
 		<div class="col-sm-12 col-md-12 text-center">
 			<div class="button well" onclick="totalPedCalc()">
 				<div class="form-group form-inline">
-					<label class="control-label" for="edad"><h3> Edad (a&ntilde;os) &nbsp; </h3></label>
+					<label class="control-label" for="edad"><h3> Age (Years) &nbsp; </h3></label>
 						<input class="form-control input" type="number" id="ageYe" name="edad" value="4" min="0" max="30" step="1">
-						<label class="control-label" for="edadMes"><h3> &nbsp; Edad (meses) &nbsp; </h3></label>
+						<label class="control-label" for="edadMes"><h3> &nbsp; Age (Months) &nbsp; </h3></label>
 							<input class="form-control input" type="number" id="ageMo" name="edadMes" value="0" min="-5" max="12" step="0.5">
-						<label class="control-label" for="edadDia"><h3> &nbsp; Edad (d&iacute;as) &nbsp; </h3></label>
+						<label class="control-label" for="edadDia"><h3> &nbsp; Age (Days) &nbsp; </h3></label>
 							<input class="form-control input" type="number" id="ageDay" name="edadDia" value="0" min="-30" max="365" step="0.5">
-						<label class="control-label" for="peso"><h3>&nbsp; Peso (kg) &nbsp; </h3></label>
+						<label class="control-label" for="peso"><h3>&nbsp; Weight (kg) &nbsp; </h3></label>
 							<input class="form-control input" type="number" id="weight" name="peso" value="17" min="0" max="100" step="0.1">
 				</div> <!--EOF form-group-->				
 			</div> <!--EOF well sm-->
@@ -476,10 +476,10 @@
 		<div class="col-sm-12 col-md-12">
 			<ul class="nav nav-tabs">
 				<li class="active">
-					<a href="#calcflu" data-toggle="tab" data-value="CALCFLU">Calculadora de Flu&iacute;dos</a>
+					<a href="#calcflu" data-toggle="tab" data-value="CALCFLU">Fluids Calculator</a>
 				</li>
 				<li>
-					<a href="#calcfarma" data-toggle="tab" data-value="CALCFARMA">Calculadora de F&aacute;rmacos</a>
+					<a href="#calcfarma" data-toggle="tab" data-value="CALCFARMA">OR Drugs Calculator</a>
 				</li>
 			</ul>
 					
@@ -493,14 +493,14 @@
 						<div class="col-sm-12 col-md-12 form-group">
 							<div class="row"> <!--fields -->
 								<div class="col-sm-12 col-md-12">
-									<h2 class="text-center"> Calculadora de Flu&iacute;dos </h2>
+									<h2 class="text-center"> Intraoperative Fluids Calculator </h2>
 								    <h2></h2>
 									<div id="cabecera" class="container-fluid">
 										<div class="row">
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-pink" onclick="totalPedCalc()">
 													<div class="form-group form-inline">
-														<label class="control-label" for="ayuno"><h2>&nbsp; Horas de ayuno &nbsp;</h2></label>
+														<label class="control-label" for="ayuno"><h2>&nbsp; Fasting hours &nbsp;</h2></label>
 															<input class="form-control input" type="number" id="fasting" name="ayuno" value="6" min="0" max="24" step="0.1">
 													</div> <!--EOF form-group-->
 												</div> <!--EOF well sm-->
@@ -508,11 +508,11 @@
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-blue1" onclick="totalPedCalc()">
 													<div class="form-group form-inline">
-														<label class="control-label" for="cxperdida"><h2>&nbsp; P&eacute;rdidas por cirug&iacute;a &nbsp;</h2></label>
+														<label class="control-label" for="cxperdida"><h2>&nbsp; Losses due to surgery &nbsp;</h2></label>
 															<select class="form-control input" id="cxloss" name="cxperdida">
-																<option value="4.0">Bajas (4 ml/kg/h)</option>
-																<option value="6.0" selected="selected">Medias (6 ml/kg/h)</option>
-																<option value="10.0">Elevadas (10 ml/kg/h)</option>
+																<option value="4.0">Low (4 ml/kg/h)</option>
+																<option value="6.0" selected="selected">Medium (6 ml/kg/h)</option>
+																<option value="10.0">High (10 ml/kg/h)</option>
 															</select>
 													</div> <!--EOF form-group-->
 												</div> <!--EOF well sm-->
@@ -520,7 +520,7 @@
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-blue1" onclick="totalPedCalc()">
 													<div class="form-group form-inline">
-														<label class="control-label" for="conglu"><h2>&nbsp; Concentraci&oacute;n glucosa (%) &nbsp;</h2></label>
+														<label class="control-label" for="conglu"><h2>&nbsp; Glucose concentration (%) &nbsp;</h2></label>
 															<input class="form-control input" type="number" id="glucoseconc" name="conglu" value="33" min="1" max="100" step="1">
 													</div> <!--EOF form-group-->
 												</div> <!--EOF well sm-->
@@ -534,24 +534,24 @@
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-pink" onclick="totalPedCalc()">
 													<div class="form-group form-inline">
-														<label class="control-label" for="htcreal"><h2>Hematocrito real (%) &nbsp;</h2></label>
+														<label class="control-label" for="htcreal"><h2>Actual hematocrit (%) &nbsp;</h2></label>
 															<input class="form-control input" type="number" id="realHtc" name="htcreal" value="35" min="0" max="60" step="1">
 													</div> <!--EOF form-group-->
-													<h2> M&iacute;n Hematocrito aceptable = <span id="minHtc"> </span>%</h2>
+													<h2> Min acceptable Hematocrit = <span id="minHtc"> </span>%</h2>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-pink2" onclick="totalPedCalc()">
-													<h2> Vol intravascular = <span id="mlTotal"> </span> ml</h2>
-													<ul>Prematuro: 100 ml/kg</ul>
-													<ul>0-1 a&ntilde;o: 80 ml/kg</ul>
-													<ul>> 1 a&ntilde;o: 75 ml/kg</ul>
+													<h2> Intravascular Vol = <span id="mlTotal"> </span> ml</h2>
+														<ul>Premature: 100 ml/kg</ul>
+														<ul>0-1 year: 80 ml/kg</ul>
+														<ul>> 1 year: 75 ml/kg</ul>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-pink2" onclick="totalPedCalc()">
-													<h2> M&aacute;x p&eacute;rdida sangu&iacute;nea permitida = <span id="maxbloodloss"></span> ml</h2>
-													<h3> Hemat&iacute;es para &Delta; 1mg/dl Hb = <span id="transfusion"></span> ml</h3>
+													<h2> Max permitted blood loss = <span id="maxbloodloss"></span> ml</h2>
+													<h3> RBC concentrate for &Delta; 1mg/dl Hb = <span id="transfusion"></span> ml</h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 										</div> <!--EOF row-->
@@ -560,22 +560,22 @@
 
 
 									<div class="container">
-									 <span class="text-center"><h2> P&eacute;rdidas insensibles</h2></span>
+									 <span class="text-center"><h2> Fluid replenishment in OR</h2></span>
 									  <p></p>
 									  <table class="table table-striped">
 									    <thead>
 									      <tr>
-											<th>P&eacute;rdidas</th>
-									        <th>1a Hora</th>
-									        <th>2a Hora</th>
-									        <th>3a Hora</th>
-											<th>4a Hora</th>
-											<th>> 4a Hora</th>
+											<th>Losses</th>
+									        <th>1st Hour</th>
+									        <th>2nd Hour</th>
+									        <th>3rd Hour</th>
+											<th>4th Hour</th>
+											<th>> 4th Hour</th>
 									      </tr>
 									    </thead>
 									    <tbody>
 									      <tr>
-									        <td>Ayunas</td>
+									        <td>Fasting</td>
 									        <td><span id="fastloss1h"></span></td>
 									        <td><span id="fastloss2h"></span></td>
 									        <td><span id="fastloss3h"></span></td>
@@ -583,7 +583,7 @@
 											<td><span id="fastloss5h"></span></td>
 									      </tr>
 									      <tr>
-									        <td>Mantenimiento</td>
+									        <td>Maintenance</td>
 									        <td><span class="rule421"></span></td>
 									        <td><span class="rule421"></span></td>
 											<td><span class="rule421"></span></td>
@@ -591,7 +591,7 @@
 											<td><span class="rule421"></span></td>
 									      </tr>      
 									      <tr>
-									        <td>P&eacute;rd. Superficie</td>
+									        <td>Surface Losses</td>
 									        <td><span class="surfloss"></span></td>
 									        <td><span class="surfloss"></span></td>
 											<td><span class="surfloss"></span></td>
@@ -599,7 +599,7 @@
 											<td><span class="surfloss"></span></td>
 									      </tr>
 									      <tr>
-									        <td>P&eacute;rd. por Cirug&iacute;a</td>
+									        <td>Surgery Losses</td>
 									        <td><span class="surgloss"></span></td>
 									        <td><span class="surgloss"></span></td>
 											<td><span class="surgloss"></span></td>
@@ -607,7 +607,7 @@
 											<td><span class="surgloss"></span></td>
 									      </tr>
 									      <tr>
-									        <td>Glucosa <span id="glucoseConc"> </span>% (ml)</td>
+									        <td>Glucose <span id="glucoseConc"> </span>% (ml)</td>
 									        <td><span class="gluHour"></span></td>
 									        <td><span class="gluHour"></span></td>
 											<td><span class="gluHour"></span></td>
@@ -615,7 +615,7 @@
 											<td><span class="gluHour"></span></td>
 									      </tr>
 									      <tr class="blue1">
-									        <td>TOTAL a reponer (ml)</td>
+									        <td>TOTAL to supply (ml)</td>
 									        <td><span id="total1h"></span></td>
 									        <td><span id="total2h"></span></td>
 									        <td><span id="total3h"></span></td>
@@ -623,7 +623,7 @@
 											<td><span id="total5h"></span></td>
 									      </tr>
 									      <tr class="blue2">
-									        <td>TOTAL con glucosa (ml)</td>
+									        <td>TOTAL with glucose (ml)</td>
 									        <td><span id="total1hGlu"></span></td>
 									        <td><span id="total2hGlu"></span></td>
 									        <td><span id="total3hGlu"></span></td>
@@ -818,7 +818,7 @@
 <div id="refs" class="container-fluid">
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
-			<span class="text-center"><h2> Referencias</h2></span>
+			<span class="text-center"><h2> References</h2></span>
 			<div class="row">
 				<div class="col-sm-4 col-md-4 text-center">
 					<div class="well well-sm well-sm">
@@ -851,7 +851,7 @@
 <div id="contact" class="container-fluid noPrint">
 	<div class="row">
 		<div class="col-sm-12 col-md-12 text-center">
-			<h2> Autor</h2>
+			<h2> Author</h2>
 			<div class="well well-sm well-sm">
 				<p><a href="mailto:mariauror@gmail.com" style="color:#404040"><span class="fa fa-user-md"></span> Aurora Baluja Gonz&aacute;lez</a></p>
 	        	<p><span class="fa fa-hospital-o"></span> Servicio de Anestesiolog&iacute;a y Reanimaci&oacute;n. Hospital Cl&iacute;nico Universitario</p>
