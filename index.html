@@ -32,6 +32,8 @@
 		  var ped_calc = "Pediatric Fuids";
 		  var ped_calc2 = "Fluids and Drugs Calculator for Children in the OR";
 		  var contacto = "Contact";
+		  var nutritionLink = document.getElementById("nutritionLink");
+		  var pedLink = document.getElementById("pedLink");
 		  
 		  document.getElementById("titulo").innerHTML = titulo;
 		  document.getElementById("titulo2").innerHTML = titulo2;
@@ -42,6 +44,8 @@
 		  document.getElementById("ped_calc").innerHTML = ped_calc;
 		  document.getElementById("ped_calc2").innerHTML = ped_calc2;
 		  document.getElementById("contacto").innerHTML = contacto;
+		  nutritionLink.setAttribute('href', "./nutrition_calc.html");
+		  pedLink.setAttribute('href', "./pedi_calc.html");
 	  }
 	  
 	  function changeLangEs() {
@@ -54,6 +58,9 @@
 		  var ped_calc = "Flu&iacute;dos Pediatr&iacute;a";
 		  var ped_calc2 = "Calculadora para Flu&iacute;dos y F&aacute;rmacos en Pediatr&iacute;a";
 		  var contacto = "Contacto";
+		  var nutritionLink = document.getElementById("nutritionLink");
+		  var pedLink = document.getElementById("pedLink");
+		  
 		  document.getElementById("titulo").innerHTML = titulo;
 		  document.getElementById("titulo2").innerHTML = titulo2;
 		  document.getElementById("contents").innerHTML = contents;
@@ -63,6 +70,8 @@
 		  document.getElementById("ped_calc").innerHTML = ped_calc;
 		  document.getElementById("ped_calc2").innerHTML = ped_calc2;
 		  document.getElementById("contacto").innerHTML = contacto;
+		  nutritionLink.setAttribute('href', "./nutricion_calc.html");
+		  pedLink.setAttribute('href', "./ped_calc.html");
 	  }
 	  
 	  
@@ -229,10 +238,10 @@
 		<div class="col-sm-5 col-md-5 col-xs-4 text-center">
 		</div> <!--EOF column-->
 		<div class="col-sm-1 col-md-1 col-xs-2 text-center">
-			<h4><img class="img-responsive button" src="./pics/gray-uk.png" alt="english" onclick="changeLangEn()"></h4> 
+			<h4><img class="img-responsive button" src="./pics/gray-spain.png" alt="spanish" onclick="changeLangEs()"></h4> 
 		</div> <!--EOF column-->
 		<div class="col-sm-1 col-md-1 col-xs-2 text-center">
-			<h4><img class="img-responsive button" src="./pics/gray-spain.png" alt="spanish" onclick="changeLangEs()"></h4> 
+			<h4><img class="img-responsive button" src="./pics/gray-uk.png" alt="english" onclick="changeLangEn()"></h4> 
 		</div> <!--EOF column-->
 		<div class="col-sm-5 col-md-5 text-center">
 		</div> <!--EOF column-->
@@ -250,7 +259,7 @@
   <div class="row slideanim">
     <div class="col-sm-4 col-xs-12">
       <div class="panel panel-default text-center">
-		<a href="./nutricion_calc.html" target="blank">
+		<a id="nutritionLink" href="./nutricion_calc.html" target="blank">
         <div class="button panel-heading">
           <h1><span id="nutricion_calc"> Nutrici&oacute;n Parenteral</span> </h1>
         </div> <!--EOF panel-heading-->
@@ -263,7 +272,7 @@
 	
     <div class="col-sm-4 col-xs-12">
       <div class="panel panel-default text-center">
-		<a href="./ped_calc.html" target="blank">
+		<a id="pedLink" href="./ped_calc.html" target="blank">
         <div class="button panel-heading">
           <h1><span id="ped_calc"> Flu&iacute;dos Pediatr&iacute;a</span> </h1>
         </div> <!--EOF panel-heading-->
