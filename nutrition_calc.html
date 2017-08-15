@@ -236,34 +236,34 @@
 		<div class="col-sm-12 col-md-12 text-center">
 			<div class="button well" onclick="totalNutricion()">
 				<div class="form-group form-inline">
-					<label class="control-label" for="edad"><h3> Edad &nbsp; </h3></label>
+					<label class="control-label" for="edad"><h3> Age &nbsp; </h3></label>
 						<input class="form-control input" type="number" id="age" name="edad" value="50" min="15" max="100" step="1" placeholder="Edad">
-					<label class="control-label" for="peso"><h3>&nbsp; Peso (kg) &nbsp; </h3></label>
+					<label class="control-label" for="peso"><h3>&nbsp; Weight (kg) &nbsp; </h3></label>
 						<input class="form-control input" type="number" id="weight" name="peso" value="60" min="0" max="600" step="0.5" placeholder="Peso">
-					<label class="control-label" for="altura"><h3>&nbsp; Altura (cm) &nbsp;</h3></label>
+					<label class="control-label" for="altura"><h3>&nbsp; Height (cm) &nbsp;</h3></label>
 						<input class="form-control input" type="number" id="height" name="altura" value="165" min="50" max="280" step="5" placeholder="Altura">
 				</div> <!--EOF form-group-->
 				<div class="form-group form-inline">
-					<label class="control-label" for="sexo"><h3>&nbsp; Sexo &nbsp;</h3></label>
+					<label class="control-label" for="sexo"><h3>&nbsp; Sex &nbsp;</h3></label>
 						<select class="form-control input" id="gender" name="sexo">
-							<option value="Mujer">Mujer</option>
-							<option value="Hombre" selected="selected">Hombre</option>
+							<option value="Mujer">Female</option>
+							<option value="Hombre" selected="selected">Male</option>
 						</select>
 					<label class="control-label" for="estresor"><h3>&nbsp; Stress &nbsp;</h3></label>
 						<select class="form-control input" id="stress" name="estresor">
-							<option value="1.2" selected="selected">Cx. electiva (1.2)</option>
-							<option value="1.2">Fx hueso largo (1.2)</option>
-							<option value="1.3">EPOC (1.3)</option>
-							<option value="1.3">Malnutrido (1.3)</option>
+							<option value="1.2" selected="selected">Elective surgery (1.2)</option>
+							<option value="1.2">Long bone fx (1.2)</option>
+							<option value="1.3">COPD (1.3)</option>
+							<option value="1.3">Malnourish (1.3)</option>
 							<option value="1.3">Cancer (1.3)</option>
-							<option value="1.4">Trauma craneal (1.4)</option>
-							<option value="1.6">VMI (1.6)</option>
-							<option value="1.6">Cx. mayor (1.6)</option>
+							<option value="1.4">Cranial Trauma (1.4)</option>
+							<option value="1.6">Invasive VM (1.6)</option>
+							<option value="1.6">Major surgery (1.6)</option>
 							<option value="1.6">Politrauma (1.6)</option>
 							<option value="1.6">Sepsis (1.6)</option>
-							<option value="1.5">Quemado 0-20% (1.5)</option>
-							<option value="1.8">Quemado 20-40% (1.8)</option>
-							<option value="2.0">Quemado 40-100% (2)</option>
+							<option value="1.5">Burnt 0-20% (1.5)</option>
+							<option value="1.8">Burnt 20-40% (1.8)</option>
+							<option value="2.0">Burnt 40-100% (2)</option>
 						</select>
 				</div> <!--EOF form-group-->
 			</div> <!--EOF well sm-->
@@ -275,17 +275,17 @@
 	<div class="row">
 		<div class="col-sm-4 col-md-4 text-center">
 			<div class="button well well-sm alert-gray" onclick="totalNutricion()">
-				<h2> Nutrientes &nbsp;<span class="fa fa-pie-chart"</span></h2>
+				<h2> Nutrients &nbsp;<span class="fa fa-pie-chart"</span></h2>
 			</div> <!--EOF well sm-->
 		</div> <!--EOF column-->
 		<div class="col-sm-4 col-md-4 text-center">
 			<div class="button well well-sm alert-gray" onclick="totalNutricion()">
-				<h2> Cantidad total (ml) = <span id="mlTotal"> </span></h2>
+				<h2> Total Amount (ml) = <span id="mlTotal"> </span></h2>
 			</div> <!--EOF well sm-->
 		</div> <!--EOF column-->
 		<div class="col-sm-4 col-md-4 text-center">
 			<div class="well well-sm alert-danger" onclick="totalNutricion()">
-				<h2> Calor&iacute;as = <span id="totCal"> </span> (<span id="totCalKg"> </span> /kg)</h2>
+				<h2> Calories = <span id="totCal"> </span> (<span id="totCalKg"> </span> /kg)</h2>
 			</div> <!--EOF well sm-->
 		</div> <!--EOF column-->
 	</div> <!--EOF row-->
@@ -299,15 +299,15 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 text-center">
 					<div class="button well well-sm alert-protein" onclick="totalNutricion()">
-						<h2> Prote&iacute;nas = <span id="totProt"> </span> g (<span id="totNitro"> </span> g N) </h2>
+						<h2> Proteins = <span id="totProt"> </span> g (<span id="totNitro"> </span> g N) </h2>
 						<div class="form-group form-inline">
-							<label class="control-label" for="proteinas"><h3> Gramos/kg &nbsp; &nbsp;</h3></label>
+							<label class="control-label" for="proteinas"><h3> Grams/kg &nbsp; &nbsp;</h3></label>
 							<input class="form-control input" type="number" id="gramprot" name="proteinas" value="1.2" min="0.5" max="3.5" step="0.1">
 							<h3 id="errorProt" style="color:#1d4249; font-size:20px; font-weight: bold"></h3>
 						</div> <!--EOF form-group-->
-						<ul>1 g/kg: paciente normal.</ul>
-						<ul>1.5 g/kg: paciente s&eacute;ptico.</ul>
-						<ul>1.5-2 g/kg: paciente politraumatizado /hemofiltro.</ul>
+						<ul>1 g/kg: normal patient.</ul>
+						<ul>1.5 g/kg: septic patient.</ul>
+						<ul>1.5-2 g/kg: politraumatized /hemofiltration.</ul>
 					</div> <!--EOF well sm-->
 				</div> <!--EOF column-->	
 			</div> <!--EOF row-->
@@ -317,14 +317,14 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 text-center">
 					<div class="button well well-sm alert-protein" onclick="totalNutricion()">
-						<h3> Volumen prote&iacute;nas (ml) = <span id="mlProtTotal"> </span></h3>
+						<h3> Proteins volume (ml) = <span id="mlProtTotal"> </span></h3>
 							<div class="form-group form-inline">
-								<label class="control-label" for="proteinasml"><h3> Concentraci&oacute;n (%) &nbsp; &nbsp;</h3></label>
+								<label class="control-label" for="proteinasml"><h3> Concentration (%) &nbsp; &nbsp;</h3></label>
 								<input class="form-control input" type="number" id="mlprot" name="proteinasml" value="15" min="1" max="90" step="1">
 								<div id="errorProt" style="color:#000000; font-size:20px"></div>
 							</div> <!--EOF form-group-->
-							<ul>15%: paciente normal.</ul>
-							<ul>10%: protecci&oacute;n hep&aacute;tica o renal.</ul>
+							<ul>15%: normal patient.</ul>
+							<ul>10%: hepatic or renal protection.</ul>
 					</div> <!--EOF well sm-->
 				</div> <!--EOF column-->	
 			</div> <!--EOF row-->
@@ -332,8 +332,8 @@
 		
 		<div class="col-sm-4 col-md-4 text-center">
 			<div class="button well well-sm alert-danger" onclick="totalNutricion()">
-				<h3> Calor&iacute;as (prote&iacute;nas) = <span id="totCalProt"> </span></h3>
-				<h3><span id="propCalProt"> </span>% del total</h3>
+				<h3> Calories (proteins) = <span id="totCalProt"> </span></h3>
+				<h3><span id="propCalProt"> </span>% of total</h3>
 			</div> <!--EOF well sm-->
 		</div> <!--EOF column-->
 	</div> <!--EOF row-->
@@ -345,9 +345,9 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 text-center">
 					<div class="button well well-sm alert-glucose" onclick="totalNutricion()">
-						<h2> Glucosa = <span id="totGlu"> </span> g</h2>
+						<h2> Glucose = <span id="totGlu"> </span> g</h2>
 						<div class="form-group form-inline">
-							<label class="control-label" for="glucosaprop"><h3> % kcal (Glucosa/L&iacute;pidos): &nbsp; &nbsp;</h3></label>						
+							<label class="control-label" for="glucosaprop"><h3> % kcal (Glucose/Lipids): &nbsp; &nbsp;</h3></label>						
 								<select class="form-control input" id="propglucose" name="glucosaprop">
 									<option value="50">50/50</option>
 									<option value="55">55/45</option>
@@ -367,9 +367,9 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 text-center">
 					<div class="button well well-sm alert-glucose" onclick="totalNutricion()">
-						<h3> Volumen glucosa (ml) = <span id="mlGluTotal"> </span></h3>
+						<h3> Glucose volume (ml) = <span id="mlGluTotal"> </span></h3>
 						<div class="form-group form-inline">
-							<label class="control-label" for="glucosaml"><h3> Concentraci&oacute;n (%) &nbsp; &nbsp;</h3></label>
+							<label class="control-label" for="glucosaml"><h3> Concentration (%) &nbsp; &nbsp;</h3></label>
 								<input class="form-control input" type="number" id="mlglu" name="glucosaml" value="50" min="5" max="100" step="1">
 								<div id="errorGlu" style="color:#000000; font-size:20px"></div>
 						</div> <!--EOF form-group-->
@@ -380,8 +380,8 @@
 		
 		<div class="col-sm-4 col-md-4 text-center">
 			<div class="button well well-sm alert-danger" onclick="totalNutricion()">
-				<h3> Calor&iacute;as (glucosa) = <span id="totCalGlu"> </span></h3>
-				<h3><span id="propCalGlu"> </span>% del total</h3>
+				<h3> Calories (glucose) = <span id="totCalGlu"> </span></h3>
+				<h3><span id="propCalGlu"> </span>% of total</h3>
 			</div> <!--EOF well sm-->
 		</div> <!--EOF column-->
 	</div> <!--EOF row-->
@@ -394,7 +394,7 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 text-center">
 					<div class="button well well-sm alert-lipids" onclick="totalNutricion()">
-						<h2> L&iacute;pidos = <span id="totLip"> </span> g</h2>
+						<h2> Lipids = <span id="totLip"> </span> g</h2>
 						<ul></ul>
 					</div> <!--EOF well sm-->
 				</div> <!--EOF column-->
@@ -405,10 +405,10 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 text-center">
 					<div class="button well well-sm alert-lipids" onclick="totalNutricion()">
-						<h3> Volumen l&iacute;pidos (ml) = <span id="mlLipTotal"> </span></h3>
+						<h3> Lipids volume (ml) = <span id="mlLipTotal"> </span></h3>
 						<h3> ml/kg = <span id="mlLipKg"> </span></h3>
 						<div class="form-group form-inline">
-							<label class="control-label" for="lipidosml"><h3> Concentraci&oacute;n (%) &nbsp; &nbsp;</h3></label>
+							<label class="control-label" for="lipidosml"><h3> Concentration (%) &nbsp; &nbsp;</h3></label>
 								<input class="form-control input" type="number" id="mllip" name="lipidosml" value="20" min="5" max="100" step="1">
 								<div id="errorLip" style="color:#000000; font-size:20px"></div>
 						</div> <!--EOF form-group-->
@@ -419,8 +419,8 @@
 		
 		<div class="col-sm-4 col-md-4 text-center">
 			<div class="button well well-sm alert-danger" onclick="totalNutricion()">
-				<h3> Calor&iacute;as (l&iacute;pidos) = <span id="totCalLip"> </span></h3>
-				<h3><span id="propCalLip"> </span>% del total</h3>
+				<h3> Calories (lipids) = <span id="totCalLip"> </span></h3>
+				<h3><span id="propCalLip"> </span>% of total</h3>
 			</div> <!--EOF well sm-->
 		</div> <!--EOF column-->
 	</div> <!--EOF row-->
@@ -433,7 +433,7 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 text-center">
 					<div class="button well well-sm alert-vitamin" onclick="totalNutricion()">
-						<h2> Vitaminas, Oligoelementos</h2>
+						<h2> Vitamins, Trace-elements</h2>
 					</div> <!--EOF well sm-->
 				</div> <!--EOF column-->
 			</div> <!--EOF row-->
@@ -443,10 +443,10 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 text-center">
 					<div class="button well well-sm alert-vitamin" onclick="totalNutricion()">
-						<h3> Volumen suplementos (ml) = <span id="mlSuplem"> </span></h3>
-						<p><span style="font-size:20px"> V. Liposolubles (Vitalipid&reg;...) </span> 10 ml/vial</p>
-						<p><span style="font-size:20px"> V. Hidrosolubles (Soluvit&reg;...) </span> Liofilizado, disuelto en ml totales (&#126;0 ml a&ntilde;adidos)</p>
-						<p><span style="font-size:20px"> Oligoelementos </span> 10 ml/vial</p>
+						<h3> Supplements volume (ml) = <span id="mlSuplem"> </span></h3>
+						<p><span style="font-size:20px"> Fat-soluble Vitamins (Vitalipid&reg;...) </span> 10 ml/vial</p>
+						<p><span style="font-size:20px"> Hidrosoluble Vitamins (Soluvit&reg;...) </span> Liofilized, dissolved in total ml (&#126;0 ml added)</p>
+						<p><span style="font-size:20px"> Trace-elements </span> 10 ml/vial</p>
 					</div> <!--EOF well sm-->
 				</div> <!--EOF column-->
 			</div> <!--EOF row-->
@@ -462,8 +462,8 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 text-center">
 					<div class="button well well-sm alert-ions" onclick="totalNutricion()">
-						<h2> Iones</h2>
-						<h4> Ajustar seg&uacute;n necesidades y patolog&iacute;a</h4>
+						<h2> Ions</h2>
+						<h4> Adjust to needs and pathology</h4>
 					</div> <!--EOF well sm-->
 				</div> <!--EOF column-->
 			</div> <!--EOF row-->
@@ -473,25 +473,25 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 text-center">
 					<div class="button well well-sm alert-ions" onclick="totalNutricion()">
-						<h3> Volumen iones (ml) = <span id="mlIones"> </span></h3>
+						<h3> Ions volume (ml) = <span id="mlIones"> </span></h3>
 						<div class="row">
 							<div class="col-sm-6 col-md-6 text-center">
 								<div class="form-group form-inline">
-									<label class="control-label" for="clorpotasico"><h4> Cloruro K+ (ml) &nbsp; &nbsp;</h4></label>
+									<label class="control-label" for="clorpotasico"><h4> K+ Chloride (ml) &nbsp; &nbsp;</h4></label>
 									<input class="form-control input-sm" type="number" id="mlclk" name="clorpotasico" value="30" min="5" max="100" step="5">
 								</div> <!--EOF form-group-->
 								<div class="form-group form-inline">
-									<label class="control-label" for="fosfatopotasico"><h4> Fosfato monoK+ (ml) &nbsp; &nbsp;</h4></label>
+									<label class="control-label" for="fosfatopotasico"><h4> Monopotasssium Phosphate (ml) &nbsp; &nbsp;</h4></label>
 									<input class="form-control input-sm" type="number" id="mlpmk" name="fosfatopotasico" value="30" min="5" max="100" step="5">
 								</div> <!--EOF form-group-->
 							</div> <!--EOF column-->
 							<div class="col-sm-6 col-md-6 text-center">
 								<div class="form-group form-inline">
-									<label class="control-label" for="sulfmagnesico"><h4> Sulfato Mg++ (ml) &nbsp; &nbsp;</h4></label>
+									<label class="control-label" for="sulfmagnesico"><h4> Mg++ Sulphate (ml) &nbsp; &nbsp;</h4></label>
 									<input class="form-control input-sm" type="number" id="mlmgso4" name="sulfmagnesico" value="10" min="5" max="30" step="5">
 								</div> <!--EOF form-group-->
 								<div class="form-group form-inline">
-									<label class="control-label" for="clorsodico"><h4> Clor. s&oacute;dico  &#126;70mEq/d&iacute;a (ml) &nbsp; &nbsp;</h4></label>
+									<label class="control-label" for="clorsodico"><h4> Sodium Chloride  &#126;70mEq/day (ml) &nbsp; &nbsp;</h4></label>
 									<input class="form-control input-sm" type="number" id="nacl" name="clorsodico" value="20" min="5" max="20" step="5">
 								</div> <!--EOF form-group-->
 							</div> <!--EOF column-->
@@ -509,7 +509,7 @@
 <div id="refs" class="container-fluid">
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
-			<span class="text-center"><h2> Referencias</h2></span>
+			<span class="text-center"><h2> References</h2></span>
 			<div class="row">
 				<div class="col-sm-12 col-md-12 text-center">
 					<div class="well well-sm">
@@ -551,7 +551,7 @@
 <div id="contact" class="container-fluid noPrint">
 	<div class="row">
 		<div class="col-sm-12 col-md-12 text-center">
-			<h2> Autor</h2>
+			<h2> Author</h2>
 			<div class="well well-sm well-sm">
 				<p><a href="mailto:mariauror@gmail.com" style="color:#404040"><span class="fa fa-user-md"></span> Aurora Baluja Gonz&aacute;lez</a>, Agust&iacute;n Cari&ntilde;ena Amigo</p>
 	        	<p><span class="fa fa-hospital-o"></span> Servicio de Anestesiolog&iacute;a y Reanimaci&oacute;n. Hospital Cl&iacute;nico Universitario</p>
