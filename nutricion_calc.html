@@ -135,6 +135,123 @@
 			var standardCalMl = parseFloat(document.getElementById("formulaStandard").value); 
 			var mlTotalStandard = (totCal / standardCalMl).toFixed();
 			document.getElementById("mlTotalStandard").innerHTML = mlTotalStandard;
+		}
+		
+		function roundedNutricion() {
+			// CALORIES
+			var w = parseFloat(document.getElementById("weight").value); 
+			var h = parseFloat(document.getElementById("height").value); 
+			var age = parseFloat(document.getElementById("age").value); 
+			var gen = document.getElementById("gender").value; 
+			var stress = parseFloat(document.getElementById("stress").value);
+		    if (gen == "Mujer" ) {
+		       totCalRound = (((655 + (9.6 * w) + (1.8 * h) - (4.7 * age)) * stress)/100).toFixed(); //rounded value
+			   totCal = (parseFloat(totCalRound)*100).toFixed();
+		       totCal2 = totCal;
+		    } else {
+		       totCalRound = (((66.5 + (13.7 * w) + (5 * h) - (6.8 * age)) * stress)/100).toFixed(); //rounded value
+			   totCal = (parseFloat(totCalRound)*100).toFixed();
+		       totCal2 = totCal;
+		    }
+			var totCalKg = (totCal / w).toFixed(); //rounded value
+			var totCalKg2 = totCalKg;
+			/* 
+			var caloriasKg = 30;
+			var totCal = w * caloriasKg;
+			*/
+			document.getElementById("totCal").innerHTML = totCal;
+			document.getElementById("totCal2").innerHTML = totCal2;
+			document.getElementById("totCalKg").innerHTML = totCalKg;
+			document.getElementById("totCalKg2").innerHTML = totCalKg2;
+			
+			// PROTEINS
+			var gramprot = parseFloat(document.getElementById("gramprot").value); 
+		    if (gramprot < 0.5 || gramprot > 3.5 ) {
+		        totProt = "- -";
+				errorProt = "Error: el rango debe estar entre 0.5 y 3.5";
+				totNitro = "- -";
+		    } else {
+		        totProt = (w * gramprot).toFixed(); //rounded value
+				totProtF = w * gramprot; 
+				errorProt = ""; 
+				totNitro = (totProtF * 0.16).toFixed(1); //rounded value
+		    }
+			var caloriasProt = 4;
+		    if (totProt == "- -" ) {
+		        totCalProt = "- -";
+				propCalProt = "- -";
+		    } else {
+				totCalProt = (totProtF * caloriasProt).toFixed(); //rounded value
+		        totCalProtF = totProtF * caloriasProt;
+				propCalProt = (totCalProtF / totCal * 100).toFixed(); //rounded value
+		    }
+			var mlProt = parseFloat(document.getElementById("mlprot").value); 
+			var mlProtTotalRound = ((totProtF / (mlProt / 100))/100).toFixed(); //rounded value
+			var mlProtTotal = (mlProtTotalRound*100).toFixed(); //rounded value **********************************
+			var mlProtTotalF = parseFloat(mlProtTotalRound)*100;
+			document.getElementById("totProt").innerHTML = totProt;
+			document.getElementById("errorProt").innerHTML = errorProt;
+			document.getElementById("totNitro").innerHTML = totNitro;
+			document.getElementById("mlProtTotal").innerHTML = mlProtTotal;
+			document.getElementById("totCalProt").innerHTML = totCalProt;
+			document.getElementById("propCalProt").innerHTML = propCalProt;
+			
+			// GLUCOSE
+			var propglucose = parseFloat(document.getElementById("propglucose").value); 
+			var totCalGlu = (totCal-totCalProt) * propglucose / 100;
+			var propCalGlu = (totCalGlu / totCal * 100).toFixed(); //rounded value
+			var caloriasGlu = 3.4;
+			var totGlu = (totCalGlu / caloriasGlu).toFixed(); //rounded value  
+			var mlGlu = parseFloat(document.getElementById("mlglu").value); 
+			var mlGluTotalRound = ((totGlu / (mlGlu / 100))/100).toFixed(); //rounded value
+			var mlGluTotal = (mlGluTotalRound*100).toFixed(); //rounded value;
+			var mlGluTotalF = parseFloat(mlGluTotalRound)*100;
+			document.getElementById("totCalGlu").innerHTML = totCalGlu;
+			document.getElementById("propCalGlu").innerHTML = propCalGlu;
+			document.getElementById("totGlu").innerHTML = totGlu;
+			document.getElementById("mlGluTotal").innerHTML = mlGluTotal;
+			
+			// LIPIDS
+			var proplipids = 100 - propglucose; 
+			var totCalLip = (totCal-totCalProt) * proplipids / 100;
+			var propCalLip = (totCalLip / totCal * 100).toFixed(); //rounded value
+			var caloriasLip = 9;
+			var totLip = (totCalLip / caloriasLip).toFixed(); //rounded value 
+			var mlLip = parseFloat(document.getElementById("mllip").value); 
+			var mlLipTotalRound = ((totLip / (mlLip / 100))/100).toFixed(); //rounded value
+			var mlLipTotal = (mlLipTotalRound*100).toFixed(); //rounded value;
+			var mlLipTotalF = parseFloat(mlLipTotalRound)*100;
+			var mlLipKg = (mlLipTotalF / w).toFixed(); //rounded value
+			document.getElementById("totCalLip").innerHTML = totCalLip;
+			document.getElementById("propCalLip").innerHTML = propCalLip;
+			document.getElementById("totLip").innerHTML = totLip;
+			document.getElementById("mlLipTotal").innerHTML = mlLipTotal;
+			document.getElementById("mlLipKg").innerHTML = mlLipKg;
+			
+			// SUPPEMENTS
+			var mlVitlipid = 10.0;
+			var mlVitsolub = 0.0;
+			var mlOligoel = 10.0;
+			var mlSuplem =  mlVitlipid + mlVitsolub + mlOligoel;
+			document.getElementById("mlSuplem").innerHTML = mlSuplem;
+			
+			// IONS
+			var mlclk = parseFloat(document.getElementById("mlclk").value); 
+			var mlpmk = parseFloat(document.getElementById("mlpmk").value); 
+			var mlmgso4 = parseFloat(document.getElementById("mlmgso4").value);
+			var nacl = parseFloat(document.getElementById("nacl").value);
+			var mlIones = mlclk + mlpmk + mlmgso4 + nacl; 
+			document.getElementById("mlIones").innerHTML = mlIones;
+			
+			// ML TOTAL
+			var mlTotal = (mlProtTotalF + mlGluTotalF + mlLipTotalF + mlSuplem + mlIones).toFixed(); //rounded value
+			document.getElementById("mlTotal").innerHTML = mlTotal;
+			
+			// FORMULAS STANDARD
+			var standardCalMl = parseFloat(document.getElementById("formulaStandard").value); 
+			var mlTotalStandardRound = ((totCal / standardCalMl)/100).toFixed();
+			var mlTotalStandard = parseFloat(mlTotalStandardRound)*100;
+			document.getElementById("mlTotalStandard").innerHTML = mlTotalStandard;
 		}	
 			
 	</script>	
@@ -222,6 +339,9 @@
 			}
 		.nav-tabs > li > a{
 			color: #84a5ae;
+		}
+		.btn-danger:hover {
+			background-color: #b62f2f;
 		}
 		
 		@media print {
@@ -612,8 +732,20 @@
 </div> <!--EOF container-->
 
 
-
-
+<div id="rounding" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-4 col-md-4">
+		</div> <!--EOF column-->
+		<div class="col-sm-4 col-md-4 text-center">
+			<div class="button well btn-danger alert-gray" onclick="roundedNutricion()">
+				<h2> Redondear Volumen de Macronutrientes&nbsp;<span class="fa fa-exclamation-triangle"</span></h2>
+			</div> <!--EOF well sm-->
+		</div> <!--EOF column-->
+		<div class="col-sm-4 col-md-4">
+			
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
 
 
 <div id="refs" class="container-fluid">
@@ -657,6 +789,8 @@
 		</div> <!--EOF column-->
 	</div> <!--EOF row-->
 </div> <!--EOF container-->
+
+
 
 <div id="contact" class="container-fluid noPrint">
 	<div class="row">
