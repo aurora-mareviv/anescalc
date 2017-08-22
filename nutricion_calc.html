@@ -35,16 +35,21 @@
 			var stress = parseFloat(document.getElementById("stress").value);
 		    if (gen == "Mujer" ) {
 		       totCal = ((655 + (9.6 * w) + (1.8 * h) - (4.7 * age)) * stress).toFixed(); //rounded value
+		       totCal2 = totCal;
 		    } else {
-		       totCal = ((66.5 + (13.7 * w) + (5 * h) - (6.8 * age)) * stress).toFixed(); //rounded value	
+		       totCal = ((66.5 + (13.7 * w) + (5 * h) - (6.8 * age)) * stress).toFixed(); //rounded value
+		       totCal2 = totCal;
 		    }
 			var totCalKg = (totCal / w).toFixed(); //rounded value
+			var totCalKg2 = totCalKg;
 			/* 
 			var caloriasKg = 30;
 			var totCal = w * caloriasKg;
 			*/
 			document.getElementById("totCal").innerHTML = totCal;
+			document.getElementById("totCal2").innerHTML = totCal2;
 			document.getElementById("totCalKg").innerHTML = totCalKg;
+			document.getElementById("totCalKg2").innerHTML = totCalKg2;
 			
 			// PROTEINS
 			var gramprot = parseFloat(document.getElementById("gramprot").value); 
@@ -56,7 +61,7 @@
 		        totProt = (w * gramprot).toFixed(); //rounded value
 				totProtF = w * gramprot; 
 				errorProt = ""; 
-				totNitro = (totProtF * 0.16).toFixed(); //rounded value
+				totNitro = (totProtF * 0.16).toFixed(1); //rounded value
 		    }
 			var caloriasProt = 4;
 		    if (totProt == "- -" ) {
@@ -125,6 +130,11 @@
 			// ML TOTAL
 			var mlTotal = (mlProtTotalF + mlGluTotalF + mlLipTotalF + mlSuplem + mlIones).toFixed(); //rounded value
 			document.getElementById("mlTotal").innerHTML = mlTotal;
+			
+			// FORMULAS STANDARD
+			var standardCalMl = parseFloat(document.getElementById("formulaStandard").value); 
+			var mlTotalStandard = (totCal / standardCalMl).toFixed();
+			document.getElementById("mlTotalStandard").innerHTML = mlTotalStandard;
 		}	
 			
 	</script>	
@@ -563,9 +573,32 @@
 							<div class="row"> <!--fields -->
 								<div class="col-sm-12 col-md-12">
 									<h3> </h3>
-								<p>...</p>
-								...		
-									
+									<div id="cabecera" class="container-fluid">
+										<div class="row">
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-gray" onclick="totalNutricion()">
+													<h2> F&oacute;rmulas &nbsp;<span class="fa fa-cubes"</span></h2>
+														<select class="form-control input" id="formulaStandard" name="formulasNutri">
+															<option value="1.135" selected="selected">Olimel N7 E (1.135 kcal/ml) con electrolitos</option>
+															<option value="1.0">Oliclinomel N8-800 (1 kcal/ml) sin electrolitos</option>
+															<option value="1.07">Olimel N9 E (1.07 kcal/ml) con electrolitos</option>
+															<option value="0.7">Periolimel N4 E (0.7 kcal/ml) con electrolitos</option>
+														</select>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-gray" onclick="totalNutricion()">
+													<h2> Cantidad de f&oacute;rmula (ml) = <span id="mlTotalStandard"> </span></h2>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="well well-sm alert-danger" onclick="totalNutricion()">
+													<h2> Calor&iacute;as = <span id="totCal2"> </span> (<span id="totCalKg2"> </span> /kg)</h2>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+										</div> <!--EOF row-->
+										<hr>
+									</div> <!--EOF container-->									
 								</div> <!--EOF column-->
 							</div> <!--EOF row-->
 			
