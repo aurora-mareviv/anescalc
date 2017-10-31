@@ -103,6 +103,19 @@
 			document.getElementById("total4h").innerHTML = total4h;
 			document.getElementById("total5h").innerHTML = total5h;
 			
+			//VELOCITY IN DROPS/10 SECS
+			var got1h = ( (total1h*20/60)/6 ).toFixed(0); //rounded value
+			var got2h = ( (total2h*20/60)/6 ).toFixed(0); //rounded value
+			var got3h = ( (total3h*20/60)/6 ).toFixed(0); //rounded value
+			var got4h = ( (total4h*20/60)/6 ).toFixed(0); //rounded value
+			var got5h = ( (total5h*20/60)/6 ).toFixed(0); //rounded value
+			document.getElementById("got1h").innerHTML = got1h;
+			document.getElementById("got2h").innerHTML = got2h;
+			document.getElementById("got3h").innerHTML = got3h;
+			document.getElementById("got4h").innerHTML = got4h;
+			document.getElementById("got5h").innerHTML = got5h;
+			
+			
 			//HTC ACEPTABLE
 			if (ageDecimal < 30) {
 				var minHtc = 40.0;
@@ -160,6 +173,18 @@
 			document.getElementById("total3hGlu").innerHTML = total3hGlu;
 			document.getElementById("total4hGlu").innerHTML = total4hGlu;
 			document.getElementById("total5hGlu").innerHTML = total5hGlu;
+			
+			//VELOCITY IN DROPS/10 SECS (TOT+GLU)
+			var got1hGlu = ( (total1hGlu*20/60)/6 ).toFixed(0); //rounded value
+			var got2hGlu = ( (total2hGlu*20/60)/6 ).toFixed(0); //rounded value
+			var got3hGlu = ( (total3hGlu*20/60)/6 ).toFixed(0); //rounded value
+			var got4hGlu = ( (total4hGlu*20/60)/6 ).toFixed(0); //rounded value
+			var got5hGlu = ( (total5hGlu*20/60)/6 ).toFixed(0); //rounded value
+			//document.getElementById("got1hGlu").innerHTML = got1hGlu;
+			//document.getElementById("got2hGlu").innerHTML = got2hGlu;
+			//document.getElementById("got3hGlu").innerHTML = got3hGlu;
+			//document.getElementById("got4hGlu").innerHTML = got4hGlu;
+			//document.getElementById("got5hGlu").innerHTML = got5hGlu;
 			
 			//GLUCOSE ALERT
 			var glucosealert = "Medir glucemia si: &nbsp; Menor de 1 a&ntilde;o &nbsp;o&nbsp; Ayunas > 6h"; 
@@ -593,6 +618,14 @@
 									        <td><span id="total4h"></span></td>
 											<td><span id="total5h"></span></td>
 									      </tr>
+									      <tr class="blue2">
+									        <td>Velocidad (gotas/10 seg.)</td>
+									        <td><span id="got1h"></span></td>
+									        <td><span id="got2h"></span></td>
+											<td><span id="got3h"></span></td>
+											<td><span id="got4h"></span></td>
+											<td><span id="got5h"></span></td>
+									      </tr>
 									      <tr>
 									        <td>Glucosa <span id="glucoseConc"> </span>% (ml)</td>
 									        <td><span class="gluHour"></span></td>
@@ -601,7 +634,7 @@
 											<td><span class="gluHour"></span></td>
 											<td><span class="gluHour"></span></td>
 									      </tr>
-									      <tr class="blue2">
+									      <tr class="blue1">
 									        <td>TOTAL con glucosa (ml)</td>
 									        <td><span id="total1hGlu"></span></td>
 									        <td><span id="total2hGlu"></span></td>
@@ -609,7 +642,17 @@
 									        <td><span id="total4hGlu"></span></td>
 											<td><span id="total5hGlu"></span></td>
 									      </tr>
-									    </tbody>
+										  <!--
+									      <tr class="blue2">
+									        <td>Velocidad c/ glucosa (got/10 s)</td>
+									        <td><span id="got1hGlu"></span></td>
+									        <td><span id="got2hGlu"></span></td>
+											<td><span id="got3hGlu"></span></td>
+											<td><span id="got4hGlu"></span></td>
+											<td><span id="got5hGlu"></span></td>
+									      </tr>
+									      -->
+									      </tbody>
 									  </table>
 									  <hr>
 									  <div class="row">
