@@ -219,7 +219,7 @@
 			} else if (ageDecimal >= (65 * 365.25)) {
 				var desflurano = "4.57-5.77";		
 			} 
-			document.getElementById("desflurano").innerHTML = desflurano;
+			//document.getElementById("desflurano").innerHTML = desflurano;
 			document.getElementById("desflurano2").innerHTML = desflurano;
 			
 			var propofolPc = ((4 / 10) * w).toFixed(1);
@@ -245,14 +245,22 @@
 			document.getElementById("flumacenilo2").innerHTML = flumacenilo2;
 			
 			var nolotil = 20 * w;
-			var paracetamol = 15 * w;
+			if ( (ageDecimal <= 365.25) || (w < 10) ) {
+				var paracetamol = 7.5 * w; 	
+				var paracetamolDoseKg = "(7.5 mg/k)"; 
+			} else  {
+				var paracetamol = 15 * w; 	
+				var paracetamolDoseKg = "(15 mg/k)"; 
+			} 
 			var ondansetron = 0.15 * w;
 			document.getElementById("nolotil").innerHTML = nolotil;
-			document.getElementById("paracetamol").innerHTML = paracetamol;
+			document.getElementById("paracetamol").innerHTML = paracetamol; 
+			document.getElementById("paracetamolDoseKg").innerHTML = paracetamolDoseKg;
 			document.getElementById("ondansetron").innerHTML = ondansetron;
 			
 			var ampi = (50 * w).toFixed(1);
 			var amoxi = (50 * w).toFixed(1);
+			var amoxiclav = (33 * w).toFixed(1);
 			var kefol = (25 * w).toFixed(1);
 			var cefoxi = (40 * w).toFixed(1);
 			var cefuro = (50 * w).toFixed(1);
@@ -264,6 +272,7 @@
 			var amika = (5 * w).toFixed(1);
 			document.getElementById("ampi").innerHTML = ampi;
 			document.getElementById("amoxi").innerHTML = amoxi;
+			document.getElementById("amoxiclav").innerHTML = amoxiclav;
 			document.getElementById("kefol").innerHTML = kefol;
 			document.getElementById("cefoxi").innerHTML = cefoxi;
 			document.getElementById("cefuro").innerHTML = cefuro;
@@ -682,7 +691,6 @@
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="well well-sm alert-pink2" onclick="totalPedCalc()">
 													<h3> Sevoflurane+O<sub>2</sub> CAM<sub>50</sub> = <span id="sevoflurano"></span> %</h3>
-													<h3> Desflurane+O<sub>2</sub> CAM<sub>50</sub> = <span id="desflurano"></span> %</h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 										</div> <!--EOF row-->
@@ -749,7 +757,7 @@
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-pink2" onclick="totalPedCalc()">
-													<h3> Paracetamol (acetaminophen) = <span id="paracetamol"> </span> mg <span class="font-sm">(15 mg/k)</span></h3>
+													<h3> Paracetamol (acetaminophen) = <span id="paracetamol"> </span> mg <span class="font-sm" id="paracetamolDoseKg"> </span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
@@ -768,22 +776,23 @@
 										<div class="row">
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-blue1" onclick="totalPedCalc()">
-													<h4> Ampicilin = <span id="ampi"> </span> mg <span class="font-sm">(50 mg/k)</span></h4>
-													<h4> Amoxicilin = <span id="amoxi"> </span> mg <span class="font-sm">(50 mg/k/8h)</span></h4>
+													<h4> Ampicillin = <span id="ampi"> </span> mg <span class="font-sm">(50 mg/k)</span></h4>
+													<h4> Amoxicillin = <span id="amoxi"> </span> mg <span class="font-sm">(50 mg/k/8h)</span></h4>
+													<h4> Amoxicillin-clavulanate = <span id="amoxiclav"> </span> mg <span class="font-sm">(33 mg/k/8h)</span></h4>
 													<h4> Cefazolin = <span id="kefol"> </span> mg <span class="font-sm">(25 mg/k)</span></h4>
-													<h4> Cefoxitin = <span id="cefoxi"> </span> mg <span class="font-sm">(40 mg/k)</span></h4>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-pink" onclick="totalPedCalc()">
+													<h4> Cefoxitin = <span id="cefoxi"> </span> mg <span class="font-sm">(40 mg/k)</span></h4>
 													<h4> Cefuroxime = <span id="cefuro"> </span> mg <span class="font-sm">(50 mg/k)</span></h4>
 													<h4> Ceftriaxone = <span id="ceftriax"> </span> mg <span class="font-sm">(50 mg/k)</span></h4>
 													<h4> Meropenem = <span id="meropenem"> </span> mg <span class="font-sm">(10 mg/k)</span></h4>
-													<h4> Clindamicin = <span id="clinda"> </span> mg <span class="font-sm">(10 mg/k)</span></h4>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="well well-sm alert-pink2" onclick="totalPedCalc()">
+													<h4> Clindamicin = <span id="clinda"> </span> mg <span class="font-sm">(10 mg/k)</span></h4>
 													<h4> Vancomicin = <span id="vanco"> </span> mg <span class="font-sm">(10 mg/k)</span></h4>
 													<h4> Gentamicin = <span id="genta"> </span> mg <span class="font-sm">(2 mg/k)</span></h4>
 													<h4> Amikacin = <span id="amika"> </span> mg <span class="font-sm">(5 mg/k)</span></h4>
