@@ -161,6 +161,15 @@
 			document.getElementById("total4hGlu").innerHTML = total4hGlu;
 			document.getElementById("total5hGlu").innerHTML = total5hGlu;
 			
+			//GLUCOSE ALERT
+			var glucosealert = "Measure glycemia if: &nbsp; Age < 1 year &nbsp;or&nbsp; Fasting > 6h"; 
+			if ( (ageDecimal > 365.25) && (fastHours <= 6) ){
+				glucosealertBold = glucosealert;
+			} else {
+				glucosealertBold = "<strong>" + glucosealert + "</strong>";
+			}
+			document.getElementById("glucosealert").innerHTML = glucosealertBold;
+			
 			//DRUGS
 			var fenta = (2 * w).toFixed(1);
 			var fenta2 = (3 * w).toFixed(1);
@@ -654,6 +663,13 @@
 									    </tbody>
 									  </table>
 									  <hr>
+									  <div class="row">
+  											<div class="col-sm-12 col-md-12 text-center">
+  												<div class="button well well-sm alert-blue2">
+  														<h4><span class="fa fa-bell"></span>&nbsp;<span id="glucosealert">Measure glycemia if: &nbsp; Age < 1 year &nbsp;or&nbsp; Fasting > 6h</span></h4>
+  												</div> <!--EOF well sm-->
+  											</div> <!--EOF column-->
+  									  </div> <!--EOF row-->
 									</div> <!--EOF container-->
 								
 								</div> <!--EOF column-->
