@@ -85,71 +85,6 @@
 		  font-size: 20px;
 		}
 		
-		.alert-gray{
-			background-color: #1d4249;
-			color: #ffffff;
-			border-color: #1d4249;
-			}
-		.alert-blue1{
-			background-color: #6995b0;
-			color: #ffffff;
-			border-color: #6995b0;
-			}
-		.alert-protein{
-			background-color: #cc7a00;
-			color: #ffffff;
-			border-color: #cc7a00;
-			}
-		.alert-protein > .form-group > .form-control {
-			background-color: #fff5e6;
-			color:  #995c00;
-			border-color:  #cc7a00;
-			}
-		.alert-glucose{
-			background-color: #79b530;
-			color: #ffffff;
-			border-color: #79b530;
-			}
-		.alert-glucose > .form-group > .form-control {
-			background-color: #e7f4d7;
-			color:  #43651b;
-			border-color:  #79b530;
-			}
-		.alert-lipids{
-			background-color: #e6bb00;
-			color: #ffffff;
-			border-color: #e6bb00;
-			}
-		.alert-lipids > .form-group > .form-control {
-			background-color: #fff6cc;
-			color: #997d00;
-			border-color: #e6bb00;
-			}
-		.alert-vitamin{
-			background-color: #388293; /*#2e6976*/
-			color: #ffffff;
-			border-color: #388293;
-			}
-		.alert-vitamin > .form-group > .form-control {
-			background-color: #daedf1; 
-			color: #1c424a;
-			border-color: #388293;
-			}
-		.alert-ions{
-			background-color: #70adbc;
-			color: #ffffff;
-			border-color: #70adbc;
-			}
-		.alert-ions > .form-group > .form-control {
-			background-color: #dcebef;
-			color: #315d68;
-			border-color: #70adbc;
-			}
-		.alert-danger{
-			background-color: #b62f2f; /*#c73859; #e03e55*/
-			color: #ffffff;
-			border-color: #b62f2f;
-			}
 		
 		.panel {
 		    border: 1px solid #1d4249; 
@@ -159,22 +94,34 @@
 
 		.panel:hover {
 		    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+		    background-color: #fff !important;
+		}
+		
+		.panel1:hover {
+		    border: 1px solid #d04949;
+		    color: #d04949;
+		}
+		.panel2:hover {
+		    border: 1px solid #6995b0;
+		    color: #6995b0;
+		}
+
+		.panel1 .button:hover {
+		    border: 1px solid #d04949;
+		    background-color: #d04949 !important;
+		    color: #d04949;
+		}
+		.panel2 .button:hover {
+		    border: 1px solid #6995b0;
+		    background-color: #6995b0 !important;
+		    color: #6995b0;
+		}
+
+		/*.panel-footer .btn:hover {
 		    border: 1px solid #f4511e;
 		    background-color: #fff !important;
 		    color: #f4511e;
-		}
-
-		.panel .button:hover {
-		    border: 1px solid #f4511e;
-		    background-color: #f4511e !important;
-		    color: #f4511e;
-		}
-
-		.panel-footer .btn:hover {
-		    border: 1px solid #f4511e;
-		    background-color: #fff !important;
-		    color: #f4511e;
-		}
+		}*/
 		
 		.panel-heading {
 		    color: #fff !important;
@@ -216,8 +163,12 @@
 			text-decoration: none;
 		}
 		
-		a:hover {
-			color: #f4511e;
+		.panel1 a:hover {
+			color: #d04949;
+			text-decoration: none;
+		}
+		.panel2 a:hover {
+			color: #6995b0;
 			text-decoration: none;
 		}
 		
@@ -258,7 +209,7 @@
   </div>
   <div class="row slideanim">
     <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
+      <div class="panel panel1 panel-default text-center">
 		<a id="nutritionLink" href="./nutricion_calc.html" target="blank">
         <div class="button panel-heading">
           <h1><span id="nutricion_calc"> Parenteral Nutrition</span> </h1>
@@ -271,7 +222,7 @@
     </div>  <!--EOF column-->   
 	
     <div class="col-sm-4 col-xs-12">
-      <div class="panel panel-default text-center">
+      <div class="panel panel2 panel-default text-center">
 		<a id="pedLink" href="./ped_calc.html" target="blank">
         <div class="button panel-heading">
           <h1><span id="ped_calc"> Pediatric Fluidotherapy</span> </h1>
