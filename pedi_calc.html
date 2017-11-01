@@ -269,11 +269,13 @@
 			document.getElementById("remiPc2").innerHTML = remiPc2;
 			
 			var neostigmina = (0.05 * w).toFixed(2);
-			var naloxona = (0.1 * w).toFixed(2);
+			var naloxona = (0.005 * w).toFixed(2);
+			var naloxona2 = (0.1 * w).toFixed(2);
 			var flumacenilo = (0.01 * w).toFixed(2);
 			var flumacenilo2 = (0.05 * w).toFixed(2);
 			document.getElementById("neostigmina").innerHTML = neostigmina;
 			document.getElementById("naloxona").innerHTML = naloxona;
+			document.getElementById("naloxona2").innerHTML = naloxona2;
 			document.getElementById("flumacenilo").innerHTML = flumacenilo;
 			document.getElementById("flumacenilo2").innerHTML = flumacenilo2;
 			
@@ -794,7 +796,7 @@
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-pink" onclick="totalPedCalc()">
-													<h3> Naloxone = <span id="naloxona"></span> mg <span class="font-sm">(0.1 mg/k)</span></h3>
+													<h3> Naloxone = <span id="naloxona"></span>-<span id="naloxona2"></span> mg <span class="font-sm">(0.005-0.1 mg/k)</span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
