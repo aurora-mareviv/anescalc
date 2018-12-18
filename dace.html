@@ -1,0 +1,421 @@
+<!-- <%@ language="javascript"%> -->
+<!DOCTYPE html>
+<html lang="en-150">
+	
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" media="all"> <!--bootswatch-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!--google icons-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--font awesome 20px-sm-->	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-104312945-2', 'auto');
+	  ga('send', 'pageview');
+	</script>
+	
+	<script>
+		$(document).ready(function(){ 
+			$('#myTab li:eq(1) a').tab('show');
+			});
+		
+		function totalDACE() {
+			// POINTS			
+			var age = parseFloat(document.getElementById("age").value); 
+			var gen = parseFloat(document.getElementById("gender").value);
+			var hta = parseFloat(document.getElementById("hyperta").value);
+			var lvef = parseFloat(document.getElementById("lvef").value); 
+			var artdis = parseFloat(document.getElementById("artdisease").value); 
+			var chf = parseFloat(document.getElementById("chfailure").value); 
+			var ckd = parseFloat(document.getElementById("ckd").value); 
+			var killp = parseFloat(document.getElementById("killipclass").value); 
+			
+			pointage = ((age-20)/5);
+			floorage = Math.floor(pointage);
+			totDACE = floorage - gen + hta + lvef + artdis + chf + ckd + killp;
+			
+			document.getElementById("totDACE").innerHTML = totDACE;
+		}	
+		
+		
+		$(".progress-bar").animate({
+		    width: "70%"
+		}, 2500);
+
+			
+	</script>	
+			
+	<style>
+		.input-lg {
+		  font-size: 30px;
+		}
+		.input {
+		  font-size: 20px;
+		}
+		.font-sm {
+			font-size: 0.7em;
+		}
+		/*.alert-gray{
+			background-color: #1d4249;
+			color: #ffffff;
+			border-color: #1d4249;
+			} green gray*/
+		.alert-gray{
+				background-color: #48586a;
+				color: #ffffff;
+				border-color: #48586a;
+			}
+		.alert-blue1{
+			background-color: #6995b0;
+			color: #ffffff;
+			border-color: #6995b0;
+			}
+		.alert-protein{
+			background-color: #cc7a00;
+			color: #ffffff;
+			border-color: #cc7a00;
+			}
+		.alert-protein > .form-group > .form-control {
+			background-color: #fff5e6;
+			color:  #995c00;
+			border-color:  #cc7a00;
+			}
+		.alert-glucose{
+			background-color: #79b530;
+			color: #ffffff;
+			border-color: #79b530;
+			}
+		.alert-glucose > .form-group > .form-control {
+			background-color: #e7f4d7;
+			color:  #43651b;
+			border-color:  #79b530;
+			}
+		.alert-lipids{
+			background-color: #e6bb00;
+			color: #ffffff;
+			border-color: #e6bb00;
+			}
+		.alert-lipids > .form-group > .form-control {
+			background-color: #fff6cc;
+			color: #997d00;
+			border-color: #e6bb00;
+			}
+		.alert-vitamin{
+			background-color: #388293; /*#2e6976*/
+			color: #ffffff;
+			border-color: #388293;
+			}
+		.alert-vitamin > .form-group > .form-control {
+			background-color: #daedf1; 
+			color: #1c424a;
+			border-color: #388293;
+			}
+		.alert-ions{
+			background-color: #70adbc;
+			color: #ffffff;
+			border-color: #70adbc;
+			}
+		.alert-ions > .form-group > .form-control {
+			background-color: #dcebef;
+			color: #315d68;
+			border-color: #70adbc;
+			}
+		.alert-ions-inline{ /* overrides css overriding in ions button well*/
+			background-color: #dcebef;
+			color: #315d68;
+			border-color: #70adbc;
+			}
+		.alert-danger{
+			background-color: #b62f2f; /*#c73859; #e03e55*/
+			color: #ffffff;
+			border-color: #b62f2f;
+			}
+		.nav-tabs > li > a{
+			color: #84a5ae;
+		}
+		.btn-danger:hover {
+			background-color: #b62f2f;
+		}
+		
+		@media print {
+			.noPrint {
+			       display:none;
+				   }
+			}	
+		
+		
+		/* progress bars */
+		.progress.active .progress-bar {
+		    -webkit-transition: none !important;
+		    transition: none !important;
+		}
+		
+		/* progress bar */
+		/*
+		 * Copyright (c) 2012-2013 Thibaut Courouble
+		 * http://www.cssflow.com
+		 * Licensed under the MIT License
+		 *
+		 * Sass/SCSS source: https://goo.gl/UhXKg
+		 * PSD by Vin Thomas: https://goo.gl/n1M2e
+		 */
+
+		/*body {
+		  font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
+		  color: #404040;
+		  background: #2a2a2a;
+		}*/
+		.container {
+		  margin: 60px auto;
+		  width: 400px;
+		  text-align: center;
+		}
+		.container .progress {
+		  margin: 0 auto;
+		  width: 400px;
+		}
+		.progress {
+		  padding: 4px;
+		  background: rgba(0, 0, 0, 0.25);
+		  border-radius: 6px;
+		  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+		}
+		.progress-bar {
+		  height: 16px;
+		  border-radius: 4px;
+			background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+		  transition: 0.4s linear;
+		  transition-property: width, background-color;
+		  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+		}
+		/*
+		 * Note: using adjacent or general sibling selectors combined with
+		 *       pseudo classes doesn't work in Safari 5.0 and Chrome 12.
+		 *       See this article for more info and a potential fix:
+		 *       https://css-tricks.com/webkit-sibling-bug/
+		 */
+		#five:checked ~ .progress > .progress-bar {
+		  width: 5%;
+		  background-color: #86e01e;
+		}
+		#twentyfive:checked ~ .progress > .progress-bar {
+		  width: 25%;
+		  background-color: #f2d31b;
+		}
+		#fifty:checked ~ .progress > .progress-bar {
+		  width: 50%;
+		  background-color: #f2b01e;
+		}
+		#seventyfive:checked ~ .progress > .progress-bar {
+		  width: 75%;
+		  background-color: #f27011;
+		}
+		#onehundred:checked ~ .progress > .progress-bar {
+		  width: 100%;
+		  background-color: #f63a0f;
+		}
+		.radio {
+		  display: none;
+		}
+		.label {
+		  display: inline-block;
+		  margin: 0 5px 20px;
+		  padding: 3px 8px;
+		  color: #aaa;
+		  text-shadow: 0 1px black;
+		  border-radius: 3px;
+		  cursor: pointer;
+		}
+		.radio:checked + .label {
+		  color: white;
+		  background: rgba(0, 0, 0, 0.25);
+		}
+		
+
+	   
+	</style>		
+			
+			
+			
+	<title>DACE Score</title>
+</head>
+
+
+<body>
+
+<div id="intro" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 text-center">
+			<h1> DACE Score &nbsp;<span class="fa fa-heartbeat "></a></span></h1>
+			<h4> MACE cumulative incidence for Diabetic Patients post-MI </h4>
+			
+<!--		  	<div class="row">
+<!--				<div class="col-sm-5 col-md-5 col-xs-4 text-center">
+<!--				</div> <!--EOF column-->
+<!--				<div class="col-sm-1 col-md-1 col-xs-2 text-center">
+<!--					<h4><a id="nutritionLink" href="./nutricion_calc.html" target="blank"><img class="img-responsive button" src="./pics/gray-spain.png" alt="spanish" onclick="changeLangEs()"></a></h4> 
+<!--				</div> <!--EOF column-->
+<!--				<div class="col-sm-1 col-md-1 col-xs-2 text-center">
+<!--					<h4><a id="nutritionLink" href="./nutrition_calc.html" target="blank"><img class="img-responsive button" src="./pics/gray-uk.png" alt="english" onclick="changeLangEn()"></a></h4> 
+<!--				</div> <!--EOF column-->
+<!--				<div class="col-sm-5 col-md-5 col-xs-4 text-center">
+<!--				</div> <!--EOF column-->
+<!--			</div> <!--EOF row  https://bootsnipp.com/snippets/featured/circle-progress-bar  moving-bar http://jsfiddle.net/WEYKL/1/   color-changin bar https://codepen.io/whqet/pen/hfDzp-->  
+		
+			<hr>
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+<div id="miDACE" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-6 text-center">
+			<div class="button well" onclick="totalDACE()">
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>&nbsp;&nbsp;Age</span>
+						<input class="form-control input" type="number" id="age" name="edad" value="50" min="20" max="95" step="1" placeholder="Age">
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->				
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Gender</span>
+						<select class="form-control input" id="gender" name="sexo">
+							<option value="0" selected="selected">Male</option>
+							<option value="1">Female</option>
+						</select>
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->				
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-dashboard"></span>&nbsp;&nbsp;Hypertension</span>
+						<select class="form-control input" id="hyperta" name="hipertension">
+							<option value="0" selected="selected">No</option>
+							<option value="1">Yes</option>
+						</select>
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->				
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-signal"></span>&nbsp;&nbsp;LVEF</span>
+						<select class="form-control input" id="lvef" name="fevi">
+							<option value="0" selected="selected"> >51%</option>
+							<option value="1"> 41-51%</option>
+							<option value="1"> 31-40%</option>
+							<option value="2"> &le;30%</option>
+						</select>
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->
+				
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-road"></span>&nbsp;&nbsp;Peripheral artery disease</span>
+						<select class="form-control input" id="artdisease" name="enfarterial">
+							<option value="0" selected="selected">No</option>
+							<option value="1">Yes</option>
+						</select>
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->
+				
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;Previous CHF</span>
+						<select class="form-control input" id="chfailure" name="iccongestiva">
+							<option value="0" selected="selected">No</option>
+							<option value="1">Yes</option>
+						</select>
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->
+				
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span>&nbsp;&nbsp;Chronic kidney disease</span>
+						<select class="form-control input" id="ckd" name="irc">
+							<option value="0" selected="selected">No</option>
+							<option value="1">Yes</option>
+						</select>
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->
+				
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-signal"></span>&nbsp;&nbsp;Killip class</span>
+						<select class="form-control input" id="killipclass" name="killipclase">
+							<option value="0" selected="selected"> I (no CHF)</option>
+							<option value="1"> II (rales and/or JVD)</option>
+							<option value="2"> III (pulmonary edema)</option>
+							<option value="4"> IV (cardiogenic shock)</option>
+						</select>
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->
+				
+			</div> <!--EOF well sm-->
+		</div> <!--EOF column-->
+		
+		
+		<!--RESULTS COLUMN -->
+		
+		<div class="col-sm-12 col-md-6 text-center">
+			<div id="cabecera" class="container-fluid">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 text-center">
+						<div class="button well well-sm alert-gray" onclick="totalDACE()">
+							<h2> Points = <span id="totDACE"> </span> <span id=""> </span></h2>
+						</div> <!--EOF well sm-->
+					</div> <!--EOF column-->
+				</div> <!--EOF row-->
+				<hr>
+			</div> <!--EOF container-->
+			
+		</div> <!--EOF column-->
+		
+		
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+
+
+
+<div id="contact" class="container-fluid noPrint">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 text-center">
+			<h2> Author</h2>
+			<div class="well well-sm well-sm">
+				<p><span class="fa fa-user-md"></span> Aurora Baluja Gonz&aacute;lez</p>
+	        	<p><span class="fa fa-hospital-o"></span> Servicio de Anestesiolog&iacute;a y Reanimaci&oacute;n. Hospital Cl&iacute;nico Universitario</p>
+	        	<p><span class="glyphicon glyphicon-map-marker"></span> Santiago de Compostela, Espa&ntilde;a</p>
+			</div> <!--EOF well-sm-->
+			<p><h3><a href="https://github.com/aurora-mareviv/anescalc" target="blank" style="color:#404040"><span class="fa fa-github"></a>&nbsp;</span>
+			   <a href="https://talesofr.wordpress.com" target="blank" style="color:#404040"><span class="fa fa-rss"></a></span>
+			   <a href="https://twitter.com/maureviv" target="blank" style="color:#404040"><span class="fa fa-twitter"></a></span>
+			   </h3>
+		   	</p>
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+<div id="license" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h3> </h3>
+			<hr>
+			<p style="color:#bfbfbf"><span class="fa fa-linux" style="color:#bfbfbf"></span> 
+				Licencia - <a href="https://github.com/aurora-mareviv" target="blank" style="color:#bfbfbf">C&oacute;digo</a>: GNU-GPL v3. 
+				<a href="http://getbootstrap.com/" target="blank" style="color:#bfbfbf">Bootstrap CSS</a>, 
+				<a href="https://bootswatch.com/" target="blank" style="color:#bfbfbf">Bootswatch</a>: MIT.
+			</p>
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+
+</body>	
+</html>

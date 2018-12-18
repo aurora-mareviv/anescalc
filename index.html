@@ -24,16 +24,19 @@
 	  
 	  function changeLangEn() {
 		  var titulo = "Simple Calculators";
-		  var titulo2 = "In Anesthesia & Critical Care";
+		  var titulo2 = "In Medicine & Critical Care";
 		  var contents = "Contents";
 		  var contents2 = "Some time-savers for daily use (in English & Spanish)";
 		  var nutricion_calc = "Parenteral Nutrition";
 		  var nutricion_calc2 = "Mini Calculator for Parenteral Nutrition in the Critically Ill Adult";
 		  var ped_calc = "Pediatric Fluidotherapy";
 		  var ped_calc2 = "Fluids and Drugs Calculator for Children in the OR [unfinished]";
+		  var dace_calc = "DACE Score";
+		  var dace_calc2 = "MACE cumulative incidence for diabetic patients post-MI [unpublished]";
 		  var contacto = "Contact";
 		  var nutritionLink = document.getElementById("nutritionLink");
 		  var pedLink = document.getElementById("pedLink");
+		  var daceLink = document.getElementById("daceLink");
 		  
 		  document.getElementById("titulo").innerHTML = titulo;
 		  document.getElementById("titulo2").innerHTML = titulo2;
@@ -43,23 +46,29 @@
 		  document.getElementById("nutricion_calc2").innerHTML = nutricion_calc2;
 		  document.getElementById("ped_calc").innerHTML = ped_calc;
 		  document.getElementById("ped_calc2").innerHTML = ped_calc2;
+		  document.getElementById("dace_calc").innerHTML = dace_calc;
+		  document.getElementById("dace_calc2").innerHTML = dace_calc2;
 		  document.getElementById("contacto").innerHTML = contacto;
 		  nutritionLink.setAttribute('href', "./nutrition_calc.html");
 		  pedLink.setAttribute('href', "./pedi_calc.html");
+		  daceLink.setAttribute('href', "./dace.html");
 	  }
 	  
 	  function changeLangEs() {
 		  var titulo = "Mini Calculadoras";
-		  var titulo2 = "En Anestesia & Cuidados Cr&iacute;ticos";
+		  var titulo2 = "En Medicina & Cuidados Cr&iacute;ticos";
 		  var contents = "Contenidos";
 		  var contents2 = "Ahorrando tiempo en la pr&aacute;ctica diaria (en Ingl&eacute;s & Espa&ntilde;ol)";
 		  var nutricion_calc = "Nutrici&oacute;n Parenteral";
 		  var nutricion_calc2 = "Calculadora Abreviada para Nutrici&oacute;n Parenteral en Adultos";
 		  var ped_calc = "Flu&iacute;dos Pediatr&iacute;a";
 		  var ped_calc2 = "Calculadora para Flu&iacute;dos y F&aacute;rmacos en Pediatr&iacute;a [en construcci&oacute;n]";
+		  var dace_calc = "DACE Score";
+		  var dace_calc2 = "Incidencia acumulada de MACE en diab&eacute;ticos post-IAM [en revisi&oacute;n]";
 		  var contacto = "Contacto";
 		  var nutritionLink = document.getElementById("nutritionLink");
 		  var pedLink = document.getElementById("pedLink");
+		  var daceLink = document.getElementById("daceLink");
 		  
 		  document.getElementById("titulo").innerHTML = titulo;
 		  document.getElementById("titulo2").innerHTML = titulo2;
@@ -69,9 +78,12 @@
 		  document.getElementById("nutricion_calc2").innerHTML = nutricion_calc2;
 		  document.getElementById("ped_calc").innerHTML = ped_calc;
 		  document.getElementById("ped_calc2").innerHTML = ped_calc2;
+		  document.getElementById("dace_calc").innerHTML = dace_calc;
+		  document.getElementById("dace_calc2").innerHTML = dace_calc2;
 		  document.getElementById("contacto").innerHTML = contacto;
 		  nutritionLink.setAttribute('href', "./nutricion_calc.html");
 		  pedLink.setAttribute('href', "./ped_calc.html");
+		  daceLink.setAttribute('href', "./dace.html");
 	  }
 	  
 	  
@@ -95,8 +107,7 @@
 		.panel:hover {
 		    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
 		    background-color: #fff !important;
-		}
-		
+		}		
 		.panel1:hover {
 		    border: 1px solid #d04949;
 		    color: #d04949;
@@ -104,6 +115,10 @@
 		.panel2:hover {
 		    border: 1px solid #6995b0;
 		    color: #6995b0;
+		}
+		.panel3:hover {
+		    border: 1px solid #cca300;
+		    color: #cca300;
 		}
 
 		.panel1 .button:hover {
@@ -115,6 +130,11 @@
 		    border: 1px solid #6995b0;
 		    background-color: #6995b0 !important;
 		    color: #6995b0;
+		}
+		.panel3 .button:hover {
+		    border: 1px solid #cca300;
+		    background-color: #cca300 !important;
+		    color: #cca300;
 		}
 
 		/*.panel-footer .btn:hover {
@@ -171,12 +191,16 @@
 			color: #6995b0;
 			text-decoration: none;
 		}
+		.panel3 a:hover {
+			color: #cca300;
+			text-decoration: none;
+		}
 		
 	</style>		
 			
 			
 			
-	<title>Calculators for Anesthesia & Intensive Care</title>
+	<title>Calculators for Medicine & Intensive Care</title>
 </head>
 
 
@@ -184,7 +208,7 @@
 
 <div id="intro" class="jumbotron text-center">
   <h1><span id="titulo"> Simple Calculators </span> &nbsp; <span class="fa fa-calculator"></a></span></h1> 
-  <h3><span id="titulo2"> In Anesthesia & Critical Care</span> </h3> 
+  <h3><span id="titulo2"> In Medicine & Critical Care</span> </h3> 
   	<div class="row">
 		<div class="col-sm-5 col-md-5 col-xs-4 text-center">
 		</div> <!--EOF column-->
@@ -209,12 +233,12 @@
   </div>
   <div class="row slideanim">
     <div class="col-sm-4 col-xs-12">
-      <div class="panel panel1 panel-default text-center">
+      <div class="panel panel3 panel-default text-center">
 		<a id="nutritionLink" href="./nutricion_calc.html" target="blank">
         <div class="button panel-heading">
           <h1><span id="nutricion_calc"> Parenteral Nutrition</span> </h1>
         </div> <!--EOF panel-heading-->
-        <div class="panel1 panel-body">
+        <div class="panel3 panel-body">
           <p><span id="nutricion_calc2"> Mini Calculator for Parenteral Nutrition in the Critically Ill Adult</span> </p>
         </div> <!--EOF panel-body-->
 		</a>
@@ -229,6 +253,19 @@
         </div> <!--EOF panel-heading-->
         <div class="panel2 panel-body">
           <p><span id="ped_calc2"> Fluids and Drugs Calculator for Children in the OR [unfinished]</span> </p>
+        </div> <!--EOF panel-body-->
+		</a>
+      </div> <!--EOF panel-->    
+    </div>  <!--EOF column-->
+	
+    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel1 panel-default text-center">
+		<a id="daceLink" href="./dace.html" target="blank">
+        <div class="button panel-heading">
+          <h1><span id="dace_calc"> DACE Score</span> </h1>
+        </div> <!--EOF panel-heading-->
+        <div class="panel1 panel-body">
+          <p><span id="dace_calc2"> MACE cumulative incidence for diabetic patients post-MI [under review]</span> </p>
         </div> <!--EOF panel-body-->
 		</a>
       </div> <!--EOF panel-->    
