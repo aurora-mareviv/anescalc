@@ -26,7 +26,197 @@
 		$(document).ready(function(){ 
 			$('#myTab li:eq(1) a').tab('show');
 			});
+	</script>
 		
+	<script>
+		var pointmatrix = {
+		 "Points": [
+		     -1,
+		     0,
+		     1,
+		     2,
+		     3,
+		     4,
+		     5,
+		     6,
+		     7,
+		     8,
+		     9,
+		    10,
+		    11,
+		    12,
+		    13,
+		    14,
+		    15,
+		    16,
+		    17,
+		    18,
+		    19,
+		    20,
+		    21,
+		    22,
+		    23,
+		    24,
+		    25 
+		],
+		"CIF 1 year": [
+		   0.03,
+		  0.03,
+		  0.04,
+		  0.05,
+		  0.06,
+		  0.07,
+		  0.08,
+		  0.09,
+		  0.11,
+		  0.13,
+		  0.15,
+		  0.17,
+		   0.2,
+		  0.23,
+		  0.27,
+		  0.31,
+		  0.36,
+		  0.41,
+		  0.46,
+		  0.52,
+		  0.58,
+		  0.64,
+		   0.7,
+		  0.76,
+		  0.82,
+		  0.87,
+		  0.91 
+		],
+		"CIF 2 year": [
+		   0.04,
+		  0.05,
+		  0.06,
+		  0.07,
+		  0.08,
+		   0.1,
+		  0.12,
+		  0.14,
+		  0.16,
+		  0.19,
+		  0.22,
+		  0.25,
+		  0.29,
+		  0.33,
+		  0.38,
+		  0.44,
+		  0.49,
+		  0.55,
+		  0.61,
+		  0.68,
+		  0.74,
+		   0.8,
+		  0.85,
+		  0.89,
+		  0.93,
+		  0.96,
+		  0.98 
+		],
+		"CIF 3 year": [
+		   0.06,
+		  0.07,
+		  0.08,
+		  0.09,
+		  0.11,
+		  0.13,
+		  0.15,
+		  0.17,
+		   0.2,
+		  0.24,
+		  0.27,
+		  0.32,
+		  0.36,
+		  0.41,
+		  0.47,
+		  0.53,
+		  0.59,
+		  0.65,
+		  0.71,
+		  0.77,
+		  0.83,
+		  0.87,
+		  0.91,
+		  0.94,
+		  0.97,
+		  0.98,
+		  0.99 
+		],
+		"CIF 4 year": [
+		   0.07,
+		  0.08,
+		   0.1,
+		  0.11,
+		  0.13,
+		  0.16,
+		  0.18,
+		  0.21,
+		  0.24,
+		  0.28,
+		  0.33,
+		  0.37,
+		  0.43,
+		  0.48,
+		  0.54,
+		   0.6,
+		  0.66,
+		  0.73,
+		  0.78,
+		  0.84,
+		  0.88,
+		  0.92,
+		  0.95,
+		  0.97,
+		  0.99,
+		  0.99,
+		     1 
+		],
+		"CIF 5 year": [
+		   0.08,
+		  0.09,
+		  0.11,
+		  0.13,
+		  0.15,
+		  0.18,
+		  0.21,
+		  0.24,
+		  0.28,
+		  0.32,
+		  0.37,
+		  0.42,
+		  0.47,
+		  0.53,
+		  0.59,
+		  0.66,
+		  0.72,
+		  0.78,
+		  0.83,
+		  0.88,
+		  0.92,
+		  0.95,
+		  0.97,
+		  0.98,
+		  0.99,
+		     1,
+		     1 
+		] 
+		}
+		
+		var o1year = "CIF 1 year";
+		var mort1year = pointmatrix[o1year];
+		var o2year = "CIF 2 year";
+		var mort2year = pointmatrix[o2year];
+		var o3year = "CIF 3 year";
+		var mort3year = pointmatrix[o3year];
+		var o4year = "CIF 4 year";
+		var mort4year = pointmatrix[o4year];
+		var o5year = "CIF 5 year";
+		var mort5year = pointmatrix[o5year];
+				
 		function totalDACE() {
 			// POINTS			
 			var age = parseFloat(document.getElementById("age").value); 
@@ -40,16 +230,37 @@
 			
 			pointage = ((age-20)/5);
 			floorage = Math.floor(pointage);
-			totDACE = floorage - gen + hta + lvef + artdis + chf + ckd + killp;
-			
+			totDACE = floorage - gen + hta + lvef + artdis + chf + ckd + killp;			
 			document.getElementById("totDACE").innerHTML = totDACE;
+			
+			// lookup mortality data
+			var totDACElookup = totDACE + 1; // correct lookup index because first element is -1 and must be 0			
+			var number1year = Math.round(  mort1year[totDACElookup] *100  );			
+			document.getElementById("totMort1year").innerHTML = number1year + " %";
+			var number2year = Math.round(  mort2year[totDACElookup] *100  );			
+			document.getElementById("totMort2year").innerHTML = number2year + " %";			
+			var number3year = Math.round(  mort3year[totDACElookup] *100  );			
+			document.getElementById("totMort3year").innerHTML = number3year + " %";
+			var number4year = Math.round(  mort4year[totDACElookup] *100  );			
+			document.getElementById("totMort4year").innerHTML = number4year + " %";
+			var number5year = Math.round(  mort5year[totDACElookup] *100  );			
+			document.getElementById("totMort5year").innerHTML = number5year + " %";
+			
+			
+			// setup bar lengths
+			//$('.progress1year').val(number1year); //value is for <progress> tags
+			$('.progress1year').width(number1year + '%'); //translate width from px to percent
+			$('.progress2year').width(number2year + '%');
+			$('.progress3year').width(number3year + '%');
+			$('.progress4year').width(number4year + '%');
+			$('.progress5year').width(number5year + '%');
 		}	
 		
+
 		
 		$(".progress-bar").animate({
 		    width: "70%"
 		}, 2500);
-
 			
 	</script>	
 			
@@ -142,7 +353,9 @@
 			color: #84a5ae;
 		}
 		.btn-danger:hover {
+			border-radius: 20px;
 			background-color: #b62f2f;
+			color: #48586a;
 		}
 		
 		@media print {
@@ -153,93 +366,25 @@
 		
 		
 		/* progress bars */
-		.progress.active .progress-bar {
-		    -webkit-transition: none !important;
-		    transition: none !important;
-		}
-		
-		/* progress bar */
-		/*
-		 * Copyright (c) 2012-2013 Thibaut Courouble
-		 * http://www.cssflow.com
-		 * Licensed under the MIT License
-		 *
-		 * Sass/SCSS source: https://goo.gl/UhXKg
-		 * PSD by Vin Thomas: https://goo.gl/n1M2e
-		 */
-
-		/*body {
-		  font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
-		  color: #404040;
-		  background: #2a2a2a;
-		}*/
-		.container {
-		  margin: 60px auto;
-		  width: 400px;
-		  text-align: center;
-		}
-		.container .progress {
-		  margin: 0 auto;
-		  width: 400px;
-		}
 		.progress {
-		  padding: 4px;
-		  background: rgba(0, 0, 0, 0.25);
-		  border-radius: 6px;
-		  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+		    height: 40px;			
+		    /*
+			margin-bottom: 20px;
+		    overflow: hidden;
+		    background-color: #48586a !important;
+		    border-radius: 4px;
+		    box-shadow: none;
+			*/
 		}
-		.progress-bar {
-		  height: 16px;
-		  border-radius: 4px;
-			background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
-		  transition: 0.4s linear;
-		  transition-property: width, background-color;
-		  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
-		}
-		/*
-		 * Note: using adjacent or general sibling selectors combined with
-		 *       pseudo classes doesn't work in Safari 5.0 and Chrome 12.
-		 *       See this article for more info and a potential fix:
-		 *       https://css-tricks.com/webkit-sibling-bug/
-		 */
-		#five:checked ~ .progress > .progress-bar {
-		  width: 5%;
-		  background-color: #86e01e;
-		}
-		#twentyfive:checked ~ .progress > .progress-bar {
-		  width: 25%;
-		  background-color: #f2d31b;
-		}
-		#fifty:checked ~ .progress > .progress-bar {
-		  width: 50%;
-		  background-color: #f2b01e;
-		}
-		#seventyfive:checked ~ .progress > .progress-bar {
-		  width: 75%;
-		  background-color: #f27011;
-		}
-		#onehundred:checked ~ .progress > .progress-bar {
-		  width: 100%;
-		  background-color: #f63a0f;
-		}
-		.radio {
-		  display: none;
-		}
-		.label {
-		  display: inline-block;
-		  margin: 0 5px 20px;
-		  padding: 3px 8px;
-		  color: #aaa;
-		  text-shadow: 0 1px black;
-		  border-radius: 3px;
-		  cursor: pointer;
-		}
-		.radio:checked + .label {
-		  color: white;
-		  background: rgba(0, 0, 0, 0.25);
+		.progress-bar .bg-info{
+			background-color: #48586a
 		}
 		
-
+		.progress-label {
+		    float: left;
+			margin-left: 1em;
+		    margin-right: 1em;
+		}
 	   
 	</style>		
 			
@@ -373,6 +518,80 @@
 					</div> <!--EOF column-->
 				</div> <!--EOF row-->
 				<hr>
+				
+				
+				<!--progress bars -->
+				<div class="row">
+					<div class="col-sm-12 col-md-12 text-center">
+						<div class="progress">
+							<h5 class="progress-label">1-year incidence</h5>
+							<div class="progress-bar bg-info progress1year" role="progressbar" style="width: 5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+								<span id="totMort1year"> </span>
+							</div>
+						</div>	
+					</div> <!--EOF column-->
+				</div> <!--EOF row-->
+				<div class="row">
+					<div class="col-sm-12 col-md-12 text-center">
+						<div class="progress">
+							<h5 class="progress-label">2-year incidence</h5>
+							<div class="progress-bar bg-info progress2year" role="progressbar" style="width: 5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+								<span id="totMort2year"> </span>
+							</div>
+						</div>		
+					</div> <!--EOF column-->
+				</div> <!--EOF row-->
+				<div class="row">
+					<div class="col-sm-12 col-md-12 text-center">
+						<div class="progress">
+							<h5 class="progress-label">3-year incidence</h5>
+							<div class="progress-bar bg-info progress3year" role="progressbar" style="width: 5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+								<span id="totMort3year"> </span>
+							</div>
+						</div>				
+					</div> <!--EOF column-->
+				</div> <!--EOF row-->
+				<div class="row">
+					<div class="col-sm-12 col-md-12 text-center">
+						<div class="progress">
+							<h5 class="progress-label">4-year incidence</h5>
+							<div class="progress-bar bg-info progress4year" role="progressbar" style="width: 5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+								<span id="totMort4year"> </span>
+							</div>
+						</div>					
+					</div> <!--EOF column-->
+				</div> <!--EOF row-->
+				<div class="row">
+					<div class="col-sm-12 col-md-12 text-center">
+						<div class="progress">
+							<h5 class="progress-label">5-year incidence</h5>
+							<div class="progress-bar bg-info progress5year" role="progressbar" style="width: 5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+								<span id="totMort5year"> </span>
+							</div>
+						</div>				
+					</div> <!--EOF column-->
+				</div> <!--EOF row-->
+				
+
+				
+				
+<!--				<div class="row">
+<!--					<progress class="progress progress1year" value="10" max="100"></progress>
+<!--				</div> <!--EOF row-->
+<!--				<div class="row">
+<!--					<progress class="progress progress2year" value="10" max="100"></progress>
+<!--				</div> <!--EOF row-->
+<!--				<div class="row">
+<!--					<progress class="progress progress3year" value="10" max="100"></progress>
+<!--				</div> <!--EOF row-->
+<!--				<div class="row">
+<!--					<progress class="progress progress4year" value="10" max="100"></progress>
+<!--				</div> <!--EOF row-->
+<!--				<div class="row">
+<!--					<progress class="progress progress5year" value="10" max="100"></progress>
+<!--				</div> <!--EOF row-->
+
+			
 			</div> <!--EOF container-->
 			
 		</div> <!--EOF column-->
