@@ -508,8 +508,8 @@
 		
 		<!--RESULTS COLUMN -->
 		
-		<div class="col-sm-12 col-md-6 text-center">
-			<div id="results" class="container-fluid" onclick="totalDACE()">
+		<div class="col-sm-12 col-md-6 text-center" onclick="totalDACE()">
+			<div id="results" class="container-fluid">
 				<!--total points -->
 				<div class="row">
 					<div class="col-sm-12 col-md-12 text-center">
@@ -603,7 +603,205 @@
 		
 		
 	</div> <!--EOF row-->
+
 </div> <!--EOF container-->
+
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#evidence" data-toggle="tab" data-value="EVIDENCE">Evidence&nbsp;&nbsp;<span class="glyphicon glyphicon-bookmark"></a>
+				</li>
+				<li>
+					<a href="#byhand" data-toggle="tab" data-value="BYHAND">Pen & Paper Calculation &nbsp;&nbsp;<span class="glyphicon glyphicon-pencil"></a>
+				</li>
+
+			</ul>
+			
+			
+			<!---- TABBABLE TABS ---->
+
+			<div class="tab-content"> <!---- Tabbable tabpane - tab-content---->
+
+				<div class="tab-pane" data-value="BYHAND" id="byhand"> <!-- tabbable tabpane-->
+					<div class="row">
+						<div class="col-sm-12 col-md-12 form-group">
+							<div class="row"> <!--fields -->
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>Age &nbsp;&nbsp;<span class="glyphicon glyphicon-calendar"></span></h4>
+										<ul>
+											<li> Option 1: add 1 point every 5 years, starting from age 20 to 95.</li>
+											<li> Option 2: points = (age - 20)/5 (rounded to floor).</li>
+											<li> Range: 0-15 points.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>Gender &nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></h4>
+										<ul>
+											<li> Female: -1 point.</li>
+											<li> Male: 0 points.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>LVEF &nbsp;&nbsp;<span class="glyphicon glyphicon-signal"></span></h4>
+										<ul>
+											<li> >51%: 0 points.</li>
+											<li> 30-51%: 1 point.</li>
+											<li> < 30% : 2 points.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>Killip class &nbsp;&nbsp;<span class="glyphicon glyphicon-signal"></span></h4>
+										<ul>
+											<li> Killip I: 0 points.</li>
+											<li> Killip II: 1 point.</li>
+											<li> Killip III: 2 points.</li>
+											<li> Killip IV: 4 points.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+								
+							</div> <!--EOF row-->
+							
+							<div class="row"> <!--fields -->	
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>Hypertension &nbsp;&nbsp;<span class="glyphicon glyphicon-dashboard"></span></h4>
+										<ul>
+											<li> 1 point if diagnosed.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>Peripheral artery disease &nbsp;&nbsp;<span class="glyphicon glyphicon-road"></span></h4>
+										<ul>
+											<li> 1 point if diagnosed.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>Previous CHF &nbsp;&nbsp;<span class="glyphicon glyphicon-heart"></span></h4>
+										<ul>
+											<li> 1 point if diagnosed.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>Chronic Kidney Disease &nbsp;&nbsp;<span class="glyphicon glyphicon-filter"></span></h4>
+										<ul>
+											<li> 1 point if diagnosed.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+							</div> <!--EOF row-->
+							
+							<div class="row">
+								<div class="col-sm-12 col-md-312">
+										Abbreviations: LVEF=left ventricle ejection fraction; CHF=congestive heart failure.
+								</div> <!--EOF column-->
+							</div> <!--EOF row-->
+							
+			
+						</div> <!--EOF column-->
+					</div> <!--EOF row-->
+				</div> <!-- EOF tabbable tabpane-->
+				
+				<div class="tab-pane active" data-value="EVIDENCE" id="evidence"> <!-- tabbable tabpane-->
+					<div class="row">
+						<div class="col-sm-12 col-md-12 form-group">
+							<div class="row"> <!--fields -->
+								<div class="col-sm-12 col-md-1">
+									<h3> </h3>
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-10">
+									<h3> </h3>
+									<div class="well ">
+										<h4>The DACE registry </h4>
+										<br>
+										<p>A cohort of 1563 diabetic patients who were admitted due to acute coronary syndrome (ACS), between Nov 2003 and Jan 2017.</p>
+										<p>They were followed for MACE events and all-cause mortality.</p>
+										<p>Exclusion criteria:</p>
+											<ul>
+												<li>162 patients were excluded from the model due to non-available lVEF. </li>
+											</ul>
+										<p>Definitions: </p>
+											<ul>
+												<li>MACE event: either cardiovascular mortality, sudden cardiac death, cerebrovascular accident or heart failure episode. </li>
+												<li>ACS: was defined by the presence of typical clinical symptoms of chest pain and electrocardiographic changes indicative of myocardial ischemia/lesion and/or elevation of serum markers of myocardial damage <a href="https://doi.org/10.1093/eurheartj/ehx393" target="blank">[Ibanez, 2018]</a>. </li>
+												<li>CHF: history of congestive heart failure was coded if patients had at least one hospitalization with this main diagnosis at discharge. It was also identified in those with typical signs and symptoms of HF who had a compatible imaging diagnosis (X-ray or echocardiogram). </li>
+												<li>LVEF: left ventricle ejection fraction was coded in: no dysfunction (LVEF > 51%) mild (LVEF 41-51%), moderate (LVEF 30-40%) or severe dysfunction (<30%) <a href="https://doi.org/10.1016/j.echo.2014.10.003" target="blank">[Lang, 2015]</a>. </li>
+											</ul>
+										<p>Outcomes:</p>
+											<ul>
+												<li>875 patients suffered a MACE event, from which 401 patients died. </li>
+												<li>156 patients died from non-cardiovascular causes. </li>
+											</ul>
+										<p> </p>
+										<p>Statistical rationale: </p>
+											<ul>
+												<li>The DACE score is based in a Fine & Gray model for competing risks. </li>
+												<li>A competing risk (CR) is an event whose occurrence either precludes the occurrence of another event under examination or fundamentally alters the probability of occurrence of this other event.</li>
+												<li>Kaplan-Meier methods are not suitable for modeling CRs, as they tend to overestimate incidence.</li>
+												<li>Fine & Gray models have use in predicting an individual’s incidence of an event (MACE), taking into account the possibility that a competing event (all-cause mortality) occurs. </li>
+												<li>The point-based score transforms the time-to-event model into a simple set of operations, to facilitate its use in the clinical setting. </li>
+											</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-1">
+									<h3> </h3>
+								</div> <!--EOF column-->
+							</div> <!--EOF row-->
+			
+						</div> <!--EOF column-->
+					</div> <!--EOF row-->
+				</div> <!-- EOF tabbable tabpane-->
+				
+				
+				<div class="tab-pane " data-value="OTHER" id="other"> <!-- tabbable tabpane-->
+					<div class="row">
+						<div class="col-sm-12 col-md-12 form-group">
+							<div class="row"> <!--fields -->
+								<div class="col-sm-12 col-md-12">
+									<h3> </h3>
+
+								</div> <!--EOF column-->
+							</div> <!--EOF row-->
+			
+						</div> <!--EOF column-->
+					</div> <!--EOF row-->
+				</div> <!-- EOF tabbable tabpane-->
+
+			</div> <!--EOF Tabbable tabpane - tab-content-->
+		</div> <!-- EOF tabs 12wide column-->
+	</div> <!-- EOF main tabpane row-->
+</div> <!--EOF container-->
+
+
+
+
+
+
 
 
 
@@ -632,7 +830,7 @@
 			<h3> </h3>
 			<hr>
 			<p style="color:#bfbfbf"><span class="fa fa-linux" style="color:#bfbfbf"></span> 
-				Licencia - <a href="https://github.com/aurora-mareviv" target="blank" style="color:#bfbfbf">C&oacute;digo</a>: GNU-GPL v3. 
+				License - <a href="https://github.com/aurora-mareviv" target="blank" style="color:#bfbfbf">Code</a>: GNU-GPL v3. 
 				<a href="http://getbootstrap.com/" target="blank" style="color:#bfbfbf">Bootstrap CSS</a>, 
 				<a href="https://bootswatch.com/" target="blank" style="color:#bfbfbf">Bootswatch</a>: MIT.
 			</p>
