@@ -236,15 +236,15 @@
 			// lookup mortality data
 			var totDACElookup = totDACE + 1; // correct lookup index because first element is -1 and must be 0			
 			var number1year = Math.round(  mort1year[totDACElookup] *100  );			
-			document.getElementById("totMort1year").innerHTML = number1year + " %";
+			document.getElementById("totMort1year").innerHTML = "<h5>" + number1year + " % </h5>";
 			var number2year = Math.round(  mort2year[totDACElookup] *100  );			
-			document.getElementById("totMort2year").innerHTML = number2year + " %";			
+			document.getElementById("totMort2year").innerHTML = "<h5>" + number2year + " % </h5>";			
 			var number3year = Math.round(  mort3year[totDACElookup] *100  );			
-			document.getElementById("totMort3year").innerHTML = number3year + " %";
+			document.getElementById("totMort3year").innerHTML = "<h5>" + number3year + " % </h5>";
 			var number4year = Math.round(  mort4year[totDACElookup] *100  );			
-			document.getElementById("totMort4year").innerHTML = number4year + " %";
+			document.getElementById("totMort4year").innerHTML = "<h5>" + number4year + " % </h5>";
 			var number5year = Math.round(  mort5year[totDACElookup] *100  );			
-			document.getElementById("totMort5year").innerHTML = number5year + " %";
+			document.getElementById("totMort5year").innerHTML = "<h5>" + number5year + " % </h5>";
 			
 			
 			// setup bar lengths
@@ -434,8 +434,8 @@
 					<div class="input-group">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Gender</span>
 						<select class="form-control input" id="gender" name="sexo">
-							<option value="0" selected="selected">Male</option>
-							<option value="1">Female</option>
+							<option value="0" selected="selected"> <h5> Male </h5> </option>
+							<option value="1"> <h5> Female </h5> </option>
 						</select>
 					</div><!--EOF input-group-->
 				</div> <!--EOF form-group-->				
@@ -443,8 +443,8 @@
 					<div class="input-group">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-dashboard"></span>&nbsp;&nbsp;Hypertension</span>
 						<select class="form-control input" id="hyperta" name="hipertension">
-							<option value="0" selected="selected">No</option>
-							<option value="1">Yes</option>
+							<option value="0" selected="selected"> <h5> No </h5> </option>
+							<option value="1"> <h5> Yes </h5> </option>
 						</select>
 					</div><!--EOF input-group-->
 				</div> <!--EOF form-group-->				
@@ -452,10 +452,10 @@
 					<div class="input-group">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-signal"></span>&nbsp;&nbsp;LVEF</span>
 						<select class="form-control input" id="lvef" name="fevi">
-							<option value="0" selected="selected"> >51%</option>
-							<option value="1"> 41-51%</option>
-							<option value="1"> 31-40%</option>
-							<option value="2"> &le;30%</option>
+							<option value="0" selected="selected"> <h5> >51% </h5> </option>
+							<option value="1"> <h5> 41-51% </h5> </option>
+							<option value="1"> <h5> 31-40% </h5> </option>
+							<option value="2"> <h5> &le;30% </h5> </option>
 						</select>
 					</div><!--EOF input-group-->
 				</div> <!--EOF form-group-->
@@ -464,8 +464,8 @@
 					<div class="input-group">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-road"></span>&nbsp;&nbsp;Peripheral artery disease</span>
 						<select class="form-control input" id="artdisease" name="enfarterial">
-							<option value="0" selected="selected">No</option>
-							<option value="1">Yes</option>
+							<option value="0" selected="selected"> <h5> No </h5> </option>
+							<option value="1"> <h5> Yes </h5> </option>
 						</select>
 					</div><!--EOF input-group-->
 				</div> <!--EOF form-group-->
@@ -474,8 +474,8 @@
 					<div class="input-group">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;Previous CHF</span>
 						<select class="form-control input" id="chfailure" name="iccongestiva">
-							<option value="0" selected="selected">No</option>
-							<option value="1">Yes</option>
+							<option value="0" selected="selected"> <h5> No </h5> </option>
+							<option value="1"> <h5> Yes </h5> </option>
 						</select>
 					</div><!--EOF input-group-->
 				</div> <!--EOF form-group-->
@@ -484,8 +484,8 @@
 					<div class="input-group">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span>&nbsp;&nbsp;Chronic kidney disease</span>
 						<select class="form-control input" id="ckd" name="irc">
-							<option value="0" selected="selected">No</option>
-							<option value="1">Yes</option>
+							<option value="0" selected="selected"> <h5> No </h5> </option>
+							<option value="1"> <h5> Yes </h5> </option>
 						</select>
 					</div><!--EOF input-group-->
 				</div> <!--EOF form-group-->
@@ -494,10 +494,10 @@
 					<div class="input-group">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-signal"></span>&nbsp;&nbsp;Killip class</span>
 						<select class="form-control input" id="killipclass" name="killipclase">
-							<option value="0" selected="selected"> I (no CHF)</option>
-							<option value="1"> II (rales and/or JVD)</option>
-							<option value="2"> III (pulmonary edema)</option>
-							<option value="4"> IV (cardiogenic shock)</option>
+							<option value="0" selected="selected"> <h5> I (no CHF) </h5> </option>
+							<option value="1"> <h5> II (rales and/or JVD) </h5> </option>
+							<option value="2"> <h5> III (pulmonary edema) </h5> </option>
+							<option value="4"> <h5> IV (cardiogenic shock) </h5> </option>
 						</select>
 					</div><!--EOF input-group-->
 				</div> <!--EOF form-group-->
