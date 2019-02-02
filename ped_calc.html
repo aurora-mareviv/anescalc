@@ -319,6 +319,92 @@
 			document.getElementById("vanco").innerHTML = vanco;
 			document.getElementById("amika").innerHTML = amika;
 			
+			//AMINAS
+			// Nora
+			var norepimg = parseFloat(document.getElementById("norepimg").value); // mg in dilution 
+			var norepiml = parseFloat(document.getElementById("norepiml").value); // mL in dilution 
+			var norepispeed = parseFloat(document.getElementById("norepispeed").value); // pump velocity 
+			var norepiunits = document.getElementById("norepiunits").value; // units of pump velocity (that I want to change)
+			var norepiunitsFinal = document.getElementById("norepiunitsFinal").value; // desired units of pump velocity
+			if (norepiunits == "mlh" & norepiunitsFinal == "mlh") {
+				var noradrena = norepispeed;
+				var noradrenaUds = norepiunitsFinal;
+			} else {
+				if (norepiunits == "ugmin" & norepiunitsFinal == "ugmin") {
+					var noradrena = norepispeed;
+					var noradrenaUds = norepiunitsFinal;
+				} else {
+					if (norepiunits == "ugmin" & norepiunitsFinal == "mlh") {
+						var noradrena = (norepiml * norepispeed * 60)/(norepimg * 1000);
+						var noradrenaUds = norepiunitsFinal;
+					} else {
+						if (norepiunits == "mlh" & norepiunitsFinal == "ugmin"){
+							var noradrena = ( (norepimg * norepispeed * 1000)/(norepiml * 60) ).toFixed(1);
+							var noradrenaUds = norepiunitsFinal;
+						}
+					}
+				}
+			}
+			document.getElementById("noradrena").innerHTML = noradrena;
+			document.getElementById("noradrenaUds").innerHTML = noradrenaUds;
+			
+			// Dobuta
+			var dobutrexmg = parseFloat(document.getElementById("dobutrexmg").value); // mg in dilution 
+			var dobutrexml = parseFloat(document.getElementById("dobutrexml").value); // mL in dilution 
+			var dobutrexspeed = parseFloat(document.getElementById("dobutrexspeed").value); // pump velocity 
+			var dobutrexunits = document.getElementById("dobutrexunits").value; // units of pump velocity (that I want to change)
+			var dobutrexunitsFinal = document.getElementById("dobutrexunitsFinal").value; // desired units of pump velocity			
+			if (dobutrexunits == "mlh" & dobutrexunitsFinal == "mlh") {
+				var dobutamina = dobutrexspeed;
+				var dobutaUds = dobutrexunitsFinal;
+			} else {
+				if (dobutrexunits == "ugmin" & dobutrexunitsFinal == "ugmin") {
+					var dobutamina = dobutrexspeed;
+					var dobutaUds = dobutrexunitsFinal;
+				} else {
+					if (dobutrexunits == "ugmin" & dobutrexunitsFinal == "mlh") {
+						var dobutamina = (dobutrexml * dobutrexspeed * 60)/(dobutrexmg * 1000);
+						var dobutaUds = dobutrexunitsFinal;
+					} else {
+						if (dobutrexunits == "mlh" & dobutrexunitsFinal == "ugmin"){
+							var dobutamina = ( (dobutrexmg * dobutrexspeed * 1000)/(dobutrexml * 60) ).toFixed(1);
+							var dobutaUds = dobutrexunitsFinal;
+						}
+					}
+				}
+			}
+			document.getElementById("dobutamina").innerHTML = dobutamina;
+			document.getElementById("dobutaUds").innerHTML = dobutaUds;
+			
+			// Nitro
+			var nitrymg = parseFloat(document.getElementById("nitrymg").value); // mg in dilution 
+			var nitryml = parseFloat(document.getElementById("nitryml").value); // mL in dilution 
+			var nitryspeed = parseFloat(document.getElementById("nitryspeed").value); // pump velocity 
+			var nitryunits = document.getElementById("nitryunits").value; // units of pump velocity (that I want to change)
+			var nitryunitsFinal = document.getElementById("nitryunitsFinal").value; // desired units of pump velocity			
+			if (nitryunits == "mlh" & nitryunitsFinal == "mlh") {
+				var nitroglicerina = nitryspeed;
+				var nitroUds = nitryunitsFinal;
+			} else {
+				if (nitryunits == "ugmin" & nitryunitsFinal == "ugmin") {
+					var nitroglicerina = nitryspeed;
+					var nitroUds = nitryunitsFinal;
+				} else {
+					if (nitryunits == "ugmin" & nitryunitsFinal == "mlh") {
+						var nitroglicerina = (nitryml * nitryspeed * 60)/(nitrymg * 1000);
+						var nitroUds = nitryunitsFinal;
+					} else {
+						if (nitryunits == "mlh" & nitryunitsFinal == "ugmin"){
+							var nitroglicerina = ( (nitrymg * nitryspeed * 1000)/(nitryml * 60) ).toFixed(1);
+							var nitroUds = nitryunitsFinal;
+						}
+					}
+				}
+			}
+			document.getElementById("nitroglicerina").innerHTML = nitroglicerina;
+			document.getElementById("nitroUds").innerHTML = nitroUds;
+			
+			
 		}	
 					
 			
@@ -339,6 +425,11 @@
 			background-color: #1d4249;
 			color: #ffffff;
 			border-color: #1d4249;
+			}
+		.alert-gray2{
+			background-color: #bfbfbf;
+			color: #ffffff;
+			border-color: #bfbfbf;
 			}
 		.alert-pink{
 			background-color: #b15a87;
@@ -833,7 +924,201 @@
 								<div class="col-sm-12 col-md-12">
 									<h2 class="text-center"> Calculadora de Aminas </h2>
 								    <h2></h2>
-									
+									<div id="aminas" class="container-fluid">
+										<div class="row">
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm" onclick="totalPedCalc()">
+													<h3> Dilucion </h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="well well-sm" onclick="totalPedCalc()">
+													<h3> Velocidad </h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm" onclick="totalPedCalc()">
+													<h3> Amina </h3>
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+										</div> <!--EOF row-->
+										
+										<div class="row">
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-pink" onclick="totalPedCalc()">
+													<h4>Noradrenalina</h4>
+													<div class="row">
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="noramg"><h4>&nbsp; Miligramos &nbsp;</h4></label>
+																<input class="form-control input" type="number" id="norepimg" name="noramg" value="10" min="0" max="500" step="1">
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="noraml"><h4>&nbsp; Mililitros &nbsp;</h4></label>
+																<input class="form-control input" type="number" id="norepiml" name="noraml" value="100" min="0" max="1000" step="1">
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+													</div> <!--EOF row-->
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="well well-sm alert-pink" onclick="totalPedCalc()">
+													<h4>Noradrenalina</h4>
+													<div class="row">
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="noraveloc"><h4>Dosis</h4></label>
+																<input class="form-control input" type="number" id="norepispeed" name="noraveloc" value="1" min="0" max="10000" step="1">
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="noraunids"><h4>&nbsp; Unidades &nbsp;</h4></label>
+																<select class="form-control input" id="norepiunits" name="noraunids">
+																	<option value="mlh">ml/h</option>
+																	<option value="ugmin" selected="selected">&micro;g/min</option>
+																	<!--<option value="mlmin">ml/min</option>-->
+																</select>
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+													</div> <!--EOF row-->
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-blue2" onclick="totalPedCalc()">
+													<h3> Noradrenalina = <span id="noradrena"> </span> <span class="font-sm" id="noradrenaUds"> </span></h3>
+													<div class="form-group form-inline">
+														<label class="control-label" for="noraunidsFinal"><h4>&nbsp; Unidades &nbsp;</h4></label>
+														<select class="form-control input" id="norepiunitsFinal" name="noraunidsFinal">
+															<option value="mlh" selected="selected">ml/h</option>
+															<option value="ugmin">&micro;g/min</option>
+															<!--<option value="mlmin">ml/min</option>-->
+														</select>
+													</div> <!--EOF form-group-->
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+										</div> <!--EOF row-->
+										
+										<div class="row">
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-pink2" onclick="totalPedCalc()">
+													<h4>Dobutamina</h4>
+													<div class="row">
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="dobutamg"><h4>&nbsp; Miligramos &nbsp;</h4></label>
+																<input class="form-control input" type="number" id="dobutrexmg" name="dobutamg" value="25" min="0" max="500" step="1">
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="dobutaml"><h4>&nbsp; Mililitros &nbsp;</h4></label>
+																<input class="form-control input" type="number" id="dobutrexml" name="dobutaml" value="250" min="0" max="1000" step="1">
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+													</div> <!--EOF row-->
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="well well-sm alert-pink2" onclick="totalPedCalc()">
+													<h4>Dobutamina</h4>
+													<div class="row">
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="dobutaveloc"><h4>Dosis</h4></label>
+																<input class="form-control input" type="number" id="dobutrexspeed" name="dobutaveloc" value="1" min="0" max="10000" step="1">
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="dobutaunids"><h4>&nbsp; Unidades &nbsp;</h4></label>
+																<select class="form-control input" id="dobutrexunits" name="dobutaunids">
+																	<option value="mlh">ml/h</option>
+																	<option value="ugmin" selected="selected">&micro;g/min</option>
+																	<!--<option value="mlmin">ml/min</option>-->
+																</select>
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+													</div> <!--EOF row-->
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-blue1" onclick="totalPedCalc()">
+													<h3> Dobutamina = <span id="dobutamina"> </span> <span class="font-sm" id="dobutaUds"> </span></h3>
+													<div class="form-group form-inline">
+														<label class="control-label" for="dobutaunidsFinal"><h4>&nbsp; Unidades &nbsp;</h4></label>
+														<select class="form-control input" id="dobutrexunitsFinal" name="dobutaunidsFinal">
+															<option value="mlh" selected="selected">ml/h</option>
+															<option value="ugmin">&micro;g/min</option>
+															<!--<option value="mlmin">ml/min</option>-->
+														</select>
+													</div> <!--EOF form-group-->
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+										</div> <!--EOF row-->
+										
+										<div class="row">
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-pink" onclick="totalPedCalc()">
+													<h4>Nitroglicerina</h4>
+													<div class="row">
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="nitromg"><h4>&nbsp; Miligramos &nbsp;</h4></label>
+																<input class="form-control input" type="number" id="nitrymg" name="nitromg" value="10" min="0" max="500" step="1">
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="nitroml"><h4>&nbsp; Mililitros &nbsp;</h4></label>
+																<input class="form-control input" type="number" id="nitryml" name="nitroml" value="100" min="0" max="1000" step="1">
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+													</div> <!--EOF row-->
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="well well-sm alert-pink" onclick="totalPedCalc()">
+													<h4>Nitroglicerina</h4>
+													<div class="row">
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="nitroveloc"><h4>Dosis</h4></label>
+																<input class="form-control input" type="number" id="nitryspeed" name="nitroveloc" value="1" min="0" max="10000" step="1">
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="nitrounids"><h4>&nbsp; Unidades &nbsp;</h4></label>
+																<select class="form-control input" id="nitryunits" name="nitrounids">
+																	<option value="mlh">ml/h</option>
+																	<option value="ugmin" selected="selected">&micro;g/min</option>
+																	<!--<option value="mlmin">ml/min</option>-->
+																</select>
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+													</div> <!--EOF row-->
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="well well-sm alert-blue2" onclick="totalPedCalc()">
+													<h3> Nitroglicerina = <span id="nitroglicerina"> </span> <span class="font-sm" id="nitroUds"> </span></h3>
+													<div class="form-group form-inline">
+														<label class="control-label" for="nitrounidsFinal"><h4>&nbsp; Unidades &nbsp;</h4></label>
+														<select class="form-control input" id="nitryunitsFinal" name="nitrounidsFinal">
+															<option value="mlh" selected="selected">ml/h</option>
+															<option value="ugmin">&micro;g/min</option>
+															<!--<option value="mlmin">ml/min</option>-->
+														</select>
+													</div> <!--EOF form-group-->
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+										</div> <!--EOF row-->
+										
+										<hr>
+									</div> <!--EOF container-->
 									
 									
 									
