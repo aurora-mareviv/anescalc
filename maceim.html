@@ -1,0 +1,984 @@
+<!-- <%@ language="javascript"%> -->
+<!DOCTYPE html>
+<html lang="en-150">
+	
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" media="all"> <!--bootswatch-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!--google icons-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--font awesome 20px-sm-->	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-104312945-2', 'auto');
+	  ga('send', 'pageview');
+	</script>
+	
+	<script>
+		$(document).ready(function(){ 
+			$('#myTab li:eq(1) a').tab('show');
+			});
+	</script>
+		
+	<script>
+		var pointmatrix = {
+			 "Points": [
+			      0,
+			     1,
+			     2,
+			     3,
+			     4,
+			     5,
+			     6,
+			     7,
+			     8,
+			     9,
+			    10,
+			    11,
+			    12,
+			    13,
+			    14,
+			    15,
+			    16,
+			    17,
+			    18,
+			    19,
+			    20,
+			    21,
+			    22,
+			    23,
+			    24 
+			],
+			"CIF 1 year": [
+			   0.03,
+			  0.03,
+			  0.04,
+			  0.04,
+			  0.05,
+			  0.05,
+			  0.06,
+			  0.07,
+			  0.08,
+			  0.09,
+			   0.1,
+			  0.11,
+			  0.12,
+			  0.14,
+			  0.15,
+			  0.17,
+			  0.19,
+			  0.21,
+			  0.24,
+			  0.26,
+			  0.29,
+			  0.32,
+			  0.36,
+			  0.39,
+			  0.43 
+			],
+			"CIF 2 year": [
+			   0.06,
+			  0.07,
+			  0.08,
+			  0.09,
+			   0.1,
+			  0.11,
+			  0.13,
+			  0.14,
+			  0.16,
+			  0.18,
+			   0.2,
+			  0.22,
+			  0.24,
+			  0.27,
+			   0.3,
+			  0.33,
+			  0.36,
+			   0.4,
+			  0.44,
+			  0.48,
+			  0.52,
+			  0.56,
+			  0.61,
+			  0.65,
+			   0.7 
+			],
+			"CIF 3 year": [
+			   0.08,
+			  0.09,
+			   0.1,
+			  0.11,
+			  0.13,
+			  0.14,
+			  0.16,
+			  0.18,
+			   0.2,
+			  0.22,
+			  0.25,
+			  0.27,
+			   0.3,
+			  0.33,
+			  0.37,
+			   0.4,
+			  0.44,
+			  0.48,
+			  0.53,
+			  0.57,
+			  0.61,
+			  0.66,
+			   0.7,
+			  0.75,
+			  0.79 
+			],
+			"CIF 4 year": [
+			   0.09,
+			   0.1,
+			  0.12,
+			  0.13,
+			  0.15,
+			  0.16,
+			  0.18,
+			   0.2,
+			  0.23,
+			  0.25,
+			  0.28,
+			  0.31,
+			  0.34,
+			  0.38,
+			  0.42,
+			  0.45,
+			   0.5,
+			  0.54,
+			  0.58,
+			  0.63,
+			  0.67,
+			  0.72,
+			  0.76,
+			   0.8,
+			  0.84 
+			],
+			"CIF 5 year": [
+			   0.11,
+			  0.12,
+			  0.14,
+			  0.15,
+			  0.17,
+			  0.19,
+			  0.21,
+			  0.23,
+			  0.26,
+			  0.29,
+			  0.32,
+			  0.35,
+			  0.39,
+			  0.43,
+			  0.47,
+			  0.51,
+			  0.55,
+			  0.59,
+			  0.64,
+			  0.68,
+			  0.73,
+			  0.77,
+			  0.81,
+			  0.85,
+			  0.88 
+			] 
+			}
+
+
+		
+		var o1year = "CIF 1 year";
+		var mort1year = pointmatrix[o1year];
+		var o2year = "CIF 2 year";
+		var mort2year = pointmatrix[o2year];
+		var o3year = "CIF 3 year";
+		var mort3year = pointmatrix[o3year];
+		var o4year = "CIF 4 year";
+		var mort4year = pointmatrix[o4year];
+		var o5year = "CIF 5 year";
+		var mort5year = pointmatrix[o5year];
+		
+		function totalMACEIM() {
+			// POINTS			
+			var age = parseFloat(document.getElementById("age").value); 
+			var gender = parseFloat(document.getElementById("gender").value); 
+			var anaemia = parseFloat(document.getElementById("anaemia").value); 
+			var afib = parseFloat(document.getElementById("afib").value);
+			var diabetic = parseFloat(document.getElementById("diabetic").value); 
+			var artdisease = parseFloat(document.getElementById("artdisease").value); 
+			var gfr = parseFloat(document.getElementById("gfr").value); 
+			var hfailure = parseFloat(document.getElementById("hfailure").value); 
+			
+		
+			totMACEIM = age + gender + anaemia + afib + diabetic + artdisease + gfr + hfailure;			
+			document.getElementById("totMACEIM").innerHTML = totMACEIM;
+			
+			// lookup mortality data
+			// var totMACEIMlookup = totMACEIM + 1; // correct lookup index because first element is -1 and must be 0	
+			var totMACEIMlookup = totMACEIM; // correct lookup index because first element is -1 and must be 0			
+			var number1year = Math.round(  mort1year[totMACEIMlookup] *100  );			
+			document.getElementById("totMort1year").innerHTML = "<h5>" + number1year + " % </h5>";
+			var number2year = Math.round(  mort2year[totMACEIMlookup] *100  );			
+			document.getElementById("totMort2year").innerHTML = "<h5>" + number2year + " % </h5>";			
+			var number3year = Math.round(  mort3year[totMACEIMlookup] *100  );			
+			document.getElementById("totMort3year").innerHTML = "<h5>" + number3year + " % </h5>";
+			var number4year = Math.round(  mort4year[totMACEIMlookup] *100  );			
+			document.getElementById("totMort4year").innerHTML = "<h5>" + number4year + " % </h5>";
+			var number5year = Math.round(  mort5year[totMACEIMlookup] *100  );			
+			document.getElementById("totMort5year").innerHTML = "<h5>" + number5year + " % </h5>";
+			
+			// setup bar lengths
+			//$('.progress1year').val(number1year); //value is for <progress> tags
+			$('.progress1year').width(number1year + '%'); //translate width from px to percent
+			$('.progress2year').width(number2year + '%');
+			$('.progress3year').width(number3year + '%');
+			$('.progress4year').width(number4year + '%');
+			$('.progress5year').width(number5year + '%');
+			
+			
+			// Anemia banner depending on gender
+			if (gender === 0) {
+				var anemiasexmin = " &le;12g/dL";
+				var anemiasex = "Females &le;12g/dL";
+			} else {
+				var anemiasexmin = " &le;13g/dL";
+				var anemiasex = "Males &le;13g/dL";		
+			} 
+			document.getElementById("anemiasexmin").innerHTML = anemiasexmin;
+			document.getElementById("anemiasex").innerHTML = anemiasex;
+			
+		}	
+		
+
+		
+		$(".progress-bar").animate({
+		    width: "70%"
+		}, 2500);
+			
+	</script>	
+			
+	<style>
+		.input-lg {
+		  font-size: 30px;
+		}
+		.input {
+		  font-size: 20px;
+		}
+		.font-sm {
+			font-size: 0.7em;
+		}
+
+		.nav-tabs > li > a{
+			color: #84a5ae;
+		}
+		.btn-danger:hover {
+			border-radius: 20px;
+			background-color: #b62f2f;
+			color: #48586a;
+		}
+		
+		@media print {
+			.noPrint {
+			       display:none;
+				   }
+			}	
+		
+		
+		/* progress bars */
+		.progress {
+			    height: 40px;			
+		    /*
+			margin-bottom: 20px;
+		    overflow: hidden;
+		    background-color: #48586a !important;
+		    border-radius: 4px;
+		    box-shadow: none;
+			*/
+		}
+		.progress-bar .bg-info{
+			background-color: #48586a
+		}
+		
+		.progress-label {
+		    float: left;
+			margin-left: 1em;
+		    margin-right: 1em;
+		}
+	   
+	</style>		
+			
+			
+			
+	<title>MACE-MI Score</title>
+</head>
+
+
+<body>
+
+<div id="intro" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 text-center">
+			<h1> MACE-MI Score &nbsp;<span class="fa fa-edit "></a></span></h1>
+			<h4> MACE incidence in long-term survivors of acute coronary syndromes </h4>
+			
+
+			<hr>
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+<div id="miDACE" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-6 text-center">
+			<div class="button well" onclick="totalMACEIM()">
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>&nbsp;&nbsp;Age</span>
+						<select class="form-control input" id="age" name="edad">
+							<option value="0" selected="selected"> <h5> &le; 75 years </h5> </option>
+							<option value="3" selected="selected"> <h5> > 75 years </h5> </option>
+						</select>
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->	
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Male gender</span>
+						<select class="form-control input" id="gender" name="sexo">
+							<option value="0" selected="selected"> <h5> Female </h5> </option>
+							<option value="4"> <h5> Male </h5> </option>
+						</select>
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->
+				
+							
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-tint"></span>&nbsp;&nbsp;Anemia<span id="anemiasexmin"></span></span>
+						<select class="form-control input" id="anaemia" name="anemia">
+							<option value="0" selected="selected"> <h5> No </h5> </option>
+							<option value="1"> <h5> Yes </h5> </option>
+						</select>
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->	
+				
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-flash"></span>&nbsp;&nbsp;Atrial Fibrillation</span>
+						<select class="form-control input" id="afib" name="fibauricular">
+							<option value="0" selected="selected"> <h5> No </h5> </option>
+							<option value="4"> <h5> Yes </h5> </option>
+						</select>
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->
+				
+				
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-tint"></span>&nbsp;&nbsp;Diabetes</span>
+						<select class="form-control input" id="diabetic" name="diabetico">
+							<option value="0" selected="selected"> <h5> No </h5> </option>
+							<option value="2"> <h5> Yes </h5> </option>
+						</select>
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->
+				
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-road"></span>&nbsp;&nbsp;Peripheral artery disease</span>
+						<select class="form-control input" id="artdisease" name="enfarterial">
+							<option value="0" selected="selected"> <h5> No </h5> </option>
+							<option value="4"> <h5> Yes </h5> </option>
+						</select>
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->
+				
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;Heart Failure</span>
+						<select class="form-control input" id="hfailure" name="fallocard">
+							<option value="0" selected="selected"> <h5> No </h5> </option>
+							<option value="5"> <h5> Yes </h5> </option>
+						</select>
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->
+				
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span>&nbsp;&nbsp;GFR &le;60 ml/min/1.72m2</span>
+						<select class="form-control input" id="gfr" name="filtradoglom">
+							<option value="0" selected="selected"> <h5> No </h5> </option>
+							<option value="2"> <h5> Yes </h5> </option>
+						</select>
+					</div><!--EOF input-group-->
+				</div> <!--EOF form-group-->
+				
+				
+				
+			</div> <!--EOF well sm-->
+		</div> <!--EOF column-->
+		
+		
+		<!--RESULTS COLUMN -->
+		
+		<div class="col-sm-12 col-md-6 text-center" onclick="totalMACEIM()">
+			<div id="results" class="container-fluid">
+				<!--total points -->
+				<div class="row">
+					<div class="col-sm-12 col-md-12 text-center">
+						<div class="button well well-sm alert-danger">
+							<h2> Points = <span id="totMACEIM"> </span> <span id=""> </span></h2>
+						</div> <!--EOF well sm-->
+					</div> <!--EOF column-->
+				</div> <!--EOF row-->
+				<hr>
+								
+				<!--progress bars -->
+				<!--progress bars -->
+				<h3> MACE incidence</h3>
+				<div class="row">		
+					<div class="col-sm-12 col-md-2 text-center">
+							<h5 class="progress-label">1-year</h5> 
+					</div> <!--EOF column-->			
+					<div class="col-sm-12 col-md-10 text-center">
+						<div class="progress">
+							<!--<h5 class="progress-label">1-year</h5> -->
+							<div class="progress-bar bg-info progress1year" role="progressbar" style="width: 5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+								<span id="totMort1year"> </span>
+							</div>
+						</div>	
+					</div> <!--EOF column-->
+				</div> <!--EOF row-->
+				
+				<div class="row">
+					<div class="col-sm-12 col-md-2 text-center">
+							<h5 class="progress-label">2-year</h5> 
+					</div> <!--EOF column-->
+					<div class="col-sm-12 col-md-10 text-center">
+						<div class="progress">
+							<div class="progress-bar bg-info progress2year" role="progressbar" style="width: 5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+								<span id="totMort2year"> </span>
+							</div>
+						</div>		
+					</div> <!--EOF column-->
+				</div> <!--EOF row-->
+				
+				<div class="row">
+					<div class="col-sm-12 col-md-2 text-center">
+							<h5 class="progress-label">3-year</h5> 
+					</div> <!--EOF column-->
+					<div class="col-sm-12 col-md-10 text-center">
+						<div class="progress">
+							<div class="progress-bar bg-info progress3year" role="progressbar" style="width: 5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+								<span id="totMort3year"> </span>
+							</div>
+						</div>				
+					</div> <!--EOF column-->
+				</div> <!--EOF row-->
+				
+				<div class="row">
+					<div class="col-sm-12 col-md-2 text-center">
+							<h5 class="progress-label">4-year</h5> 
+					</div> <!--EOF column-->
+					<div class="col-sm-12 col-md-10 text-center">
+						<div class="progress">
+							<div class="progress-bar bg-info progress4year" role="progressbar" style="width: 5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+								<span id="totMort4year"> </span>
+							</div>
+						</div>					
+					</div> <!--EOF column-->
+				</div> <!--EOF row-->
+				
+				<div class="row">
+					<div class="col-sm-12 col-md-2 text-center">
+							<h5 class="progress-label">5-year</h5> 
+					</div> <!--EOF column-->
+					<div class="col-sm-12 col-md-10 text-center">
+						<div class="progress">
+							<div class="progress-bar bg-info progress5year" role="progressbar" style="width: 5%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+								<span id="totMort5year"> </span>
+							</div>
+						</div>				
+					</div> <!--EOF column-->
+				</div> <!--EOF row-->
+				
+				
+
+
+
+			
+			</div> <!--EOF container results-->
+			
+		</div> <!--EOF column results-->
+		
+		
+	</div> <!--EOF row-->
+
+</div> <!--EOF container-->
+
+
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#evidence" data-toggle="tab" data-value="EVIDENCE">Evidence&nbsp;&nbsp;<span class="glyphicon glyphicon-bookmark"></a>
+				</li>
+				<li>
+					<a href="#byhand" data-toggle="tab" data-value="BYHAND">Pen & Paper Calculation&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil"></a>
+				</li>
+				<li>
+					<a href="#ciftable" data-toggle="tab" data-value="CIFTABLE">Incidence Table &nbsp;&nbsp;<span class="glyphicon glyphicon-th-list"></a>
+				</li>
+
+			</ul>
+			
+			
+			<!---- TABBABLE TABS ---->
+
+			<div class="tab-content"> <!---- Tabbable tabpane - tab-content---->
+				
+				<div class="tab-pane active" data-value="EVIDENCE" id="evidence"> <!-- tabbable tabpane-->
+					<div class="row">
+						<div class="col-sm-12 col-md-12 form-group">
+							<div class="row"> <!--fields -->
+								<div class="col-sm-12 col-md-1">
+									<h3> </h3>
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-10">
+									<h3> </h3>
+									<div class="well">
+										<h4>The MACE-MI registry </h4>
+										<br>
+										<p>A cohort of 2704 patients who had chronic coronary heart disease.</p>
+										<p>They were followed for MACE events and all-cause mortality.</p>
+										<p>Measures: </p>
+											<ul>
+												<li>The primary end point was time to MACE event. </li>
+												<li>MACE was defined as the incidence of any of the following events: cardiovascular mortality, non-fatal ACS, hemorrhagic or ischemic stroke, hospital readmission for heart failure, unplanned revascularization, acute ischemic events in lower extremities or new-onset atrial fibrillation.</li>
+												<li>Previous heart failure was codified if patients had at least one hospitalization with such main diagnosis at discharge-medical report as well as those with typical signs and symptoms of heart failure that had a compatible imagine diagnosis (X-ray or echocardiogram). </li>
+												<li>Glomerular filtration rate was estimated from serum creatinine levels by the Modification of Diet in Renal Disease equation.</li>
+												<li> Anemia was defined as hemoglobin &le;13 g/dl in males or &le;12 in females.</li>
+											</ul>
+										<p>Outcomes:</p>
+											<ul>
+												<li>2704 patients were included. The median follow-up time was 14.9 months (interquartile range 12.2-70.1). By the end of that period, 455 patients (16.8%) developed MACE.</li>
+											</ul>
+										<p> </p>
+										<p>Statistical rationale: </p>
+											<ul>
+												<li>The score is based in a Fine & Gray model for competing risks. </li>
+												<li>A competing risk (CR) is an event whose occurrence either precludes the occurrence of another event under examination or fundamentally alters the probability of occurrence of this other event.</li>
+												<li>Kaplan-Meier methods are not suitable for modeling CRs, as they tend to overestimate incidence.</li>
+												<li>Fine & Gray models have use in predicting an individual’s incidence of an event (MACE), taking into account the possibility that a competing event (all-cause mortality) occurs. </li>
+												<li>The point-based score transforms the time-to-event model into a simple set of operations, to facilitate its use in the clinical setting. </li>
+											</ul>
+									</div> <!--EOF well-->
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-1">
+									<h3> </h3>
+								</div> <!--EOF column-->
+							</div> <!--EOF row-->
+			
+						</div> <!--EOF column-->
+					</div> <!--EOF row-->
+				</div> <!-- EOF tabbable tabpane-->
+				
+				
+				<div class="tab-pane" data-value="BYHAND" id="byhand"> <!-- tabbable tabpane-->
+					<div class="row">
+						<div class="col-sm-12 col-md-12 form-group">
+							<div class="row"> <!--fields -->
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>Age &nbsp;&nbsp;<span class="glyphicon glyphicon-calendar"></span></h4>
+										<ul>
+											<li> &le; 75: 0 points.</li>
+											<li> > 75: 3 points.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>Gender &nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span></h4>
+										<ul>
+											<li> Female: 0 points.</li>
+											<li> Male: 4 points.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>Anemia <span id="anemiasex"></span>&nbsp;&nbsp;<span class="glyphicon glyphicon-tint"></span></h4>
+										<ul>
+											<li> No: 0 points.</li>
+											<li> Yes: 1 point.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>Atrial Fibrillation &nbsp;&nbsp;<span class="glyphicon glyphicon-flash"></span></h4>
+										<ul>
+											<li> No: 0 points.</li>
+											<li> Yes: 4 points.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+								
+							</div> <!--EOF row-->
+							
+							
+							
+							<div class="row"> <!--fields -->	
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>Diabetes &nbsp;&nbsp;<span class="glyphicon glyphicon-tint"></span></h4>
+										<ul>
+											<li> 2 points if diagnosed.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>Glomerular Filtration Rate (GFR) &nbsp;&nbsp;<span class="glyphicon glyphicon-filter"></span></h4>
+										<ul>
+											<li> 2 points if GFR &le;60 ml/min/1.72m<sup>2</sup>.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>Peripheral artery disease &nbsp;&nbsp;<span class="glyphicon glyphicon-road"></span></h4>
+										<ul>
+											<li> 4 points if diagnosed.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+								<div class="col-sm-12 col-md-3">
+									<h3> </h3>
+									<div class="well well-sm">
+										<h4>Heart Failure &nbsp;&nbsp;<span class="glyphicon glyphicon-heart"></span></h4>
+										<ul>
+											<li> 5 points if diagnosed.</li>
+										</ul>
+									</div> <!--EOF well sm-->
+								</div> <!--EOF column-->
+							</div> <!--EOF row-->
+							
+							<div class="row">
+								<div class="col-sm-12 col-md-12">
+										Abbreviations: MACE=major adverse cardiovascular events; GFR=glomerular filtration rate.
+								</div> <!--EOF column-->
+							</div> <!--EOF row-->
+							
+						</div> <!--EOF column-->
+					</div> <!--EOF row-->
+				</div> <!-- EOF tabbable tabpane-->
+				
+				
+				<div class="tab-pane " data-value="CIFTABLE" id="ciftable"> <!-- tabbable tabpane-->
+					<div class="row">
+						<div class="col-sm-12 col-md-12 form-group">
+							<div class="row"> <!--fields -->
+								<div class="col-sm-12 col-md-12">
+									<h3> </h3>
+									<div class="row">
+										<div class="col-sm-12 col-md-12">
+												<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+												 <thead>
+												  <tr>
+												   <th style="text-align:center;"> Points </th>
+												   <th style="text-align:center;"> CIF 1 year </th>
+												   <th style="text-align:center;"> CIF 2 year </th>
+												   <th style="text-align:center;"> CIF 3 year </th>
+												   <th style="text-align:center;"> CIF 4 year </th>
+												   <th style="text-align:center;"> CIF 5 year </th>
+												  </tr>
+												 </thead>
+												<tbody>
+												  <tr>
+												   <td style="text-align:center;"> 24 </td>
+												   <td style="text-align:center;"> 0.43 </td>
+												   <td style="text-align:center;"> 0.70 </td>
+												   <td style="text-align:center;"> 0.79 </td>
+												   <td style="text-align:center;"> 0.84 </td>
+												   <td style="text-align:center;"> 0.88 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 23 </td>
+												   <td style="text-align:center;"> 0.39 </td>
+												   <td style="text-align:center;"> 0.65 </td>
+												   <td style="text-align:center;"> 0.75 </td>
+												   <td style="text-align:center;"> 0.80 </td>
+												   <td style="text-align:center;"> 0.85 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 22 </td>
+												   <td style="text-align:center;"> 0.36 </td>
+												   <td style="text-align:center;"> 0.61 </td>
+												   <td style="text-align:center;"> 0.70 </td>
+												   <td style="text-align:center;"> 0.76 </td>
+												   <td style="text-align:center;"> 0.81 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 21 </td>
+												   <td style="text-align:center;"> 0.32 </td>
+												   <td style="text-align:center;"> 0.56 </td>
+												   <td style="text-align:center;"> 0.66 </td>
+												   <td style="text-align:center;"> 0.72 </td>
+												   <td style="text-align:center;"> 0.77 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 20 </td>
+												   <td style="text-align:center;"> 0.29 </td>
+												   <td style="text-align:center;"> 0.52 </td>
+												   <td style="text-align:center;"> 0.61 </td>
+												   <td style="text-align:center;"> 0.67 </td>
+												   <td style="text-align:center;"> 0.73 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 19 </td>
+												   <td style="text-align:center;"> 0.26 </td>
+												   <td style="text-align:center;"> 0.48 </td>
+												   <td style="text-align:center;"> 0.57 </td>
+												   <td style="text-align:center;"> 0.63 </td>
+												   <td style="text-align:center;"> 0.68 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 18 </td>
+												   <td style="text-align:center;"> 0.24 </td>
+												   <td style="text-align:center;"> 0.44 </td>
+												   <td style="text-align:center;"> 0.53 </td>
+												   <td style="text-align:center;"> 0.58 </td>
+												   <td style="text-align:center;"> 0.64 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 17 </td>
+												   <td style="text-align:center;"> 0.21 </td>
+												   <td style="text-align:center;"> 0.40 </td>
+												   <td style="text-align:center;"> 0.48 </td>
+												   <td style="text-align:center;"> 0.54 </td>
+												   <td style="text-align:center;"> 0.59 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 16 </td>
+												   <td style="text-align:center;"> 0.19 </td>
+												   <td style="text-align:center;"> 0.36 </td>
+												   <td style="text-align:center;"> 0.44 </td>
+												   <td style="text-align:center;"> 0.50 </td>
+												   <td style="text-align:center;"> 0.55 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 15 </td>
+												   <td style="text-align:center;"> 0.17 </td>
+												   <td style="text-align:center;"> 0.33 </td>
+												   <td style="text-align:center;"> 0.40 </td>
+												   <td style="text-align:center;"> 0.45 </td>
+												   <td style="text-align:center;"> 0.51 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 14 </td>
+												   <td style="text-align:center;"> 0.15 </td>
+												   <td style="text-align:center;"> 0.30 </td>
+												   <td style="text-align:center;"> 0.37 </td>
+												   <td style="text-align:center;"> 0.42 </td>
+												   <td style="text-align:center;"> 0.47 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 13 </td>
+												   <td style="text-align:center;"> 0.14 </td>
+												   <td style="text-align:center;"> 0.27 </td>
+												   <td style="text-align:center;"> 0.33 </td>
+												   <td style="text-align:center;"> 0.38 </td>
+												   <td style="text-align:center;"> 0.43 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 12 </td>
+												   <td style="text-align:center;"> 0.12 </td>
+												   <td style="text-align:center;"> 0.24 </td>
+												   <td style="text-align:center;"> 0.30 </td>
+												   <td style="text-align:center;"> 0.34 </td>
+												   <td style="text-align:center;"> 0.39 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 11 </td>
+												   <td style="text-align:center;"> 0.11 </td>
+												   <td style="text-align:center;"> 0.22 </td>
+												   <td style="text-align:center;"> 0.27 </td>
+												   <td style="text-align:center;"> 0.31 </td>
+												   <td style="text-align:center;"> 0.35 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 10 </td>
+												   <td style="text-align:center;"> 0.10 </td>
+												   <td style="text-align:center;"> 0.20 </td>
+												   <td style="text-align:center;"> 0.25 </td>
+												   <td style="text-align:center;"> 0.28 </td>
+												   <td style="text-align:center;"> 0.32 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 9 </td>
+												   <td style="text-align:center;"> 0.09 </td>
+												   <td style="text-align:center;"> 0.18 </td>
+												   <td style="text-align:center;"> 0.22 </td>
+												   <td style="text-align:center;"> 0.25 </td>
+												   <td style="text-align:center;"> 0.29 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 8 </td>
+												   <td style="text-align:center;"> 0.08 </td>
+												   <td style="text-align:center;"> 0.16 </td>
+												   <td style="text-align:center;"> 0.20 </td>
+												   <td style="text-align:center;"> 0.23 </td>
+												   <td style="text-align:center;"> 0.26 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 7 </td>
+												   <td style="text-align:center;"> 0.07 </td>
+												   <td style="text-align:center;"> 0.14 </td>
+												   <td style="text-align:center;"> 0.18 </td>
+												   <td style="text-align:center;"> 0.20 </td>
+												   <td style="text-align:center;"> 0.23 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 6 </td>
+												   <td style="text-align:center;"> 0.06 </td>
+												   <td style="text-align:center;"> 0.13 </td>
+												   <td style="text-align:center;"> 0.16 </td>
+												   <td style="text-align:center;"> 0.18 </td>
+												   <td style="text-align:center;"> 0.21 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 5 </td>
+												   <td style="text-align:center;"> 0.05 </td>
+												   <td style="text-align:center;"> 0.11 </td>
+												   <td style="text-align:center;"> 0.14 </td>
+												   <td style="text-align:center;"> 0.16 </td>
+												   <td style="text-align:center;"> 0.19 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 4 </td>
+												   <td style="text-align:center;"> 0.05 </td>
+												   <td style="text-align:center;"> 0.10 </td>
+												   <td style="text-align:center;"> 0.13 </td>
+												   <td style="text-align:center;"> 0.15 </td>
+												   <td style="text-align:center;"> 0.17 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 3 </td>
+												   <td style="text-align:center;"> 0.04 </td>
+												   <td style="text-align:center;"> 0.09 </td>
+												   <td style="text-align:center;"> 0.11 </td>
+												   <td style="text-align:center;"> 0.13 </td>
+												   <td style="text-align:center;"> 0.15 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 2 </td>
+												   <td style="text-align:center;"> 0.04 </td>
+												   <td style="text-align:center;"> 0.08 </td>
+												   <td style="text-align:center;"> 0.10 </td>
+												   <td style="text-align:center;"> 0.12 </td>
+												   <td style="text-align:center;"> 0.14 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 1 </td>
+												   <td style="text-align:center;"> 0.03 </td>
+												   <td style="text-align:center;"> 0.07 </td>
+												   <td style="text-align:center;"> 0.09 </td>
+												   <td style="text-align:center;"> 0.10 </td>
+												   <td style="text-align:center;"> 0.12 </td>
+												  </tr>
+												  <tr>
+												   <td style="text-align:center;"> 0 </td>
+												   <td style="text-align:center;"> 0.03 </td>
+												   <td style="text-align:center;"> 0.06 </td>
+												   <td style="text-align:center;"> 0.08 </td>
+												   <td style="text-align:center;"> 0.09 </td>
+												   <td style="text-align:center;"> 0.11 </td>
+												  </tr>
+												</tbody>
+												</table>
+												
+										</div> <!--EOF column-->
+									</div> <!--EOF row-->
+									<div class="row">
+										<div class="col-sm-12 col-md-12">
+											CIF: cumulative incidence function for HF, or expected HF incidence at a given timepoint.
+										</div> <!--EOF column-->
+									</div> <!--EOF row-->
+
+								</div> <!--EOF column-->
+							</div> <!--EOF row-->
+			
+						</div> <!--EOF column-->
+					</div> <!--EOF row-->
+				</div> <!-- EOF tabbable tabpane-->
+
+			</div> <!--EOF Tabbable tabpane - tab-content-->
+		</div> <!-- EOF tabs 12wide column-->
+	</div> <!-- EOF main tabpane row-->
+</div> <!--EOF container-->
+
+
+
+
+
+
+
+
+<div id="contact" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 text-center">
+			<h4> Contact</h4>
+			<div class="well well-sm well-sm">
+				<p><span class="fa fa-user-md"></span> Aurora Baluja-Gonz&aacute;lez <sup>1,2</sup>
+					<!--, &nbsp;&nbsp;Alberto Cordero-Fort <sup>2,4</sup>, Mois&eacute;s Rodr&iacute;guez-Ma&ntilde;ero <sup>2,3</sup></p>-->
+	        	<p><span class="fa fa-hospital-o"></span> Servicio de Anestesiolog&iacute;a y Reanimaci&oacute;n<sup>1</sup>
+					<!--, Servicio de Cardiolog&iacute;a<sup>2</sup>-->. </p>
+	        	<p><span class="glyphicon glyphicon-map-marker"></span> Hospital Cl&iacute;nico Universitario, Santiago de Compostela<sup>2</sup> 
+					<!--Hospital Universitario de San Juan, Alicante <sup>4</sup>-->, Espa&ntilde;a</p>
+			</div> <!--EOF well-sm-->
+			<p><h3><a href="https://github.com/aurora-mareviv/anescalc" target="blank" style="color:#48586a"><span class="fa fa-github"></a>&nbsp;</span>
+			   <a href="https://talesofr.wordpress.com" target="blank" style="color:#48586a"><span class="fa fa-rss"></a></span>
+			   <a href="https://twitter.com/maureviv" target="blank" style="color:#48586a"><span class="fa fa-twitter"></a></span>
+			   </h3>
+		   	</p>
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+<div id="license" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h3> </h3>
+			<hr>
+			<p style="color:#bfbfbf"><span class="fa fa-linux" style="color:#bfbfbf"></span> 
+				A. Baluja, 2019. License - <a href="https://github.com/aurora-mareviv" target="blank" style="color:#bfbfbf">Code</a>: GNU-GPL v3. 
+				<a href="http://getbootstrap.com/" target="blank" style="color:#bfbfbf">Bootstrap CSS</a>, 
+				<a href="https://bootswatch.com/" target="blank" style="color:#bfbfbf">Bootswatch</a>: MIT.
+			</p>
+		</div> <!--EOF column-->
+	</div> <!--EOF row-->
+</div> <!--EOF container-->
+
+
+</body>	
+</html>
