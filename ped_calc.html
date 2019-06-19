@@ -260,12 +260,18 @@
 			var propofolPc2 = ((8 / 10) * w).toFixed(1);
 			var nimbexPc = ((1 / 200) * w * 60).toFixed(1);
 			var nimbexPc2 = ((2 / 200) * w * 60).toFixed(1);
+			var rocuronPc = ((0.3 / 1) * w ).toFixed(1);
+			var rocuronPc2 = ((0.4 / 1) * w ).toFixed(1);
+			var rocuronPc3 = ((0.6 / 1) * w ).toFixed(1);
 			var remiPc = ((0.1 / 50) * w * 60).toFixed(1);
 			var remiPc2 = ((0.3 / 50) * w * 60).toFixed(1);
 			document.getElementById("propofolPc").innerHTML = propofolPc;
 			document.getElementById("propofolPc2").innerHTML = propofolPc2;
 			document.getElementById("nimbexPc").innerHTML = nimbexPc;
 			document.getElementById("nimbexPc2").innerHTML = nimbexPc2;
+			document.getElementById("rocuronPc").innerHTML = rocuronPc;
+			document.getElementById("rocuronPc2").innerHTML = rocuronPc2;
+			document.getElementById("rocuronPc3").innerHTML = rocuronPc3;
 			document.getElementById("remiPc").innerHTML = remiPc;
 			document.getElementById("remiPc2").innerHTML = remiPc2;
 			
@@ -327,19 +333,19 @@
 			var norepiunits = document.getElementById("norepiunits").value; // units of pump velocity (that I want to change)
 			var norepiunitsFinal = document.getElementById("norepiunitsFinal").value; // desired units of pump velocity
 			if (norepiunits == "mlh" & norepiunitsFinal == "mlh") {
-				var noradrena = norepispeed;
+				var noradrena = norepispeed * w;
 				var noradrenaUds = norepiunitsFinal;
 			} else {
 				if (norepiunits == "ugmin" & norepiunitsFinal == "ugmin") {
-					var noradrena = norepispeed;
+					var noradrena = norepispeed * w;
 					var noradrenaUds = norepiunitsFinal;
 				} else {
 					if (norepiunits == "ugmin" & norepiunitsFinal == "mlh") {
-						var noradrena = (norepiml * norepispeed * 60)/(norepimg * 1000);
+						var noradrena = (norepiml * norepispeed * 60 * w)/(norepimg * 1000);
 						var noradrenaUds = norepiunitsFinal;
 					} else {
 						if (norepiunits == "mlh" & norepiunitsFinal == "ugmin"){
-							var noradrena = ( (norepimg * norepispeed * 1000)/(norepiml * 60) ).toFixed(1);
+							var noradrena = ( (norepimg * norepispeed * 1000 * w)/(norepiml * 60) ).toFixed(1);
 							var noradrenaUds = norepiunitsFinal;
 						}
 					}
@@ -355,19 +361,19 @@
 			var dobutrexunits = document.getElementById("dobutrexunits").value; // units of pump velocity (that I want to change)
 			var dobutrexunitsFinal = document.getElementById("dobutrexunitsFinal").value; // desired units of pump velocity			
 			if (dobutrexunits == "mlh" & dobutrexunitsFinal == "mlh") {
-				var dobutamina = dobutrexspeed;
+				var dobutamina = dobutrexspeed * w;
 				var dobutaUds = dobutrexunitsFinal;
 			} else {
 				if (dobutrexunits == "ugmin" & dobutrexunitsFinal == "ugmin") {
-					var dobutamina = dobutrexspeed;
+					var dobutamina = dobutrexspeed * w;
 					var dobutaUds = dobutrexunitsFinal;
 				} else {
 					if (dobutrexunits == "ugmin" & dobutrexunitsFinal == "mlh") {
-						var dobutamina = (dobutrexml * dobutrexspeed * 60)/(dobutrexmg * 1000);
+						var dobutamina = (dobutrexml * dobutrexspeed * 60 * w)/(dobutrexmg * 1000);
 						var dobutaUds = dobutrexunitsFinal;
 					} else {
 						if (dobutrexunits == "mlh" & dobutrexunitsFinal == "ugmin"){
-							var dobutamina = ( (dobutrexmg * dobutrexspeed * 1000)/(dobutrexml * 60) ).toFixed(1);
+							var dobutamina = ( (dobutrexmg * dobutrexspeed * 1000 * w)/(dobutrexml * 60) ).toFixed(1);
 							var dobutaUds = dobutrexunitsFinal;
 						}
 					}
@@ -383,19 +389,19 @@
 			var nitryunits = document.getElementById("nitryunits").value; // units of pump velocity (that I want to change)
 			var nitryunitsFinal = document.getElementById("nitryunitsFinal").value; // desired units of pump velocity			
 			if (nitryunits == "mlh" & nitryunitsFinal == "mlh") {
-				var nitroglicerina = nitryspeed;
+				var nitroglicerina = nitryspeed * w;
 				var nitroUds = nitryunitsFinal;
 			} else {
 				if (nitryunits == "ugmin" & nitryunitsFinal == "ugmin") {
-					var nitroglicerina = nitryspeed;
+					var nitroglicerina = nitryspeed * w;
 					var nitroUds = nitryunitsFinal;
 				} else {
 					if (nitryunits == "ugmin" & nitryunitsFinal == "mlh") {
-						var nitroglicerina = (nitryml * nitryspeed * 60)/(nitrymg * 1000);
+						var nitroglicerina = (nitryml * nitryspeed * 60 * w)/(nitrymg * 1000);
 						var nitroUds = nitryunitsFinal;
 					} else {
 						if (nitryunits == "mlh" & nitryunitsFinal == "ugmin"){
-							var nitroglicerina = ( (nitrymg * nitryspeed * 1000)/(nitryml * 60) ).toFixed(1);
+							var nitroglicerina = ( (nitrymg * nitryspeed * 1000 * w)/(nitryml * 60) ).toFixed(1);
 							var nitroUds = nitryunitsFinal;
 						}
 					}
@@ -404,7 +410,33 @@
 			document.getElementById("nitroglicerina").innerHTML = nitroglicerina;
 			document.getElementById("nitroUds").innerHTML = nitroUds;
 			
-			
+			// Nitroprusiato
+			var nitroprusatemg = parseFloat(document.getElementById("nitroprusatemg").value); // mg in dilution 
+			var nitroprusateml = parseFloat(document.getElementById("nitroprusateml").value); // mL in dilution 
+			var nitroprusatespeed = parseFloat(document.getElementById("nitroprusatespeed").value); // pump velocity 
+			var nitroprusateunits = document.getElementById("nitroprusateunits").value; // units of pump velocity (that I want to change)
+			var nitroprusateunitsFinal = document.getElementById("nitroprusateunitsFinal").value; // desired units of pump velocity
+			if (nitroprusateunits == "mlh" & nitroprusateunitsFinal == "mlh") {
+				var nitroprusato = nitroprusatespeed * w;
+				var nitroprusatoUds = nitroprusateunitsFinal;
+			} else {
+				if (nitroprusateunits == "ugmin" & nitroprusateunitsFinal == "ugmin") {
+					var nitroprusato = nitroprusatespeed * w;
+					var nitroprusatoUds = nitroprusateunitsFinal;
+				} else {
+					if (nitroprusateunits == "ugmin" & nitroprusateunitsFinal == "mlh") {
+						var nitroprusato = (nitroprusateml * nitroprusatespeed * 60 * w)/(nitroprusatemg * 1000);
+						var nitroprusatoUds = nitroprusateunitsFinal;
+					} else {
+						if (nitroprusateunits == "mlh" & nitroprusateunitsFinal == "ugmin"){
+							var nitroprusato = ( (nitroprusatemg * nitroprusatespeed * 1000 * w)/(nitroprusateml * 60) ).toFixed(1);
+							var nitroprusatoUds = nitroprusateunitsFinal;
+						}
+					}
+				}
+			}
+			document.getElementById("nitroprusato").innerHTML = nitroprusato;
+			document.getElementById("nitroprusatoUds").innerHTML = nitroprusatoUds;
 		}	
 					
 			
@@ -811,6 +843,7 @@
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-pink2" onclick="totalPedCalc()">
 													<h3> Cisatracurio <span id="nimbexPc"></span>-<span id="nimbexPc2"></span> ml/h <span class="font-sm">[20mg/100ml] (1-2 &mu;g/k/min)</span></h3>
+													<h3> Rocuronio <span id="rocuronPc"></span>-<span id="rocuronPc2"></span>-<span id="rocuronPc3"></span> ml/h <span class="font-sm">[100mg/100ml] (0.3-0.6 mg/k/h TIVA; 0.3-0.4 inhalatoria)</span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
@@ -977,8 +1010,8 @@
 															<div class="form-group">
 																<label class="control-label" for="noraunids"><h4>&nbsp; Unidades &nbsp;</h4></label>
 																<select class="form-control input" id="norepiunits" name="noraunids">
-																	<option value="mlh">ml/h</option>
-																	<option value="ugmin" selected="selected">&micro;g/min</option>
+																	<option value="mlh">ml/kg/h</option>
+																	<option value="ugmin" selected="selected">&micro;g/kg/min</option>
 																	<!--<option value="mlmin">ml/min</option>-->
 																</select>
 															</div> <!--EOF form-group-->
@@ -1035,8 +1068,8 @@
 															<div class="form-group">
 																<label class="control-label" for="dobutaunids"><h4>&nbsp; Unidades &nbsp;</h4></label>
 																<select class="form-control input" id="dobutrexunits" name="dobutaunids">
-																	<option value="mlh">ml/h</option>
-																	<option value="ugmin" selected="selected">&micro;g/min</option>
+																	<option value="mlh">ml/kg/h</option>
+																	<option value="ugmin" selected="selected">&micro;g/kg/min</option>
 																	<!--<option value="mlmin">ml/min</option>-->
 																</select>
 															</div> <!--EOF form-group-->
@@ -1093,8 +1126,8 @@
 															<div class="form-group">
 																<label class="control-label" for="nitrounids"><h4>&nbsp; Unidades &nbsp;</h4></label>
 																<select class="form-control input" id="nitryunits" name="nitrounids">
-																	<option value="mlh">ml/h</option>
-																	<option value="ugmin" selected="selected">&micro;g/min</option>
+																	<option value="mlh">ml/kg/h</option>
+																	<option value="ugmin" selected="selected">&micro;g/kg/min</option>
 																	<!--<option value="mlmin">ml/min</option>-->
 																</select>
 															</div> <!--EOF form-group-->
@@ -1108,6 +1141,64 @@
 													<div class="form-group form-inline">
 														<label class="control-label" for="nitrounidsFinal"><h4>&nbsp; Unidades &nbsp;</h4></label>
 														<select class="form-control input" id="nitryunitsFinal" name="nitrounidsFinal">
+															<option value="mlh" selected="selected">ml/h</option>
+															<option value="ugmin">&micro;g/min</option>
+															<!--<option value="mlmin">ml/min</option>-->
+														</select>
+													</div> <!--EOF form-group-->
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+										</div> <!--EOF row-->
+										
+										<div class="row">
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-blue2" onclick="totalPedCalc()">
+													<h4>Nitroprusiato</h4>
+													<div class="row">
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="niprumg"><h4>&nbsp; Miligramos &nbsp;</h4></label>
+																<input class="form-control input" type="number" id="nitroprusatemg" name="niprumg" value="100" min="0" max="500" step="1">
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="nipruml"><h4>&nbsp; Mililitros &nbsp;</h4></label>
+																<input class="form-control input" type="number" id="nitroprusateml" name="nipruml" value="100" min="0" max="1000" step="1">
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+													</div> <!--EOF row-->
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="well well-sm alert-blue2" onclick="totalPedCalc()">
+													<h4>Nitroprusiato</h4>
+													<div class="row">
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="nipruveloc"><h4>Dosis</h4></label>
+																<input class="form-control input" type="number" id="nitroprusatespeed" name="nipruveloc" value="1" min="0" max="10000" step="1">
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+														<div class="col-sm-6 col-md-6 text-center">
+															<div class="form-group">
+																<label class="control-label" for="nipruunids"><h4>&nbsp; Unidades &nbsp;</h4></label>
+																<select class="form-control input" id="nitroprusateunits" name="nipruunids">
+																	<option value="mlh">ml/kg/h</option>
+																	<option value="ugmin" selected="selected">&micro;g/kg/min</option>
+																	<!--<option value="mlmin">ml/min</option>-->
+																</select>
+															</div> <!--EOF form-group-->
+														</div> <!--EOF column-->
+													</div> <!--EOF row-->
+												</div> <!--EOF well sm-->
+											</div> <!--EOF column-->
+											<div class="col-sm-4 col-md-4 text-center">
+												<div class="button well well-sm alert-blue1" onclick="totalPedCalc()">
+													<h3> Nitroprusiato = <span id="nitroprusato"> </span> <span class="font-sm" id="nitroprusatoUds"> </span></h3>
+													<div class="form-group form-inline">
+														<label class="control-label" for="nipruunidsFinal"><h4>&nbsp; Unidades &nbsp;</h4></label>
+														<select class="form-control input" id="nitroprusateunitsFinal" name="nipruunidsFinal">
 															<option value="mlh" selected="selected">ml/h</option>
 															<option value="ugmin">&micro;g/min</option>
 															<!--<option value="mlmin">ml/min</option>-->
