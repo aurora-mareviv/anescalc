@@ -280,11 +280,17 @@
 			var naloxona2 = (0.1 * w).toFixed(2);
 			var flumacenilo = (0.01 * w).toFixed(2);
 			var flumacenilo2 = (0.05 * w).toFixed(2);
+			var bridion = (2 * w).toFixed(0);
+			var bridion2 = (4 * w).toFixed(0);
+			var bridion3 = (16 * w).toFixed(0);
 			document.getElementById("neostigmina").innerHTML = neostigmina;
 			document.getElementById("naloxona").innerHTML = naloxona;
 			document.getElementById("naloxona2").innerHTML = naloxona2;
 			document.getElementById("flumacenilo").innerHTML = flumacenilo;
 			document.getElementById("flumacenilo2").innerHTML = flumacenilo2;
+			document.getElementById("bridion").innerHTML = bridion;
+			document.getElementById("bridion2").innerHTML = bridion2;
+			document.getElementById("bridion3").innerHTML = bridion3;
 			
 			var nolotil = 20 * w;
 			if ( (ageDecimal <= 365.25) || (w < 10) ) {
@@ -863,6 +869,7 @@
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-blue1" onclick="totalPedCalc()">
 													<h3> Neostigmina = <span id="neostigmina"></span> mg <span class="font-sm">(0.05 mg/k)</span></h3>
+													<h3> Sugammadex = <span id="bridion"></span>-<span id="bridion2"></span>-<span id="bridion3"></span> mg <span class="font-sm">(2-4-16 mg/k)</span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
