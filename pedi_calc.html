@@ -291,7 +291,8 @@
 			document.getElementById("bridion2").innerHTML = bridion2;
 			document.getElementById("bridion3").innerHTML = bridion3;
 			
-			var nolotil = 20 * w;
+			var nolotil = 17 * w;
+			var ibuprofeno = 10 * w;
 			if ( (ageDecimal <= 365.25) || (w < 10) ) {
 				var paracetamol = 7.5 * w; 	
 				var paracetamolDoseKg = "(7.5 mg/k)"; 
@@ -301,6 +302,7 @@
 			} 
 			var ondansetron = 0.15 * w;
 			document.getElementById("nolotil").innerHTML = nolotil;
+			document.getElementById("ibuprofeno").innerHTML = ibuprofeno;
 			document.getElementById("paracetamol").innerHTML = paracetamol; 
 			document.getElementById("paracetamolDoseKg").innerHTML = paracetamolDoseKg;
 			document.getElementById("ondansetron").innerHTML = ondansetron;
@@ -941,7 +943,8 @@
 										<div class="row">
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-blue2" onclick="totalPedCalc()">
-													<h3> Metamizole (dipyrone) = <span id="nolotil"> </span> mg <span class="font-sm">(20 mg/k)</span></h3>
+													<h3> Metamizole (dipyrone) = <span id="nolotil"> </span> mg <span class="font-sm">(17 mg/k)</span></h3>
+													<h3> Ibuprophen = <span id="ibuprofeno"> </span> mg <span class="font-sm">(10 mg/k)</span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
