@@ -1,5 +1,14 @@
 <!-- <%@ language="javascript"%> -->
 <!DOCTYPE html><html lang="en-150"><head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153581997-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-153581997-1');
+	</script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
@@ -7,7 +16,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--font awesome 20px-sm-->	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script>(function(i,s,o,g,r,a,m){i.GoogleAnalyticsObject=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-104312945-2','auto');ga('send','pageview');</script>
+<script></script>
 <script>$(document).ready(function(){$('#myTab li:eq(1) a').tab('show')});function totalOpioids(){var opioidtype1=document.getElementById("opioidtype1").value;var dose1=parseFloat(document.getElementById("dose1").value);var units1=parseFloat(document.getElementById("units1").value);var wayadmin1=document.getElementById("wayadmin1").value;var opioidtype2=document.getElementById("opioidtype2").value;var dose2=parseFloat(document.getElementById("dose2").value);var units2=parseFloat(document.getElementById("units2").value);var wayadmin2=document.getElementById("wayadmin2").value;var opioidtype3=document.getElementById("opioidtype3").value;var dose3=parseFloat(document.getElementById("dose3").value);var units3=parseFloat(document.getElementById("units3").value);var wayadmin3=document.getElementById("wayadmin3").value;var rescuetype1=document.getElementById("rescuetype1").value;var doseRescue1=parseFloat(document.getElementById("doseRescue1").value);var unitsRescue1=parseFloat(document.getElementById("unitsRescue1").value);var wayadminRescue1=document.getElementById("wayadminRescue1").value;var rescuetype2=document.getElementById("rescuetype2").value;var doseRescue2=parseFloat(document.getElementById("doseRescue2").value);var unitsRescue2=parseFloat(document.getElementById("unitsRescue2").value);var wayadminRescue2=document.getElementById("wayadminRescue2").value;var countRescue=document.getElementById("countRescue").value;var rotatedtype1=document.getElementById("rotatedtype1").value;var rotatedunits1=parseFloat(document.getElementById("rotatedunits1").value);var rotatedwayadmin1=document.getElementById("rotatedwayadmin1").value;var rotatedRescuetype1=document.getElementById("rotatedRescuetype1").value;var rotateRescuedunits1=parseFloat(document.getElementById("rotateRescuedunits1").value);var rotatedRescuewayadmin1=document.getElementById("rotatedRescuewayadmin1").value;var newRescue1=parseFloat(document.getElementById("newRescue1").value);var percentReduction=parseFloat(document.getElementById("percentReduction").value);var demTotal=0;var demTotalpropRescue=0;function calculatorDEM(opioidtype,wayadmin,dose,units){var unitsInverse=1/units;var messageDEM="";var messagewayadmin="";var messagewayadminInverse="";if(units==0.001){var messageUnitsResult="/24h";var unitsString="&micro;g"}else if(units==1){var messageUnitsResult="/24h";var unitsString="mg"}else if(units==1000){var messageUnitsResult="/24h";var unitsString="g"}
 var doseDEM=0;var doseDEMinverse=0;if(opioidtype=="buprenorfina"){if(wayadmin=="intravenosa"||wayadmin=="intramuscular"||wayadmin=="transmucosa"||wayadmin=="sublingual"){var doseDEM=dose*units*50;var doseDEMinverse=dose*unitsInverse*0.02}else if(wayadmin=="transdermica"){var doseDEM=dose*24*units*50;var doseDEMinverse=(dose/24)*unitsInverse*0.02;var messagewayadmin="Parche: la dosis horaria es multiplicada x 24";var messagewayadminInverse="Parche: la dosis diaria es dividida por 24"}else{var doseDEM=0;var doseDEMinverse=0;var messageDEM="Dosis no definida para esa v&iacute;a de administraci&oacute;n"}}
 if(opioidtype=="codeina"){if(wayadmin=="oral"){var doseDEM=dose*units*0.15;var doseDEMinverse=dose*unitsInverse*6.67}else{var doseDEM=0;var messageDEM="Dosis no definida para esa v&iacute;a de administraci&oacute;n"}}
