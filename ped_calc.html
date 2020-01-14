@@ -293,15 +293,27 @@
 			document.getElementById("bridion3").innerHTML = bridion3;
 			
 			var nolotil = 17 * w;
+			if ( nolotil > 2000 ) {
+				nolotil = 2000;
+			}
 			var ibuprofeno = 10 * w;
+			if ( ibuprofeno > 400 ) {
+				ibuprofeno = 400;
+			}
 			if ( (ageDecimal <= 365.25) || (w < 10) ) {
 				var paracetamol = 7.5 * w; 	
 				var paracetamolDoseKg = "(7.5 mg/k)"; 
 			} else  {
 				var paracetamol = 15 * w; 	
-				var paracetamolDoseKg = "(15 mg/k)"; 
+				var paracetamolDoseKg = "(15 mg/k, max 1g)"; 
 			} 
+			if ( paracetamol > 1000 ) {
+				paracetamol = 1000;
+			}
 			var ondansetron = 0.15 * w;
+			if ( ondansetron > 8 ) {
+				ondansetron = 8;
+			}
 			document.getElementById("nolotil").innerHTML = nolotil;
 			document.getElementById("ibuprofeno").innerHTML = ibuprofeno;
 			document.getElementById("paracetamol").innerHTML = paracetamol;
@@ -895,8 +907,8 @@
 										<div class="row">
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="button well well-sm alert-blue2" onclick="totalPedCalc()">
-													<h3> Metamizol = <span id="nolotil"> </span> mg <span class="font-sm">(17 mg/k)</span></h3>
-													<h3> Ibuprofeno = <span id="ibuprofeno"> </span> mg <span class="font-sm">(10 mg/k)</span></h3>
+													<h3> Metamizol = <span id="nolotil"> </span> mg <span class="font-sm">(17 mg/k, max 2 g)</span></h3>
+													<h3> Ibuprofeno = <span id="ibuprofeno"> </span> mg <span class="font-sm">(10 mg/k, max 400 mg)</span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
@@ -906,7 +918,7 @@
 											</div> <!--EOF column-->
 											<div class="col-sm-4 col-md-4 text-center">
 												<div class="well well-sm alert-pink" onclick="totalPedCalc()">
-													<h3> Ondansetr&oacute;n = <span id="ondansetron"> </span> mg <span class="font-sm">(0.15 mg/k)</span></h3>
+													<h3> Ondansetr&oacute;n = <span id="ondansetron"> </span> mg <span class="font-sm">(0.15 mg/k, max 8 mg)</span></h3>
 												</div> <!--EOF well sm-->
 											</div> <!--EOF column-->
 										</div> <!--EOF row-->
