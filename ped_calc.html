@@ -347,6 +347,12 @@
 			
 			//AMINAS
 			// Nora
+			var norepiml_default = parseFloat(document.getElementById("norepiml").defaultValue);
+			if (ageYe < 15) {
+				document.getElementById("norepiml").defaultValue = 50;
+			} else {
+				document.getElementById("norepiml").defaultValue = 100;
+			}
 			var norepimg = parseFloat(document.getElementById("norepimg").value); // mg in dilution 
 			var norepiml = parseFloat(document.getElementById("norepiml").value); // mL in dilution 
 			var norepispeed = parseFloat(document.getElementById("norepispeed").value); // pump velocity 
@@ -375,6 +381,12 @@
 			document.getElementById("noradrenaUds").innerHTML = noradrenaUds;
 			
 			// Dobuta
+			var dobutrexml_default = parseFloat(document.getElementById("dobutrexml").defaultValue);
+			if (ageYe < 15) {
+				document.getElementById("dobutrexml").defaultValue = 50;
+			} else {
+				document.getElementById("dobutrexml").defaultValue = 250;
+			}
 			var dobutrexmg = parseFloat(document.getElementById("dobutrexmg").value); // mg in dilution 
 			var dobutrexml = parseFloat(document.getElementById("dobutrexml").value); // mL in dilution 
 			var dobutrexspeed = parseFloat(document.getElementById("dobutrexspeed").value); // pump velocity 
@@ -403,6 +415,12 @@
 			document.getElementById("dobutaUds").innerHTML = dobutaUds;
 			
 			// Nitro
+			var nitryml_default = parseFloat(document.getElementById("nitryml").defaultValue);
+			if (ageYe < 15) {
+				document.getElementById("nitryml").defaultValue = 50;
+			} else {
+				document.getElementById("nitryml").defaultValue = 100;
+			}
 			var nitrymg = parseFloat(document.getElementById("nitrymg").value); // mg in dilution 
 			var nitryml = parseFloat(document.getElementById("nitryml").value); // mL in dilution 
 			var nitryspeed = parseFloat(document.getElementById("nitryspeed").value); // pump velocity 
@@ -431,6 +449,12 @@
 			document.getElementById("nitroUds").innerHTML = nitroUds;
 			
 			// Nitroprusiato
+			var nitroprusateml_default = parseFloat(document.getElementById("nitroprusateml").defaultValue);
+			if (ageYe < 15) {
+				document.getElementById("nitroprusateml").defaultValue = 50;
+			} else {
+				document.getElementById("nitroprusateml").defaultValue = 100;
+			}
 			var nitroprusatemg = parseFloat(document.getElementById("nitroprusatemg").value); // mg in dilution 
 			var nitroprusateml = parseFloat(document.getElementById("nitroprusateml").value); // mL in dilution 
 			var nitroprusatespeed = parseFloat(document.getElementById("nitroprusatespeed").value); // pump velocity 
