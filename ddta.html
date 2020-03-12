@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" media="all">--> <!--bootswatch-->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css" media="all">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sandstone/bootstrap.min.css" media="all">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!--google icons-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--font awesome 20px-sm-->	
 	<link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
@@ -34,7 +34,6 @@
 		var pointmatrix = {
 			 "Points": [
 			        0,
-			       1,
 			       2,
 			       3,
 			       4,
@@ -46,33 +45,33 @@
 			      10 
 			],
 			"Risk": [
-			       51,
-			      60,
+			       50,
 			      68,
 			      75,
-			      81,
-			      86,
-			      89,
-			      92,
-			      94,
-			      96,
-			      97 
+			      82,
+			      87,
+			      90,
+			      93,
+			      95,
+			      97,
+			      98 
 			],
 			"95% Risk Confidence Interval": [
-			 "37 - 66",
-			"48 - 71",
+			 "36 - 64",
 			"60 - 76",
-			"69 - 81",
-			"77 - 85",
-			"82 - 90",
-			"86 - 93",
-			"89 - 96",
-			"91 - 98",
-			"93 - 99",
-			"95 - 100" 
+			"70 - 81",
+			"78 - 86",
+			"83 - 90",
+			"87 - 94",
+			"90 - 96",
+			"92 - 98",
+			"94 - 99",
+			"96 - 100" 
 			] 
 			}
 		
+		//var points0 = "Points";
+		//var points = pointmatrix[points0];
 		var risk0 = "Risk";
 		var risk = pointmatrix[risk0];
 		var confi950 = "95% Risk Confidence Interval";
@@ -81,24 +80,27 @@
 		function totalDDTA() {
 			// POINTS		
 			var dapt = parseFloat(document.getElementById("dapt").value); 
-			var delay_less_120 = parseFloat(document.getElementById("delay_less_120").value); 
-			var delay_120_240 = parseFloat(document.getElementById("delay_120_240").value); 
+			var delay_pPCI = parseFloat(document.getElementById("delay_pPCI").value); 
 			var timi = parseFloat(document.getElementById("timi").value);
 			var age_less_55 = parseFloat(document.getElementById("age_less_55").value); 	
 		
-			totDDTA = dapt + delay_less_120 + delay_120_240 + timi + age_less_55;	
+			totDDTA = dapt + delay_pPCI + timi + age_less_55;	
 			document.getElementById("totDDTA").innerHTML = totDDTA;
 			
 			// lookup mortality data
-			// var totDDTAlookup = totDDTA + 1; // correct lookup index because first element is -1 and must be 0	
-			var totDDTAlookup = totDDTA; // correct lookup index because first element is -1 and must be 0			
+			if(totDDTA > 0) {
+				var totDDTAlookup = totDDTA - 1; // correct lookup index because second element is 2 and must be 1 to be used as an index	
+			} else {
+				var totDDTAlookup = totDDTA;
+			}
+			
 			var numberRisk = Math.round(  risk[totDDTAlookup] );			
 			document.getElementById("numberRisk").innerHTML = "" + numberRisk + " % "; //"<h3>" + numberRisk + " % </h3>";
 			var numberconfi95 = confi95[totDDTAlookup];			
 			document.getElementById("numberconfi95").innerHTML = "[" + numberconfi95 + "] % "; //"<h3> [" + numberconfi95 + "] % </h3>";			
 			
 			
-		}	
+		}
 		
 
 		
@@ -156,6 +158,7 @@
 		    margin-right: 1em;
 		}
 		
+		/*
 		.bg-warning { 
 			/*background-color: #ffb700 !important;*/
 			background-color: #e6a400 !important;
@@ -164,6 +167,7 @@
 			/*background-color: #d41b32 !important;*/
 			background-color: #cb1a2f !important;
 		}
+		*/
 	</style>		
 			
 			
@@ -189,7 +193,8 @@
 <div id="miDACE" class="container-fluid" onclick="totalDDTA()">
 	<div class="row">
 		<div class="col-sm-12 col-md-6 text-center">
-			<div class="card text-white bg-info mb-3" >
+			<!--<div class="card text-white bg-primary mb-3" >-->
+			<div class="btn btn-primary btn-lg btn-block" >
 				<div class="card-body">
 					<div class="form-group">
 						<div class="input-group">
@@ -202,24 +207,16 @@
 					</div> <!--EOF form-group-->	
 					<div class="form-group">
 						<div class="input-group">
-							<span class="input-group-addon"><span class="glyphicon glyphicon-hourglass"></span>Delay to pPCI < 120 min &nbsp;&nbsp;</span>
-							<select class="form-control input-sm" id="delay_less_120" name="delay_less_120e">
-								<option value="0" selected="selected"> <h5> No </h5> </option>
-								<option value="3"> <h5> Yes </h5> </option>
+							<span class="input-group-addon"><span class="glyphicon glyphicon-hourglass"></span>Delay to pPCI &nbsp;&nbsp;</span>
+							<select class="form-control input-sm" id="delay_pPCI" name="delay_pPCIe">
+								<option value="0" selected="selected"> <h5> > 240 min </h5> </option>
+								<option value="2"> <h5> 120 - 240 min </h5> </option>
+								<option value="3"> <h5> < 120 min </h5> </option>
+
 							</select>
 						</div><!--EOF input-group-->
 					</div> <!--EOF form-group-->
 				
-							
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><span class="glyphicon glyphicon-hourglass"></span>Delay to pPCI 120-240 min &nbsp;&nbsp;</span>
-							<select class="form-control input-sm" id="delay_120_240" name="delay_120_240e">
-								<option value="0" selected="selected"> <h5> No </h5> </option>
-								<option value="2"> <h5> Yes </h5> </option>
-							</select>
-						</div><!--EOF input-group-->
-					</div> <!--EOF form-group-->	
 				
 					<div class="form-group">
 						<div class="input-group">
@@ -237,7 +234,7 @@
 							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>Age < 55 years &nbsp;&nbsp;</span>
 							<select class="form-control input-sm" id="age_less_55" name="age_less_55e">
 								<option value="0" selected="selected"> <h5> No </h5> </option>
-								<option value="1"> <h5> Yes </h5> </option>
+								<option value="3"> <h5> Yes </h5> </option>
 							</select>
 						</div><!--EOF input-group-->
 					</div> <!--EOF form-group-->
@@ -256,9 +253,9 @@
 				<!--total points -->
 				<div class="row">
 					<div class="col-sm-12 col-md-12 text-center">
-						<div class="card text-white bg-danger mb-3">
+						<div class="card text-white bg-warning mb-3">
 							<div class="card-body">
-								<h2> Points = <span id="totDDTA"> </span> <span id=""> </span></h2>
+								<h3> Points = <span id="totDDTA"> </span> <span id=""> </span></h3>
 							</div> <!--EOF card-body-->
 						</div> <!--EOF well sm-->
 					</div> <!--EOF column-->
@@ -266,18 +263,18 @@
 				
 				<div class="row">
 					<div class="col-sm-12 col-md-12 text-center">
-						<div class="card text-white bg-warning mb-3">
+						<div class="card text-primary border-warning mb-3">
 							<div class="card-body">
-								<h2> Prob. successful MT: <span id="numberRisk"> </span> <span id=""> </span></h2>
+								<h3> Prob. successful MT: <span id="numberRisk"> </span> <span id=""> </span></h3>
 							</div> <!--EOF card-body-->
 						</div> <!--EOF well sm-->
 					</div> <!--EOF column-->
 				</div> <!--EOF row-->
 				<div class="row">
 					<div class="col-sm-12 col-md-12 text-center">
-						<div class="card text-white bg-warning mb-3">
+						<div class="card text-primary border-warning mb-3">
 							<div class="card-body">
-								<h2> 95% CI: <span id="numberconfi95"> </span> <span id=""> </span></h2>
+								<h3> 95% CI: <span id="numberconfi95"> </span> <span id=""> </span></h3>
 							</div> <!--EOF card-body-->
 						</div> <!--EOF well sm-->
 					</div> <!--EOF column-->
@@ -302,7 +299,7 @@
 					<ul>DAPT=Dual antiplatelet therapy.</ul> 
 					<ul>MT=Manual thrombectomy.</ul>
 					<ul>pPCI=primary percutaneous coronary intervention.</ul> 
-					<ul>TIMI="Thrombolysis In Myocardial Infarction" score</ul>
+					<ul>TIMI="Thrombolysis In Myocardial Infarction" score.</ul>
 				</div> <!--EOF card-body-->
 			</div> <!--EOF well sm-->
 		</div> <!--EOF column-->
